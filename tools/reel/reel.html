@@ -1,0 +1,42 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+@font-face{font-family:CG;font-weight:600;src:url(fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:CG;font-weight:500;src:url(fonts/cormorant-garamond-latin-500-normal.woff2)}
+@font-face{font-family:CA;font-weight:600;src:url(fonts/cairo-arabic-600-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:800;src:url(fonts/cairo-arabic-800-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:500;src:url(fonts/cairo-latin-500-normal.woff2);unicode-range:U+0000-00FF}
+html,body{margin:0;background:#faf7f0}
+#r{width:1080px;height:1920px;position:relative;overflow:hidden;background:#faf7f0}
+.a{position:absolute}.c{left:0;width:1080px;display:flex;justify-content:center;text-align:center}
+#hook{top:390px;font-family:CA;font-weight:800;font-size:64px;line-height:1.35;color:#3d3627;padding:0 90px;box-sizing:border-box;direction:rtl}
+#hook span{background:linear-gradient(transparent 60%,#f4e2dc 60%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 8px}
+</style></head><body><div id="r">
+<img id="frame" class="a" src="frame_v.png" style="left:0;top:285px;width:1080px;height:1350px">
+<div id="hook" class="a c"><span id="hookT"></span></div>
+<div id="glow" class="a" style="left:240px;top:560px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(179,157,114,.28),rgba(179,157,114,0) 65%)"></div>
+<div id="sh" class="a" style="left:360px;top:1288px;width:360px;height:36px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(61,54,39,.3) 0%,rgba(61,54,39,0) 70%)"></div>
+<img id="bt" class="a" style="top:700px;height:600px;mix-blend-mode:multiply;transform-origin:50% 100%">
+<img id="logo" class="a" src="horizontal_gold.png" style="left:410px;top:400px;width:260px;opacity:0">
+<div id="name" class="a c" style="top:1330px;font-family:CG;font-weight:600;font-size:70px;color:#3d3627;white-space:nowrap"></div>
+<div id="sub" class="a c" style="top:1418px;font-family:CA;font-weight:600;font-size:30px;color:#665a41;direction:rtl">تركيز ٣٠٪ · زيوت سويسرية · ١٠٠ مل</div>
+<div id="price" class="a c" style="top:1468px;direction:rtl"><div style="padding:4px 50px 10px;border-radius:60px;background:#f4e2dc;font-family:CA;font-weight:800;font-size:40px;color:#3d3627">٢٥ ألف · توصيل مجاني · بخور هدية</div></div>
+<div id="cta" class="a c" style="top:1548px;direction:rtl"><div style="padding:6px 64px 12px;border-radius:60px;background:#b39d72;font-family:CA;font-weight:800;font-size:34px;color:#3d3627">راسلنا لتثبيت طلبك</div></div>
+</div><script>
+const q=new URLSearchParams(location.search),$=i=>document.getElementById(i);
+$('hookT').textContent=q.get('hook')||'عطر يبقى وياك طول اليوم؟';$('name').textContent=q.get('name')||'GOOD GIRL';$('bt').src='bottles/'+(q.get('img')||'good-girl')+'.jpg';
+const cl=x=>Math.min(1,Math.max(0,x)),P=(t,s,d)=>cl((t-s)/d),E=x=>1-Math.pow(1-x,3);
+window.setT=function(t){
+ // 0s: hook + bottle already visible, quick push-in (no blank intro)
+ const bw=$('bt').getBoundingClientRect().width/($('bt')._z||1);
+ const z=1.18-0.18*E(P(t,0,1.2))+0.04*P(t,1.2,8.8); $('bt')._z=z;
+ $('bt').style.transform=`scale(${z})`; $('bt').style.left=((1080-$('bt').offsetWidth)/2)+'px';
+ $('glow').style.opacity=.6+.4*Math.sin(t*1.6);
+ $('hook').style.opacity=1-E(P(t,3.4,.5)); $('hook').style.transform=`scale(${1+0.04*Math.sin(Math.min(t,3)*3)})`;
+ let p=E(P(t,3.6,.6)); $('logo').style.opacity=p;
+ p=E(P(t,2.2,.8)); $('name').style.opacity=p; const ls=30-16*p; $('name').style.letterSpacing=ls+'px'; $('name').style.paddingLeft=ls+'px';
+ p=E(P(t,3,.6)); $('sub').style.opacity=p;
+ p=E(P(t,4.4,.6)); $('price').style.opacity=p; $('price').style.transform=`translateY(${(1-p)*24}px)`;
+ p=E(P(t,5.4,.6)); $('cta').style.opacity=p; $('cta').style.transform=`translateY(${(1-p)*24}px) scale(${1+0.03*Math.sin(Math.max(0,t-6)*4)})`;
+ $('frame').style.opacity=.35+.65*E(P(t,0,.6));
+};
+setT(0);
+</script></body></html>
