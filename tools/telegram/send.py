@@ -29,3 +29,5 @@ for p in sorted(glob.glob('queue/telegram/*.json')):
         except Exception as e: res={'ok':False,'description':str(e)}
     sent[name]={'ok':res.get('ok'),'message_id':(res.get('result') or {}).get('message_id'),'error':res.get('description'),'at':datetime.datetime.now(datetime.timezone.utc).isoformat()}
     save(); print('RESULT',name,json.dumps(sent[name]))
+failed=[n for n,v in sent.items() if v.get('ok') is False and not v.get('cancelled') and not v.get('skipped')]
+if failed: raise SystemExit('send failed: '+', '.join(failed))   # makes the run red so the failure is visible
