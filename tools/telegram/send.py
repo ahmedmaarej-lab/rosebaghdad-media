@@ -12,7 +12,9 @@ for p in sorted(glob.glob('queue/telegram/*.json')):
     if j.get('cancel'):res={'ok':False,'cancelled':True}
     else:
         at=datetime.datetime.fromisoformat(j['at'])
-        if at>now:continue
+        wait=(at-datetime.datetime.now(datetime.timezone.utc)).total_seconds()
+        if wait>600:continue          # not due yet; a later run will send it
+        if wait>0:import time;time.sleep(wait)   # due within 10 min: wait for the exact time
         try:res=send(j.get('chat','@rosebaghdad_iq'),j['text'])
         except Exception as e:
             try:res=send(j.get('chat','@rosebaghdad_iq'),j.get('plain') or j['text'],html=False)

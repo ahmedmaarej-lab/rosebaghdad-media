@@ -1,5 +1,8 @@
 name: telegram-queue
 on:
+  push:
+    branches: [main]
+    paths: ['queue/telegram/**']
   schedule:
     - cron: "2,32 6-19 * * *"   # every 30 min, 9:02–22:32 Baghdad
   workflow_dispatch:
