@@ -21,3 +21,27 @@ for p in sorted(glob.glob('queue/telegram/*.json')):
     out='queue/sent/'+os.path.basename(p)
     json.dump(j,open(out,'w',encoding='utf-8'),ensure_ascii=False,indent=1);os.remove(p)
     print(os.path.basename(p),j['result'])
+
+# --- Order inbox (approved by Ahmed 2026-11-14): Ahmed and his sales staff send one line per order to the bot
+# (e.g. "good girl بصرة"); saved for Claude to log in the dashboard. Replies only acknowledge receipt.
+def api(method,params):
+    r=urllib.request.Request(f'https://api.telegram.org/bot{tok}/{method}',data=urllib.parse.urlencode(params).encode())
+    with urllib.request.urlopen(r,timeout=30) as f:return json.load(f)
+try:
+    st_path='queue/inbox/state.json'
+    st=json.load(open(st_path)) if os.path.exists(st_path) else {'offset':0}
+    allow=set(json.load(open('tools/telegram/allow.json')).get('allowed',[]))
+    ups=api('getUpdates',{'offset':st['offset'],'timeout':0,'allowed_updates':json.dumps(['message'])}).get('result',[])
+    for u in ups:
+        st['offset']=u['update_id']+1
+        m=u.get('message') or {}
+        if (m.get('chat') or {}).get('type')!='private' or not m.get('text'):continue
+        uid=m['from']['id'];txt=m['text'].strip()
+        if txt.startswith('/start'):
+            api('sendMessage',{'chat_id':uid,'text':'هلا بيك 🌹 هذا بوت تسجيل طلبات روز بغداد. دز كل طلب بسطر واحد، مثلاً: good girl بصرة\nرقمك للموافقة: '+str(uid)});continue
+        rec={'uid':uid,'name':(m['from'].get('first_name') or ''),'text':txt[:300],'date':m['date'],'approved':uid in allow}
+        json.dump(rec,open(f"queue/inbox/{m['date']}-{m['message_id']}.json",'w',encoding='utf-8'),ensure_ascii=False)
+        api('sendMessage',{'chat_id':uid,'text':('انسجل ✓' if uid in allow else 'وصل ✓ (ينتظر موافقة الأدمن، رقمك '+str(uid)+')'),'reply_to_message_id':m['message_id']})
+    json.dump(st,open(st_path,'w'))
+except Exception as e:
+    print('inbox error',e)
