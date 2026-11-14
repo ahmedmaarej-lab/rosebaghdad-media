@@ -1,0 +1,30 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:CA;font-weight:600;src:url(../reel/fonts/cairo-arabic-600-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:800;src:url(../reel/fonts/cairo-arabic-800-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:500;src:url(../reel/fonts/cairo-latin-500-normal.woff2);unicode-range:U+0000-00FF}
+html,body{margin:0}
+#r{width:1080px;position:relative;overflow:hidden;background:#faf7f0;display:flex;flex-direction:column;align-items:center;box-sizing:border-box;border:2px solid #c9ad74;outline:22px solid #faf7f0;outline-offset:-26px}
+.brand{font-family:CG;font-weight:600;letter-spacing:6px;color:#9a7a3c;font-size:44px;margin-top:70px}
+.sub{font-family:CA;font-weight:500;font-size:18px;letter-spacing:3px;color:#9a8a6a}
+.hook{font-family:CA;font-weight:800;color:#3d3627;direction:rtl;text-align:center;padding:0 90px;line-height:1.4}
+.hook span{background:linear-gradient(transparent 60%,#f4e2dc 60%);padding:0 8px}
+.img{mix-blend-mode:multiply}
+.name{font-family:CG;font-weight:600;letter-spacing:12px;color:#2e281d}
+.ml{font-family:CG;font-weight:600;letter-spacing:8px;color:#7a6a4a;font-size:30px}
+.pill{font-family:CA;font-weight:600;direction:rtl;background:#f4e2dc;color:#3d3627;border-radius:60px;padding:14px 46px;font-size:38px}
+.cta{font-family:CA;font-weight:800;direction:rtl;color:#9a7a3c}
+.url{font-family:CG;font-weight:600;letter-spacing:5px;color:#9a7a3c;font-size:30px}
+</style></head><body><div id="r"></div>
+<script>
+const q=new URLSearchParams(location.search),story=q.get('f')==='story',H=story?1920:1350,r=document.getElementById('r');
+r.style.height=H+'px';
+r.innerHTML=`<div class="brand">ROSE BAGHDAD</div><div class="sub">FOR PERFUMES AND INCENSE</div>
+<div class="hook" style="font-size:${story?58:46}px;margin-top:${story?70:34}px"><span>${q.get('hook')}</span></div>
+<img class="img" src="../reel/bottles/${q.get('k')}.jpg" style="height:${story?820:600}px;margin-top:${story?40:16}px">
+<div class="name" style="font-size:${story?92:76}px;margin-top:${story?30:14}px">${q.get('name')}</div>
+<div class="ml">PARFUM · 100 ML</div>
+<div class="pill" style="margin-top:${story?40:26}px">٢٥ ألف دينار ◆ توصيل مجاني</div>
+${story?'<div class="cta" style="font-size:44px;margin-top:46px">راسلنا لتثبيت طلبك 🤍</div>':''}
+<div class="url" style="position:absolute;bottom:60px">www.rosebaghdad.iq</div>`;
+</script></body></html>
