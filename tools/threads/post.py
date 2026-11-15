@@ -13,7 +13,7 @@ st=json.load(open(TP)) if os.path.exists(TP) else {}
 # a newly pasted secret wins over the cached refreshed token
 if sec and st.get('seed')!=sec[-12:]: st={'tok':sec,'seed':sec[-12:],'at':'2000-01-01T00:00:00+00:00'}
 tok=st.get('tok')
-if not tok: raise SystemExit('THREADS_TOKEN secret is missing')
+if not tok: print('THREADS_TOKEN not set yet, nothing to do'); raise SystemExit(0)
 def call(url,params,post=True):
     data=urllib.parse.urlencode(params).encode()
     r=urllib.request.Request(url if post else url+'?'+data.decode(),data=data if post else None)
