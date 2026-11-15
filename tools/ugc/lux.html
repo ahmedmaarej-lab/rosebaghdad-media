@@ -1,0 +1,76 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:CA;font-weight:600;src:url(../reel/fonts/cairo-arabic-600-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:800;src:url(../reel/fonts/cairo-arabic-800-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:500;src:url(../reel/fonts/cairo-latin-500-normal.woff2);unicode-range:U+0000-00FF}
+html,body{margin:0;background:#0b0805}
+#r{width:1080px;height:1920px;position:relative;overflow:hidden;background:#0b0805}
+.a{position:absolute}
+#bg{inset:0;background:radial-gradient(60% 38% at 50% 44%,#4a3418 0%,#24180b 45%,#0b0805 85%)}
+#floor{left:0;right:0;top:1380px;height:540px;background:linear-gradient(#1a120a,#070503)}
+#beam{left:240px;top:-200px;width:600px;height:1700px;background:linear-gradient(rgba(255,226,160,.20),rgba(255,226,160,0) 85%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);filter:blur(14px);mix-blend-mode:screen}
+#stage{left:0;top:0;width:1080px;height:1920px;transform-origin:540px 1000px}
+.bot{position:absolute;left:319px;width:442px;height:1079px}
+.bot img{position:absolute;left:0;top:0;width:442px}
+#refl{left:319px;top:1380px;width:442px;height:1079px;transform:scaleY(-1);transform-origin:50% 0;opacity:.28;filter:blur(2px);-webkit-mask-image:linear-gradient(to top,rgba(0,0,0,0) 62%,#000 100%);mask-image:linear-gradient(to top,rgba(0,0,0,0) 62%,#000 100%)}
+#sheen{position:absolute;left:0;top:0;width:442px;height:1079px;-webkit-mask-image:url(good-girl.png);mask-image:url(good-girl.png);-webkit-mask-size:442px 1079px;mask-size:442px 1079px;mix-blend-mode:screen}
+#sheen div{position:absolute;top:-200px;width:160px;height:1500px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,248,225,.55),rgba(255,255,255,0));transform:rotate(18deg)}
+.t1{left:0;right:0;text-align:center;font-family:CG;font-weight:600;color:#f3e6c8;letter-spacing:18px;font-size:104px}
+.t2{left:0;right:0;text-align:center;direction:rtl;font-family:CA;font-weight:600;color:#e9d9b4;font-size:46px}
+.pill{left:0;right:0;display:flex;justify-content:center;direction:rtl;font-family:CA;font-weight:600;font-size:44px}
+.pill span{background:rgba(244,226,220,.95);color:#2b2216;border-radius:60px;padding:14px 50px}
+canvas{position:absolute;inset:0}
+#vig{inset:0;background:radial-gradient(80% 60% at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,.65) 100%)}
+</style></head><body><div id="r">
+<div id="bg" class="a"></div><div id="floor" class="a"></div><div id="beam" class="a"></div>
+<canvas id="smoke" width="1080" height="1920"></canvas>
+<div id="stage" class="a">
+ <div id="refl" class="a"><img src="good-girl.png" style="width:442px"></div>
+ <div id="bot" class="bot" style="top:301px"><img src="body.png"><img id="cap" src="cap.png"><div id="sheen"><div id="sw"></div></div></div>
+</div>
+<canvas id="fx" width="1080" height="1920"></canvas>
+<div id="vig" class="a"></div>
+<img id="logo" class="a" src="logo.png" style="left:340px;top:140px;width:400px;opacity:0">
+<div id="tA" class="a t2" style="top:1470px;opacity:0;font-size:58px;font-weight:800;color:#f3e6c8">حلاوة دافئة… بلمسة قهوة</div>
+<div id="tB" class="a t1" style="top:1440px;opacity:0">GOOD GIRL</div>
+<div id="tC" class="a t2" style="top:1580px;opacity:0;letter-spacing:6px;font-family:CG;color:#c9a35a;font-size:34px">PARFUM · 100 ML</div>
+<div id="tD" class="a pill" style="top:1660px;opacity:0"><span>٢٥ ألف دينار ◆ توصيل مجاني</span></div>
+<div id="tE" class="a t2" style="top:1780px;opacity:0;font-size:40px">راسلينا لتثبيت طلبچ 🤍</div>
+</div>
+<script>
+const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),
+ease=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},fade=(t,a,d=.6)=>cl((t-a)/d);
+function rnd(i){let x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+const sm=$('smoke').getContext('2d'),fx=$('fx').getContext('2d');
+function smoke(t){sm.clearRect(0,0,1080,1920);
+ for(let i=0;i<14;i++){const x=200+rnd(i)*680+Math.sin(t*.35+i)*60,y=1500-((t*(28+rnd(i+3)*20)+rnd(i+5)*900)%1100),r=180+rnd(i+7)*160;
+  const g=sm.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,`rgba(220,190,140,${.05+rnd(i+9)*.04})`);g.addColorStop(1,'rgba(220,190,140,0)');
+  sm.fillStyle=g;sm.beginPath();sm.arc(x,y,r,0,7);sm.fill()}}
+function dust(t){for(let i=0;i<90;i++){const x=(rnd(i)*1080+Math.sin(t*.4+i)*30),y=(rnd(i+20)*1920-t*(10+rnd(i+4)*25)+1920)%1920,
+  r=1+rnd(i+6)*3,tw=.4+.6*Math.abs(Math.sin(t*2+i));fx.fillStyle=`rgba(255,226,160,${(.15+rnd(i+8)*.5)*tw})`;fx.beginPath();fx.arc(x,y,r,0,7);fx.fill()}}
+function mist(t,st){const k=t-st;if(k<0)return;
+ for(let i=0;i<340;i++){const born=rnd(i)*1.2,age=k-born;if(age<0||age>1.6)continue;
+  const sp=420+rnd(i+1)*320,ang=-.12+(rnd(i+2)-.5)*.45,x=nx+Math.cos(ang)*sp*age*(.6+age*.3),y=ny+Math.sin(ang)*sp*age+age*age*60;
+  const r=2+age*22*rnd(i+4),al=.5*(1-age/1.6);const g=fx.createRadialGradient(x,y,0,x,y,r);
+  g.addColorStop(0,`rgba(255,246,228,${al})`);g.addColorStop(1,'rgba(255,246,228,0)');fx.fillStyle=g;fx.beginPath();fx.arc(x,y,r,0,7);fx.fill()}}
+let nx=540,ny=400;
+window.setT=function(t){
+ smoke(t);fx.clearRect(0,0,1080,1920);dust(t);
+ // camera: slow push in + slight drift
+ const z=1+t*.018,dx=Math.sin(t*.3)*12;$('stage').style.transform=`translate(${dx}px,0) scale(${z})`;
+ // reveal from dark
+ $('r').style.filter=`brightness(${.15+.85*ease(t/1.6)})`;
+ $('beam').style.opacity=.6+.4*Math.sin(t*.8);
+ // sheen sweeps
+ const s1=((t-1.0)%3.6)/1.4;$('sw').style.left=(-260+cl(s1,0,1)*900)+'px';
+ // cap off 5.2-6.2
+ const c=ease((t-5.2)/1.0);$('cap').style.transform=`translate(${-c*420}px,${-c*520}px) rotate(${-c*40}deg)`;$('cap').style.opacity=1-cl((t-5.6)/.4);
+ nx=540+dx+40;ny=301+288-78;
+ if(t>6.4&&t<9.2) mist(t,6.4);
+ // text
+ $('tA').style.opacity=fade(t,2.2)*(1-fade(t,4.6,.5));$('tA').style.transform=`translateY(${(1-fade(t,2.2))*20}px)`;
+ $('logo').style.opacity=fade(t,1.2,.8);
+ ['tB','tC','tD','tE'].forEach((id,i)=>{const o=fade(t,8.6+i*.35,.6);$(id).style.opacity=o;$(id).style.transform=`translateY(${(1-o)*24}px)`});
+};
+setT(0);
+</script></body></html>
