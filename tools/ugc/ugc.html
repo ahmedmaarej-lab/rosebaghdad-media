@@ -1,0 +1,115 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:CA;font-weight:600;src:url(../reel/fonts/cairo-arabic-600-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:800;src:url(../reel/fonts/cairo-arabic-800-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:500;src:url(../reel/fonts/cairo-latin-500-normal.woff2);unicode-range:U+0000-00FF}
+html,body{margin:0;background:#140f09}
+#r{width:1080px;height:1920px;position:relative;overflow:hidden;background:radial-gradient(120% 70% at 50% 42%,#3a2a16 0%,#1d150c 55%,#100b06 100%)}
+.a{position:absolute}.sc{position:absolute;inset:0;opacity:0}
+.cap{left:0;right:0;display:flex;justify-content:center;direction:rtl;text-align:center;font-family:CA;font-weight:800;color:#2b2216;font-size:62px;line-height:1.35}
+.cap span{background:#faf7f0;padding:6px 26px;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.sub{left:0;right:0;text-align:center;direction:rtl;font-family:CA;font-weight:600;color:#e9d9b4;font-size:40px}
+.num{display:inline-block;background:#c9a35a;color:#1d150c;border-radius:50%;width:78px;height:78px;line-height:80px;font-family:CA;font-weight:800;font-size:48px;margin-left:16px}
+.name{left:0;right:0;text-align:center;font-family:CG;font-weight:600;letter-spacing:16px;color:#f3e6c8;font-size:96px}
+.ml{left:0;right:0;text-align:center;font-family:CG;font-weight:600;letter-spacing:10px;color:#c9a35a;font-size:32px}
+.pill{left:0;right:0;display:flex;justify-content:center;direction:rtl;font-family:CA;font-weight:600;font-size:44px}
+.pill span{background:#f4e2dc;color:#2b2216;border-radius:60px;padding:14px 50px}
+canvas{position:absolute;inset:0}
+</style></head><body><div id="r">
+<canvas id="cv" width="1080" height="1920"></canvas>
+
+<!-- S1 hook -->
+<div class="sc" id="s1">
+ <img id="b1" class="a" src="good-girl.png" style="left:319px;width:442px">
+ <div class="a cap" style="top:250px"><span>إنتِ ترشّين عطرچ صح؟</span></div>
+ <div class="a sub" id="s1sub" style="top:430px">٣ خطوات للرشّة الصح ✨</div>
+</div>
+
+<!-- S2 rubbing -->
+<div class="sc" id="s2">
+ <div class="a cap" style="top:260px"><span><b class="num">١</b>لا تفركين المعصمين</span></div>
+ <svg class="a" style="left:0;top:620px" width="1080" height="700" viewBox="0 0 1080 700">
+  <defs><linearGradient id="sk" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e8c9a8"/><stop offset="1" stop-color="#c99f7c"/></linearGradient></defs>
+  <g id="armL"><rect x="-60" y="250" width="640" height="150" rx="75" fill="url(#sk)"/><rect x="470" y="262" width="20" height="126" rx="10" fill="#b8896a" opacity=".35"/></g>
+  <g id="armR"><rect x="500" y="330" width="640" height="150" rx="75" fill="url(#sk)"/><rect x="590" y="342" width="20" height="126" rx="10" fill="#b8896a" opacity=".35"/></g>
+  <g id="xx" opacity="0"><circle cx="540" cy="365" r="200" fill="none" stroke="#e0533f" stroke-width="22"/><line x1="400" y1="225" x2="680" y2="505" stroke="#e0533f" stroke-width="22" stroke-linecap="round"/></g>
+ </svg>
+ <div class="a sub" id="s2sub" style="top:1420px">خلّيه ينشف لحاله حتى يفتح طبيعي</div>
+</div>
+
+<!-- S3 spray distance -->
+<div class="sc" id="s3">
+ <div class="a cap" style="top:260px"><span><b class="num">٢</b>رشّة من بُعد ١٥ سم</span></div>
+ <img id="b3" class="a" src="good-girl.png" style="left:90px;top:760px;width:300px;transform-origin:50% 60%">
+ <svg class="a" style="left:0;top:0" width="1080" height="1920">
+  <rect x="760" y="1040" width="420" height="120" rx="60" fill="#e2c3a1"/>
+  <g id="dim" opacity="0"><line x1="330" y1="1270" x2="800" y2="1270" stroke="#c9a35a" stroke-width="4" stroke-dasharray="14 10"/>
+   <line x1="330" y1="1245" x2="330" y2="1295" stroke="#c9a35a" stroke-width="4"/><line x1="800" y1="1245" x2="800" y2="1295" stroke="#c9a35a" stroke-width="4"/></g>
+ </svg>
+ <div class="a sub" id="dimt" style="top:1300px;left:330px;right:auto;width:470px;font-size:46px;color:#f3e6c8;opacity:0">١٥ سم</div>
+ <div class="a sub" style="top:1480px">رشّة وحدة أو ثنتين تكفي 🤍</div>
+</div>
+
+<!-- S4 pulse points -->
+<div class="sc" id="s4">
+ <div class="a cap" style="top:260px"><span><b class="num">٣</b>على نقاط النبض</span></div>
+ <svg class="a" style="left:0;top:520px" width="1080" height="1100" viewBox="0 0 1080 1100" fill="none" stroke="#c9a35a" stroke-width="5" stroke-linecap="round">
+  <ellipse cx="540" cy="250" rx="125" ry="160"/>
+  <path d="M470 395 C470 470 465 500 450 530 M610 395 C610 470 615 500 630 530"/>
+  <path d="M450 530 C360 560 250 580 200 640 C170 680 165 760 170 900 M630 530 C720 560 830 580 880 640 C910 680 915 760 910 900"/>
+  <path d="M420 580 C470 600 610 600 660 580" stroke-width="3" opacity=".6"/>
+  <path d="M170 900 C175 960 190 1000 215 1040 M910 900 C905 960 890 1000 865 1040"/>
+ </svg>
+ <div id="pts"></div>
+ <div class="a sub" style="top:1660px">الحرارة هناك تفتح العطر بنعومة</div>
+</div>
+
+<!-- S5 CTA -->
+<div class="sc" id="s5">
+ <img id="b5" class="a" src="good-girl.png" style="left:349px;top:330px;width:382px">
+ <div class="a name" style="top:1300px">GOOD GIRL</div>
+ <div class="a ml" style="top:1430px">PARFUM · 100 ML</div>
+ <div class="a pill" style="top:1510px"><span>٢٥ ألف دينار ◆ توصيل مجاني</span></div>
+ <div class="a cap" style="top:1640px;font-size:46px"><span>دزّيلنا «Good Girl» واسم محافظتچ</span></div>
+ <img class="a" src="logo.png" style="left:340px;top:150px;width:400px">
+</div>
+</div>
+<script>
+const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),
+ease=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},
+win=(t,a,b,f=.45)=>cl(Math.min((t-a)/f,(b-t)/f));
+const S=[['s1',0,3.1],['s2',2.9,6.1],['s3',5.9,9.6],['s4',9.4,12.6],['s5',12.4,15.5]];
+const pts=[['خلف الأذن',672,800],['الرقبة',540,975],['المعصم',212,1555],['المعصم',868,1555]];
+$('pts').innerHTML=pts.map((p,i)=>`<div class="a" id="p${i}" style="left:${p[1]-30}px;top:${p[2]-30}px;width:60px;height:60px;border-radius:50%;background:radial-gradient(#ffe7a8,#c9a35a 60%,rgba(201,163,90,0) 72%);opacity:0"></div><div class="a sub" id="pl${i}" style="left:${p[1]-150}px;right:auto;width:300px;top:${p[2]+38}px;font-size:36px;color:#f3e6c8;opacity:0">${p[0]}</div>`).join('');
+const cv=$('cv'),cx=cv.getContext('2d');
+function rnd(i){let x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+function bokeh(t){for(let i=0;i<26;i++){const x=rnd(i)*1080,y=(rnd(i+50)*2200-t*(20+rnd(i+9)*30))%2100,r=6+rnd(i+3)*22;
+ cx.fillStyle=`rgba(232,198,130,${.05+rnd(i+7)*.08})`;cx.beginPath();cx.arc(x,(y+2100)%2100-100,r,0,7);cx.fill()}}
+function mist(t){ // spray from nozzle of tilted bottle toward wrist
+ const st=6.9,k=t-st; if(k<0)return;
+ for(let i=0;i<260;i++){const born=rnd(i)*1.6; const age=k-born; if(age<0||age>1.4)continue;
+  const sp=520+rnd(i+1)*260, ang=(rnd(i+2)-.5)*.42+.36, x=330+Math.cos(ang)*sp*age, y=880+Math.sin(ang)*sp*age+age*age*40;
+  const r=3+age*16*rnd(i+4), al=.55*(1-age/1.4);
+  cx.fillStyle=`rgba(255,244,220,${al})`;cx.beginPath();cx.arc(x,y,r,0,7);cx.fill()}}
+window.setT=function(t){
+ cx.clearRect(0,0,1080,1920);bokeh(t);
+ S.forEach(([id,a,b])=>$(id).style.opacity=win(t,a,b,.3));
+ // S1
+ const e1=ease(t/1.6);$('b1').style.top=(1700-e1*1060)+'px';$('b1').style.filter=`blur(${(1-e1)*14}px) drop-shadow(0 40px 60px rgba(0,0,0,.6))`;
+ $('b1').style.transform=`scale(${1+t*.03})`;$('s1sub').style.opacity=cl((t-1.2)/.5);
+ // S2 rubbing
+ const k2=t-3,rub=Math.sin(k2*14)*55*cl(k2/.4)*(k2<1.6?1:cl(1-(k2-1.6)/.3));
+ $('armL').setAttribute('transform',`translate(${rub},0)`);$('armR').setAttribute('transform',`translate(${-rub},0)`);
+ $('xx').setAttribute('opacity',cl((k2-1.6)/.3));$('s2sub').style.opacity=cl((k2-1.9)/.4);
+ // S3 spray
+ const k3=t-6;$('b3').style.transform=`rotate(${ease(k3/.7)*28}deg)`;$('dim').setAttribute('opacity',cl((k3-1.4)/.4));$('dimt').style.opacity=cl((k3-1.5)/.4);
+ if(t>6&&t<9.7) mist(t);
+ // S4 points
+ const k4=t-9.6;pts.forEach((p,i)=>{const o=cl((k4-.35*i)/.35);$('p'+i).style.opacity=o;$('pl'+i).style.opacity=o;
+  $('p'+i).style.transform=`scale(${.6+o*.4+Math.sin(k4*6+i)*.08*o})`});
+ // S5
+ const k5=t-12.5,e5=ease(k5/1);$('b5').style.transform=`translateY(${(1-e5)*80}px) scale(${.92+e5*.08})`;
+ $('b5').style.filter='drop-shadow(0 50px 70px rgba(0,0,0,.65)) drop-shadow(0 0 60px rgba(201,163,90,.25))';
+};
+setT(0);
+</script></body></html>
