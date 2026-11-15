@@ -1,0 +1,32 @@
+name: threads-queue
+on:
+  push:
+    branches: [main]
+    paths: ['queue/threads/**']
+  schedule:
+    - cron: "12,42 6-19 * * *"   # backup run every 30 min, 9:12–22:42 Baghdad (also keeps the token refreshed)
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency: threads-queue
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - name: Restore state
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: .state
+          key: th-state-${{ github.run_id }}
+          restore-keys: th-state-
+      - name: Post due Threads
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+        run: python3 tools/threads/post.py
+      - name: Save state
+        if: always()
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: .state
+          key: th-state-${{ github.run_id }}
