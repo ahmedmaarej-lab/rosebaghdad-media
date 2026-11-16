@@ -1,0 +1,50 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+@font-face{font-family:CA;font-weight:800;src:url(../reel/fonts/cairo-arabic-800-normal.woff2)}
+@font-face{font-family:CA;font-weight:600;src:url(../reel/fonts/cairo-arabic-600-normal.woff2)}
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+html,body{margin:0;background:#1a120a}
+#r{width:1080px;height:1920px;position:relative;overflow:hidden}
+#img{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;transform-origin:820px 900px}
+.a{position:absolute}
+#shade{left:0;right:0;bottom:0;height:760px;background:linear-gradient(rgba(20,12,4,0),rgba(20,12,4,.78) 55%,rgba(20,12,4,.9))}
+#cap{left:60px;right:60px;top:1440px;text-align:center;direction:rtl;font-family:CA;font-weight:800;font-size:62px;line-height:1.35;color:#fff7e6;text-shadow:0 3px 14px rgba(0,0,0,.6)}
+#cap b{color:#e9c46a}
+#tag{left:0;right:0;top:1340px;display:flex;justify-content:center}
+#tag span{font-family:CA;font-weight:600;font-size:38px;color:#2b2216;background:#e9c46a;border-radius:40px;padding:6px 34px;direction:rtl}
+#end{left:0;right:0;top:1680px;display:flex;justify-content:center;direction:rtl}
+#end span{font-family:CA;font-weight:800;font-size:44px;background:#fff7e6;color:#2b2216;border-radius:60px;padding:14px 46px}
+canvas{position:absolute;inset:0}
+#logo{left:40px;top:60px;width:260px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
+</style></head><body><div id="r">
+<img id="img" src="roza-ref.jpg">
+<canvas id="fx" width="1080" height="1920"></canvas>
+<div id="shade" class="a"></div>
+<div id="tag" class="a"><span id="tagt"></span></div>
+<div id="cap" class="a"></div>
+<div id="end" class="a" style="opacity:0"><span>٢٥ ألف دينار ◆ توصيل مجاني</span></div>
+</div>
+<script>
+const $=i=>document.getElementById(i),cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const L=[[0.4,3.2,'هلا بنات، اني <b>روزة</b> من روز بغداد',''],
+[3.2,6.3,'اليوم جبتلكم عطر <b>ماي واي</b>،<br>اسمعوا نوتاته',''],
+[6.3,10.2,'أول ما ترشينه تشمين<br><b>برغموت وزهر البرتقال</b>','المقدمة'],
+[10.2,12.2,'منعش ويفتح النفس','المقدمة'],
+[12.2,15.8,'وبعد شوية يطلع قلب العطر،<br><b>مسك الروم والياسمين</b>','القلب'],
+[15.8,17.8,'ناعم وانثوي','القلب'],
+[17.8,22.0,'وبالأخير يبقى عليچ<br><b>فانيليا ومسك أبيض وخشب الأرز</b>','القاعدة'],
+[22.0,24.4,'ثابت وفخم ويجنن','القاعدة'],
+[24.4,28,'اطلبيه <b>هسه</b> بالخاص 🤍','']];
+function rnd(i){let x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+const fx=$('fx').getContext('2d');let last=-1;
+window.setT=function(t){
+ const z=1+t*.003,dy=Math.sin(t*.25)*6;$('img').style.transform=`translate(0,${dy}px) scale(${z})`;
+ $('r').style.filter=`brightness(${.3+.7*cl(t/0.8)})`;
+ fx.clearRect(0,0,1080,1920);
+ for(let i=0;i<60;i++){const x=rnd(i)*1080+Math.sin(t*.5+i)*20,y=(rnd(i+9)*1920-t*(15+rnd(i+3)*20)+1920)%1920,r=1+rnd(i+5)*2.5,a=(.2+.5*rnd(i+7))*(.5+.5*Math.abs(Math.sin(t*2+i)));fx.fillStyle=`rgba(255,226,160,${a})`;fx.beginPath();fx.arc(x,y,r,0,7);fx.fill()}
+ let k=L.findIndex(l=>t>=l[0]&&t<l[1]);
+ if(k!==last){$('cap').innerHTML=k>=0?L[k][2]:'';$('tagt').textContent=k>=0?L[k][3]:'';$('tag').style.display=(k>=0&&L[k][3])?'flex':'none';last=k}
+ if(k>=0){const p=t-L[k][0];$('cap').style.opacity=cl(p/.25);$('cap').style.transform=`translateY(${(1-cl(p/.25))*16}px)`}
+ $('end').style.opacity=cl((t-24.6)/.5);
+};
+setT(0);
+</script></body></html>
