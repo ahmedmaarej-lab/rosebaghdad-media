@@ -8,11 +8,21 @@ N={'shaikha':('شيخه','تفاصيل تحبها بجلساتك'),'azizati':('�
 H=os.path.dirname(os.path.abspath(__file__)); R=os.path.dirname(os.path.dirname(H))
 def cut(im):
     """Remove the white studio backdrop: everything near-white that is connected to the picture edge."""
-    a=np.asarray(im).astype(int); light=(a.min(axis=2)>222)&((a.max(axis=2)-a.min(axis=2))<22)
+    a=np.asarray(im).astype(int); mn=a.min(axis=2); sat=a.max(axis=2)-mn
     from scipy import ndimage
+    # backdrop = near-white OR the soft grey cast shadow (bright, colourless, smooth), grown in from the picture edge
+    smooth=ndimage.uniform_filter(np.abs(ndimage.sobel(mn.astype(float))),9)<10
+    low=np.zeros_like(smooth); low[int(mn.shape[0]*.72):]=True   # the cast shadow only exists at the base
+    light=((mn>222)&(sat<22))|((mn>168)&(sat<16)&smooth&low)
     lab,_=ndimage.label(light); edge=np.unique(np.concatenate([lab[0],lab[-1],lab[:,0],lab[:,-1]])); edge=edge[edge>0]
     bg=np.isin(lab,edge)
-    al=Image.fromarray(((~bg)*255).astype('uint8')).filter(ImageFilter.MinFilter(5)).filter(ImageFilter.GaussianBlur(2.2))
+    fg=ndimage.binary_opening(~bg,iterations=6); l2,n=ndimage.label(fg)
+    if n>1: fg=l2==(1+np.argmax(ndimage.sum(fg,l2,range(1,n+1))))
+    bg=~fg
+    # the opening in the lid shows the white backdrop: tone it down to dark metal
+    ys=np.where(fg.any(axis=1))[0]; top=ys[0]; hole=(mn>225)&fg; hole[top+int((ys[-1]-top)*.10):]=False
+    im=im.copy(); px=np.asarray(im).copy(); px[hole]=(px[hole]*0.32).astype('uint8'); im=Image.fromarray(px)
+    al=Image.fromarray(((~bg)*255).astype('uint8')).filter(ImageFilter.MinFilter(9)).filter(ImageFilter.GaussianBlur(2.5))
     # warm the cold studio whites slightly so the glass sits on the cream ground
     warm=ImageChops.multiply(im,Image.new('RGB',im.size,(255,250,240)))
     o=warm.convert('RGBA'); o.putalpha(al); return o.crop(o.getbbox())
