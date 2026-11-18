@@ -59,14 +59,14 @@ details{font-size:13px;color:var(--muted)} details pre{white-space:pre-wrap;dire
 <div class="wrap">
  <header>
   <h1>فيديوهات <b>روزة</b> لروز بغداد</h1>
-  <p class="lead">يوم بيوم: يوم عطور (٣ فيديوهات، كل عطر بفيديو) ويوم معلومة (ريل واحد من ٣ مقاطع). كل شي جاهز: صورة البداية، كلام روزة، والأمر للنسخ.</p>
+  <p class="lead">كل يوم ٣ فيديوهات: عطرين ومعلومة. كل فيديو لحاله، ريل وستوري. كل شي جاهز: صورة البداية، كلام روزة، والأمر للنسخ.</p>
  </header>
  <section class="how"><b>شلون تسويه بـ Gemini</b>
   <ol>
    <li>اضغط مطوّلاً على الصورة واحفظها بالموبايل.</li>
    <li>بـ Gemini اختار <b>فيديو</b>، وارفع الصورة.</li>
-   <li>اضغط <b>انسخ الأمر</b> والصقه، ودز. بيوم المعلومة تعيدها ٣ مرات، مرة لكل مقطع، بنفس الصورة.</li>
-   <li>دز الفيديوهات لـ Claude: يضيف الشعار والترجمة، ويلزگ مقاطع المعلومة بريل واحد.</li>
+   <li>اضغط <b>انسخ الأمر</b> والصقه، ودز.</li>
+   <li>دز الفيديوهات لـ Claude: يضيف الشعار والكتابة، وينزلها ريل وستوري.</li>
   </ol>
  </section>
  <nav class="days" id="days" aria-label="الأيام"></nav>
@@ -76,31 +76,29 @@ details{font-size:13px;color:var(--muted)} details pre{white-space:pre-wrap;dire
  </section>
  <section>
   <h2 style="font-family:var(--display);font-size:22px;margin:0 0 8px">جدول النشر المقترح</h2>
-  <p class="notes" style="margin:0 0 8px">فيديو كل يوم بنفس ترتيب التصوير. فيديوهات العطور مرة ريل ومرة ستوري، والمعلومات ريل. البوستات والستوريات العادية تبقى مثل ما هي.</p>
+  <p class="notes" style="margin:0 0 8px">فيديو كل يوم الساعة ٩ بالليل، ريل وستوري سوا. البوستات والستوريات العادية تبقى مثل ما هي.</p>
   <div class="tablebox"><table class="plan"><thead><tr><th>التاريخ</th><th>الفيديو</th><th>وين</th></tr></thead><tbody id="plan"></tbody></table></div>
  </section>
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
 const D=/*DATA*/[];
-const R=/*REELS*/[];
-const START=new Date(2026,10,18), PUB=new Date(2026,10,20);
+const T=/*TIPS*/[];
+const START=new Date(2026,10,19), PUB=new Date(2026,10,21);
 const fmt=d=>d.toLocaleDateString('ar-IQ',{weekday:'long',day:'numeric',month:'long'});
 const add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
-const todo=D.filter(x=>!x.done),batches=[];for(let i=0;i<todo.length;i+=3)batches.push(todo.slice(i,i+3));
-const days=[];for(let i=0;i<Math.max(batches.length,R.length);i++){if(batches[i])days.push({t:'p',items:batches[i]});if(R[i])days.push({t:'r',reel:R[i]})}
+const todo=D.filter(x=>!x.done),days=[];for(let i=0;i*2<todo.length||i<T.length;i++)days.push({items:todo.slice(i*2,i*2+2),tip:T[i]});
 let done={};try{done=JSON.parse(localStorage.getItem('roza-done')||'{}')}catch(e){}
 const save=()=>{try{localStorage.setItem('roza-done',JSON.stringify(done))}catch(e){}};
-const keys=d=>d.t==='p'?d.items.map(x=>x.key):[d.reel.key];
+const keys=d=>[...d.items.map(x=>x.key),...(d.tip?[d.tip.key]:[])];
 const who=f=>f==='شباب'?'young men':f==='بنات'?'girls':'everyone';
 const KEEP='Keep Roza, the room and BOTTLE exactly as in the image: same face, long wavy brown hair, mustard "Rose Baghdad" sweatshirt, white pants, small black microphone.';
 const VOICE=line=>`She talks fast and cheerful to the camera, young female voice, Iraqi Baghdadi accent, lips in sync, saying exactly:\n"${line}"\nNo subtitles, no music, no text on screen.`;
 function prompt(x){return `Animate this image into a vertical 9:16 video. ${KEEP.replace('BOTTLE',`the gold crown perfume bottle with the label "${x.name}" (do not change, move or rename the bottle)`)}
 Lively motion: slow camera push-in toward her, she bounces with energy, tilts her head, hair swaying, big hand gestures, a wink and a smile, and she points at the bottle when she says its name. She is speaking to ${who(x.for)}.
 ${VOICE(x.line)}`}
-const MOVES=['she waves hello to the camera with a big smile, bounces with excitement, hair swaying','she explains like sharing a secret, counts on her fingers, leans toward the camera, expressive hands','she smiles, points at the camera, winks and waves goodbye'];
-function partPrompt(line,i){return `Animate this image into a vertical 9:16 video. Part ${i+1} of 3. ${KEEP.replace('BOTTLE','the perfume bottle on the table')}
-Motion: ${MOVES[i]}, slow camera push-in.
+function tipPrompt(line){return `Animate this image into a vertical 9:16 video. ${KEEP.replace('BOTTLE','the perfume bottle on the table')}
+Lively motion: slow camera push-in toward her, she waves hello, bounces with energy, tilts her head, hair swaying, explains with expressive hands, then winks and waves goodbye.
 ${VOICE(line)}`}
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),1600)}
 function copy(text,ta){navigator.clipboard.writeText(text).then(()=>toast('انتسخ ✓')).catch(()=>{ta.hidden=false;ta.value=text;ta.select();toast('اضغط مطوّلاً وانسخ')})}
@@ -108,19 +106,18 @@ function copyRow(p){const w=document.createElement('div');w.innerHTML='<div clas
 function check(key){const l=document.createElement('label');l.className='chk';l.innerHTML=`<input type="checkbox" id="c-${key}" ${done[key]?'checked':''}> خلص`;l.querySelector('input').onchange=e=>{done[key]=e.target.checked;save();drawDays();sub()};return l}
 let cur=0;
 function sub(){const k=keys(days[cur]);document.getElementById('dsub').textContent=`${k.filter(x=>done[x]).length} من ${k.length} خلصت`}
-function drawDays(){const n=document.getElementById('days');n.innerHTML='';days.forEach((d,i)=>{const b=document.createElement('button');b.className='day'+(keys(d).every(x=>done[x])?' done':'');b.setAttribute('aria-pressed',i===cur);b.innerHTML=`اليوم ${i+1} · ${d.t==='p'?'عطور':'معلومة'}<small>${add(START,i).toLocaleDateString('ar-IQ',{day:'numeric',month:'short'})}</small>`;b.onclick=()=>{cur=i;try{localStorage.setItem('roza-day2',i)}catch(e){};draw()};n.appendChild(b)})}
+function drawDays(){const n=document.getElementById('days');n.innerHTML='';days.forEach((d,i)=>{const b=document.createElement('button');b.className='day'+(keys(d).every(x=>done[x])?' done':'');b.setAttribute('aria-pressed',i===cur);b.innerHTML=`اليوم ${i+1}<small>${add(START,i).toLocaleDateString('ar-IQ',{day:'numeric',month:'short'})}</small>`;b.onclick=()=>{cur=i;try{localStorage.setItem('roza-day3',i)}catch(e){};draw()};n.appendChild(b)})}
 function img(src,alt){return `<div><img src="${src}" alt="${alt}" loading="lazy"><div class="cap">اضغط مطوّلاً واحفظ</div></div>`}
-function draw(){drawDays();const d=days[cur];document.getElementById('dt').textContent=`اليوم ${cur+1}، ${fmt(add(START,cur))} · ${d.t==='p'?'يوم عطور':'يوم معلومة'}`;sub();
+function draw(){drawDays();const d=days[cur];document.getElementById('dt').textContent=`اليوم ${cur+1}، ${fmt(add(START,cur))}`;sub();
  const k=document.getElementById('kits');k.innerHTML='';
- if(d.t==='p')d.items.forEach(x=>{const el=document.createElement('article');el.className='kit';
-  el.innerHTML=img(`frames/${x.key}.jpg`,`روزة ويا قنينة ${x.ar}`)+`<div class="info"><div class="top"><h3>${x.ar}</h3><span class="lat">${x.name}</span><span class="pill">لـ${x.for}</span>${x.ok?'<span class="pill ok">النوتات مؤكدة</span>':'<span class="pill warn">نوتات تقديرية، أكّدها قبل التصوير</span>'}</div><div class="line">${x.line}</div><div class="notes">النوتات: ${x.notes}</div></div>`;
+ d.items.forEach(x=>{const el=document.createElement('article');el.className='kit';
+  el.innerHTML=img(`frames/${x.key}.jpg`,`روزة ويا قنينة ${x.ar}`)+`<div class="info"><div class="top"><span class="tag">عطر</span><h3>${x.ar}</h3><span class="lat">${x.name}</span><span class="pill">لـ${x.for}</span>${x.ok?'<span class="pill ok">النوتات مؤكدة</span>':'<span class="pill warn">نوتات تقديرية، أكّدها قبل التصوير</span>'}</div><div class="line">${x.line}</div><div class="notes">النوتات: ${x.notes}</div></div>`;
   const info=el.querySelector('.info');info.appendChild(copyRow(prompt(x)));info.appendChild(check(x.key));k.appendChild(el)});
- else{const r=d.reel,el=document.createElement('article');el.className='kit';
-  el.innerHTML=img('frames/my-way.jpg','روزة')+`<div class="info"><div class="top"><h3>${r.ar}</h3><span class="tag">ريل · ٣ مقاطع</span></div><div class="notes">نفس الصورة للمقاطع الثلاثة.</div><div class="parts"></div></div>`;
-  const ps=el.querySelector('.parts');r.parts.forEach((line,i)=>{const p=document.createElement('div');p.className='part';p.innerHTML=`<span class="pn">المقطع ${i+1} ${['· الافتتاحية','· المعلومة','· الختام'][i]}</span><div class="line">${line}</div>`;p.appendChild(copyRow(partPrompt(line,i)));ps.appendChild(p)});
-  el.querySelector('.info').appendChild(check(r.key));k.appendChild(el)}}
-try{const s=localStorage.getItem('roza-day2');if(s===null)throw 0;cur=Math.max(0,Math.min(days.length-1,+s))}catch(e){cur=Math.max(0,Math.min(days.length-1,Math.floor((new Date()-START)/864e5)))}
-const order=[];const mw=D.find(x=>x.done);if(mw)order.push([mw.ar,'ريل']);let pi=1;days.forEach(d=>{if(d.t==='p')d.items.forEach(x=>{order.push([x.ar,pi++%2?'ستوري':'ريل'])});else order.push(['معلومة: '+d.reel.ar,'ريل'])});
-document.getElementById('plan').innerHTML=order.map((o,i)=>`<tr><td>${fmt(add(PUB,i))}</td><td>${o[0]}</td><td>${o[1]}</td></tr>`).join('');
+ if(d.tip){const x=d.tip,el=document.createElement('article');el.className='kit';
+  el.innerHTML=img('frames/my-way.jpg','روزة')+`<div class="info"><div class="top"><span class="tag">معلومة</span><h3>${x.ar}</h3></div><div class="line">${x.line}</div></div>`;
+  const info=el.querySelector('.info');info.appendChild(copyRow(tipPrompt(x.line)));info.appendChild(check(x.key));k.appendChild(el)}}
+try{const s=localStorage.getItem('roza-day3');if(s===null)throw 0;cur=Math.max(0,Math.min(days.length-1,+s))}catch(e){cur=Math.max(0,Math.min(days.length-1,Math.floor((new Date()-START)/864e5)))}
+const order=[];days.forEach(d=>{d.items.forEach(x=>order.push(x.ar));if(d.tip)order.push('معلومة: '+d.tip.ar)});
+document.getElementById('plan').innerHTML=order.map((o,i)=>`<tr><td>${fmt(add(PUB,i))}</td><td>${o}</td><td>ريل + ستوري</td></tr>`).join('');
 draw();
 </script>
