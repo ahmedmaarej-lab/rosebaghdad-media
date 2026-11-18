@@ -70,6 +70,11 @@ details{font-size:13px;color:var(--muted)} details pre{white-space:pre-wrap;dire
   <div class="kits" id="kits"></div>
  </section>
  <section>
+  <h2 style="font-family:var(--display);font-size:22px;margin:0 0 4px">روزة تحچي: معلومات سريعة</h2>
+  <p class="notes" style="margin:0 0 10px">فيديوهات قصيرة بدون عطر معين، بدل ما تنزل المعلومة نص بالتيليغرام. استخدم صورة روزة الأصلية.</p>
+  <div class="kits" id="tips"></div>
+ </section>
+ <section>
   <h2 style="font-family:var(--display);font-size:22px;margin:0 0 8px">جدول النشر المقترح</h2>
   <p class="notes" style="margin:0 0 8px">فيديو كل يومين، مرة ريل ومرة ستوري. البوستات والستوريات العادية تبقى مثل ما هي.</p>
   <div class="tablebox"><table class="plan"><thead><tr><th>التاريخ</th><th>العطر</th><th>وين</th></tr></thead><tbody id="plan"></tbody></table></div>
@@ -78,6 +83,7 @@ details{font-size:13px;color:var(--muted)} details pre{white-space:pre-wrap;dire
 <div class="toast" id="toast" role="status"></div>
 <script>
 const D=/*DATA*/[];
+const TIPS=[{key:"tip-skin",ar:"عطرچ يدوم أطول",line:"هلا بنات شلونكم؟ سر صغير: رطبوا بشرتكم قبل العطر، رشوه على نقاط النبض، ولا تفركون المعصم! هيچ يدوم أطول. باي!"},{key:"tip-musk",ar:"ليش المسك بكل عطر؟",line:"هلا بنات! تدرون ليش المسك موجود بكل عطر؟ لأنه يلطف الريحة ويخليها لاصقة بالجلد، مثل حضن دافي. يلا باي!"},{key:"tip-skin2",ar:"نفس العطر، ريحة غير",line:"هلا بنات! نفس العطر يطلع غير ريحة على كل وحدة، حسب بشرتچ وحرارتچ. جربيه على إيدچ وانتظري دقايق! باي!"}];
 const START=new Date(2026,10,18), PUB=new Date(2026,10,20);
 const fmt=d=>d.toLocaleDateString('ar-IQ',{weekday:'long',day:'numeric',month:'long'});
 const add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
@@ -85,13 +91,12 @@ const todo=D.filter(x=>!x.done), days=[];for(let i=0;i<todo.length;i+=3)days.pus
 let done={};try{done=JSON.parse(localStorage.getItem('roza-done')||'{}')}catch(e){}
 const save=()=>{try{localStorage.setItem('roza-done',JSON.stringify(done))}catch(e){}};
 const who=f=>f==='شباب'?'young men':f==='بنات'?'girls':'everyone';
-function prompt(x){return `Animate this exact image into a vertical 9:16 video, about 10 seconds, static camera.
-Keep EVERYTHING identical to the image: the same 3D animated girl "Roza" (long wavy dark-brown hair, big brown eyes, mustard sweatshirt with "Rose Baghdad" written on it, white cargo pants, small black clip microphone in her hand), the same cosy room, the Arabic word "روزة" on the wall, the plant and the lamp.
-The perfume bottle on the table must stay exactly as it is: same gold crown cap, same square glass, same gold label reading "${x.name}". Do not move, redesign, rename or add any bottle.
-She talks to the camera like a cheerful Iraqi influencer, speaking to ${who(x.for)}, with lively hand gestures, a wink and a smile, and she points at the bottle when she says its name.
-Voice: young woman, warm and playful Iraqi Arabic (Baghdadi accent), clear and natural, lips in sync. She says exactly:
+function prompt(x){const bottle=x.name?`the gold crown perfume bottle with the label "${x.name}" (do not change, move or rename the bottle)`:'the perfume bottle on the table';
+return `Animate this image into a vertical 9:16 video. Keep Roza, the room and ${bottle} exactly as in the image: same face, long wavy brown hair, mustard "Rose Baghdad" sweatshirt, white pants, small black microphone.
+Lively motion: slow camera push-in toward her, she bounces with energy, tilts her head, hair swaying, big hand gestures, a wink and a smile${x.name?', and she points at the bottle when she says its name':''}.
+She talks fast and cheerful to the camera, young female voice, Iraqi Baghdadi accent, lips in sync, saying exactly:
 "${x.line}"
-No subtitles, no music, no extra text on screen.`}
+No subtitles, no music, no text on screen.`}
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),1600)}
 function copy(text,ta){const ok=()=>toast('انتسخ ✓');navigator.clipboard.writeText(text).then(ok).catch(()=>{ta.hidden=false;ta.select();toast('اضغط مطوّلاً وانسخ')})}
 let cur=0;
@@ -114,4 +119,7 @@ try{const s=+localStorage.getItem('roza-day');if(s>=0&&s<days.length)cur=s;else 
 const order=[D.find(x=>x.done),...todo].filter(Boolean);
 document.getElementById('plan').innerHTML=order.map((x,i)=>`<tr><td>${fmt(add(PUB,i*2))}</td><td>${x.ar}</td><td>${i%2?'ستوري':'ريل'}</td></tr>`).join('');
 draw();
+document.getElementById('tips').innerHTML='';TIPS.forEach(x=>{const el=document.createElement('article');el.className='kit';const p=prompt(x);
+ el.innerHTML=`<div><img src="frames/my-way.jpg" alt="روزة" loading="lazy"><div class="cap">اضغط مطوّلاً واحفظ</div></div><div class="info"><div class="top"><h3>${x.ar}</h3></div><div class="line">${x.line}</div><div class="row"><button class="btn" type="button">انسخ الأمر</button></div><textarea hidden readonly style="width:100%;height:120px;direction:ltr"></textarea><details><summary>شوف الأمر</summary><pre></pre></details></div>`;
+ el.querySelector('pre').textContent=p;el.querySelector('textarea').value=p;el.querySelector('.btn').onclick=()=>copy(p,el.querySelector('textarea'));document.getElementById('tips').appendChild(el)});
 </script>
