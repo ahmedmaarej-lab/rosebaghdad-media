@@ -1,0 +1,43 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:CA;font-weight:500;src:url(../reel/fonts/cairo-arabic-500-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:600;src:url(../reel/fonts/cairo-arabic-600-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:800;src:url(../reel/fonts/cairo-arabic-800-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+html,body{margin:0;background:#faf7f0}
+#r{width:1080px;position:relative;overflow:hidden;background:#faf7f0;display:flex;flex-direction:column;align-items:center;box-sizing:border-box}
+#fr{position:absolute;left:0;top:0;width:100%;height:100%}
+#r>*:not(#fr){position:relative}
+.kick{font-family:CA;font-weight:600;direction:rtl;color:#9a7a3c;letter-spacing:0}
+.name{font-family:CA;font-weight:800;direction:rtl;color:#2e281d;line-height:1.15}
+.dv{display:flex;align-items:center;gap:12px;color:#b39d72;font-size:16px}
+.dv i{display:block;width:110px;height:1px;background:#c9b88f}
+.hook{font-family:CA;font-weight:500;direction:rtl;color:#665a41;text-align:center}
+.stage{display:flex;justify-content:center;align-items:flex-end}
+.glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);border-radius:50%;background:radial-gradient(circle,rgba(201,173,116,.42) 0%,rgba(201,173,116,.16) 45%,rgba(201,173,116,0) 70%)}
+.sh{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,rgba(61,46,20,.42) 0%,rgba(61,46,20,.14) 45%,rgba(61,46,20,0) 72%)}
+.jar{position:relative;filter:drop-shadow(0 18px 22px rgba(61,46,20,.18))}
+.ft{font-family:CA;font-weight:600;direction:rtl;color:#665a41}
+.ft b,.pill b{color:#b39d72;font-weight:600;margin:0 14px}
+.pill{font-family:CA;font-weight:600;direction:rtl;background:#f4e2dc;color:#3d3627;border-radius:60px}
+.cta{font-family:CA;font-weight:800;direction:rtl;color:#3d3627;background:#b39d72;border-radius:60px}
+.url{font-family:CG;font-weight:600;letter-spacing:6px;color:#9a7a3c}
+</style></head><body><div id="r"></div>
+<script>
+const q=new URLSearchParams(location.search),S=q.get('f')==='story',r=document.getElementById('r'),J=S?640:500;
+r.style.height=(S?1920:1350)+'px';
+r.innerHTML=`<img id="fr" src="frame_${S?'story':'feed'}.png">
+<img src="../reel/horizontal_gold.png" style="width:${S?320:270}px;margin-top:${S?235:88}px">
+<div class="kick" style="font-size:${S?34:28}px;margin-top:${S?46:22}px">بخور إماراتي</div>
+<div class="name" style="font-size:${S?150:118}px;margin-top:${S?0:-6}px">${q.get('name')}</div>
+<div class="dv" style="margin-top:${S?14:4}px"><i></i>◆<i></i></div>
+<div class="hook" style="font-size:${S?42:34}px;margin-top:${S?22:12}px">${q.get('hook')}</div>
+<div class="stage" style="height:${J}px;margin-top:${S?44:22}px">
+ <div class="glow" style="width:${J*1.45}px;height:${J*1.45}px"></div>
+ <div class="sh" style="width:${J*.92}px;height:${J*.13}px;bottom:${-J*.035}px"></div>
+ <img class="jar" src="cut/${q.get('k')}.png" style="height:${J}px">
+</div>
+<div class="ft" style="font-size:${S?32:27}px;margin-top:${S?52:34}px">علبة ٦٠ مل<b>◆</b>١٠ أقراص</div>
+<div class="pill" style="font-size:${S?38:32}px;padding:${S?'12px 50px 16px':'10px 44px 14px'};margin-top:${S?24:16}px">١٥ ألف دينار<b>◆</b>توصيل مجاني</div>
+${S?`<div class="cta" style="font-size:36px;padding:8px 60px 14px;margin-top:26px">راسلنا لتثبيت طلبك</div>`:''}
+<div class="url" style="font-size:${S?28:24}px;margin-top:${S?24:14}px">www.rosebaghdad.iq</div>`;
+</script></body></html>
