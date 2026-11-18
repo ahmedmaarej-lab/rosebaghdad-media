@@ -1,0 +1,117 @@
+<title>روزة · فيديوهات العطور</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=El+Messiri:wght@600;700&display=swap">
+<style>
+/* Layout: a day strip on top, then that day's three kits stacked (frame | script + prompt) */
+:root{--bg:#f7f1e6;--panel:#fffaf1;--ink:#2b2216;--muted:#7a6a52;--gold:#a8822e;--gold-soft:#ecdcb4;--line:#e3d5b8;--warn:#b5532a;--warn-bg:#fbe7da;--ok:#3f7a46;--ok-bg:#e2efdf;
+--display:"El Messiri","Cairo",Tahoma,sans-serif;--body:"Cairo",Tahoma,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17120b;--panel:#211a10;--ink:#f3e7cf;--muted:#b4a17f;--gold:#e0b65a;--gold-soft:#3a2d17;--line:#3a2f1e;--warn:#f0956a;--warn-bg:#3a2216;--ok:#8fcf93;--ok-bg:#1d3020;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17120b;--panel:#211a10;--ink:#f3e7cf;--muted:#b4a17f;--gold:#e0b65a;--gold-soft:#3a2d17;--line:#3a2f1e;--warn:#f0956a;--warn-bg:#3a2216;--ok:#8fcf93;--ok-bg:#1d3020;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;direction:rtl;
+padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+h1{font-family:var(--display);font-size:clamp(28px,6vw,40px);margin:0;line-height:1.2;text-wrap:balance}
+h1 b{color:var(--gold)}
+.lead{color:var(--muted);margin:4px 0 0;max-width:62ch}
+.how{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.how ol{margin:6px 0 0;padding-inline-start:22px}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.day{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;padding:8px 14px;font:600 14px var(--body);cursor:pointer;text-align:center;line-height:1.35}
+.day small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.day[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--bg)}
+.day[aria-pressed="true"] small{color:var(--bg)}
+.day.done{border-color:var(--ok)}
+.day:focus-visible,.btn:focus-visible,.chk:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.dayhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.dayhead h2{font-family:var(--display);font-size:24px;margin:0}
+.kits{display:flex;flex-direction:column;gap:18px}
+.kit{display:grid;grid-template-columns:200px 1fr;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+@media (max-width:640px){.kit{grid-template-columns:1fr}.kit img{max-width:220px;margin:0 auto}}
+.kit img{width:100%;border-radius:10px;display:block;aspect-ratio:9/16;object-fit:cover}
+.cap{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+.info{min-width:0;display:flex;flex-direction:column;gap:10px}
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.top h3{font-family:var(--display);font-size:24px;margin:0}
+.lat{font:600 13px var(--body);letter-spacing:.08em;color:var(--muted);direction:ltr}
+.pill{font-size:12px;font-weight:600;border-radius:99px;padding:2px 10px;background:var(--gold-soft);color:var(--ink)}
+.pill.warn{background:var(--warn-bg);color:var(--warn)}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}
+.line{font-size:19px;font-weight:600;background:var(--bg);border-radius:10px;padding:10px 14px;border-inline-start:4px solid var(--gold)}
+.notes{color:var(--muted);font-size:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:0;background:var(--ink);color:var(--bg);font:700 15px var(--body);border-radius:10px;padding:9px 16px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.chk{display:flex;gap:6px;align-items:center;font-size:14px;cursor:pointer}
+details{font-size:13px;color:var(--muted)} details pre{white-space:pre-wrap;direction:ltr;text-align:left;background:var(--bg);padding:10px;border-radius:8px;font-size:12px;line-height:1.5;overflow-x:auto}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 18px;border-radius:99px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+.plan{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.plan td,.plan th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right}
+.tablebox{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:6px 10px}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+<div class="wrap">
+ <header>
+  <h1>فيديوهات <b>روزة</b> لعطور روز بغداد</h1>
+  <p class="lead">كل يوم ٣ فيديوهات بـ Gemini. لكل عطر: صورة البداية فيها روزة والقنينة الحقيقية، والكلام اللي تگوله (حوالي ١٠ ثواني)، والأمر الجاهز للنسخ.</p>
+ </header>
+ <section class="how"><b>شلون تسويه بـ Gemini</b>
+  <ol>
+   <li>اضغط مطوّلاً على صورة العطر واحفظها بالموبايل.</li>
+   <li>بـ Gemini اختار <b>فيديو</b>، وارفع الصورة.</li>
+   <li>اضغط <b>انسخ الأمر</b> والصقه، ودز.</li>
+   <li>دزلي الفيديو هنا حتى أضيف الشعار والترجمة وأجدوله.</li>
+  </ol>
+ </section>
+ <nav class="days" id="days" aria-label="الأيام"></nav>
+ <section>
+  <div class="dayhead"><h2 id="dt"></h2><span class="notes" id="dsub"></span></div>
+  <div class="kits" id="kits"></div>
+ </section>
+ <section>
+  <h2 style="font-family:var(--display);font-size:22px;margin:0 0 8px">جدول النشر المقترح</h2>
+  <p class="notes" style="margin:0 0 8px">فيديو كل يومين، مرة ريل ومرة ستوري. البوستات والستوريات العادية تبقى مثل ما هي.</p>
+  <div class="tablebox"><table class="plan"><thead><tr><th>التاريخ</th><th>العطر</th><th>وين</th></tr></thead><tbody id="plan"></tbody></table></div>
+ </section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const D=/*DATA*/[];
+const START=new Date(2026,10,18), PUB=new Date(2026,10,20);
+const fmt=d=>d.toLocaleDateString('ar-IQ',{weekday:'long',day:'numeric',month:'long'});
+const add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+const todo=D.filter(x=>!x.done), days=[];for(let i=0;i<todo.length;i+=3)days.push(todo.slice(i,i+3));
+let done={};try{done=JSON.parse(localStorage.getItem('roza-done')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('roza-done',JSON.stringify(done))}catch(e){}};
+const who=f=>f==='شباب'?'young men':f==='بنات'?'girls':'everyone';
+function prompt(x){return `Animate this exact image into a vertical 9:16 video, about 10 seconds, static camera.
+Keep EVERYTHING identical to the image: the same 3D animated girl "Roza" (long wavy dark-brown hair, big brown eyes, mustard sweatshirt with "Rose Baghdad" written on it, white cargo pants, small black clip microphone in her hand), the same cosy room, the Arabic word "روزة" on the wall, the plant and the lamp.
+The perfume bottle on the table must stay exactly as it is: same gold crown cap, same square glass, same gold label reading "${x.name}". Do not move, redesign, rename or add any bottle.
+She talks to the camera like a cheerful Iraqi influencer, speaking to ${who(x.for)}, with lively hand gestures, a wink and a smile, and she points at the bottle when she says its name.
+Voice: young woman, warm and playful Iraqi Arabic (Baghdadi accent), clear and natural, lips in sync. She says exactly:
+"${x.line}"
+No subtitles, no music, no extra text on screen.`}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),1600)}
+function copy(text,ta){const ok=()=>toast('انتسخ ✓');navigator.clipboard.writeText(text).then(ok).catch(()=>{ta.hidden=false;ta.select();toast('اضغط مطوّلاً وانسخ')})}
+let cur=0;
+function drawDays(){const n=document.getElementById('days');n.innerHTML='';days.forEach((g,i)=>{const b=document.createElement('button');b.className='day'+(g.every(x=>done[x.key])?' done':'');b.setAttribute('aria-pressed',i===cur);b.innerHTML=`اليوم ${i+1}<small>${add(START,i).toLocaleDateString('ar-IQ',{day:'numeric',month:'short'})}</small>`;b.onclick=()=>{cur=i;try{localStorage.setItem('roza-day',i)}catch(e){};draw()};n.appendChild(b)})}
+function draw(){drawDays();const g=days[cur];document.getElementById('dt').textContent=`اليوم ${cur+1}، ${fmt(add(START,cur))}`;
+ document.getElementById('dsub').textContent=`${g.filter(x=>done[x.key]).length} من ${g.length} خلصت`;
+ const k=document.getElementById('kits');k.innerHTML='';
+ g.forEach(x=>{const el=document.createElement('article');el.className='kit';const p=prompt(x);
+  el.innerHTML=`<div><img src="frames/${x.key}.jpg" alt="روزة ويا قنينة ${x.ar}" loading="lazy"><div class="cap">اضغط مطوّلاً واحفظ</div></div>
+  <div class="info"><div class="top"><h3>${x.ar}</h3><span class="lat">${x.name}</span><span class="pill">لـ${x.for}</span>${x.ok?'<span class="pill ok">النوتات مؤكدة</span>':'<span class="pill warn">نوتات تقديرية، أكّدها قبل التصوير</span>'}</div>
+  <div class="line">${x.line}</div><div class="notes">النوتات: ${x.notes}</div>
+  <div class="row"><button class="btn" type="button">انسخ الأمر</button><label class="chk"><input type="checkbox" id="c-${x.key}" ${done[x.key]?'checked':''}> خلص الفيديو</label></div>
+  <textarea hidden readonly style="width:100%;height:120px;direction:ltr">${p}</textarea>
+  <details><summary>شوف الأمر</summary><pre></pre></details></div>`;
+  el.querySelector('pre').textContent=p;
+  el.querySelector('.btn').onclick=()=>copy(p,el.querySelector('textarea'));
+  el.querySelector('input').onchange=e=>{done[x.key]=e.target.checked;save();drawDays();document.getElementById('dsub').textContent=`${g.filter(y=>done[y.key]).length} من ${g.length} خلصت`};
+  k.appendChild(el)})}
+try{const s=+localStorage.getItem('roza-day');if(s>=0&&s<days.length)cur=s;else throw 0}catch(e){const t=Math.floor((new Date()-START)/864e5);cur=Math.max(0,Math.min(days.length-1,t))}
+const order=[D.find(x=>x.done),...todo].filter(Boolean);
+document.getElementById('plan').innerHTML=order.map((x,i)=>`<tr><td>${fmt(add(PUB,i*2))}</td><td>${x.ar}</td><td>${i%2?'ستوري':'ريل'}</td></tr>`).join('');
+draw();
+</script>
