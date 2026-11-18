@@ -1,0 +1,32 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:EM;font-weight:500;src:url(../reel/fonts/el-messiri-arabic-500-normal.woff2)}
+@font-face{font-family:EM;font-weight:700;src:url(../reel/fonts/el-messiri-arabic-700-normal.woff2)}
+html,body{margin:0;background:#faf7f0}
+#r{width:1080px;height:1920px;position:relative;overflow:hidden;background:#faf7f0;display:flex;flex-direction:column;align-items:center;direction:rtl}
+#fr{position:absolute;left:0;top:0;width:100%;height:100%}#r>*:not(#fr){position:relative}
+.logo{width:300px;margin-top:225px}
+.arch{width:820px;height:800px;margin-top:40px;border-radius:410px 410px 14px 14px;overflow:hidden;background:radial-gradient(ellipse 75% 55% at 50% 60%,#6a4720 0%,#3a2611 38%,#1c1209 72%,#120b06 100%);box-shadow:0 0 0 2px #c9ad74,0 0 0 9px #faf7f0,0 0 0 10px rgba(201,173,116,.7),0 26px 40px -18px rgba(61,46,20,.45);display:flex;flex-direction:column;align-items:center}
+.arch:before{content:"";position:absolute;inset:16px;border:1px solid rgba(214,186,128,.45);border-radius:inherit}
+.ic{width:150px;height:150px;border-radius:50%;border:2px solid #d9bf85;display:flex;align-items:center;justify-content:center;margin-top:120px}
+.ic svg{width:84px;height:84px}
+.kick{font-family:EM;font-weight:700;color:#ecd59c;font-size:40px;margin-top:34px}
+.title{font-family:EM;font-weight:700;font-size:92px;line-height:1.35;text-align:center;padding:0 60px;margin-top:6px;background:linear-gradient(180deg,#fbeec6 15%,#e6c57c 55%,#c39a4c 90%);-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance}
+.han{font-family:CG;font-weight:600;font-size:40px;letter-spacing:3px;color:#d9bf85;direction:ltr;margin-top:10px}
+.pts{margin-top:46px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.pt{font-family:EM;font-weight:700;font-size:46px;color:#3d3023}.pt b{color:#b39d72;margin-left:16px;font-weight:500}
+.go{font-family:EM;font-weight:700;font-size:44px;color:#9a7a3c;margin-top:38px}
+.slot{width:560px;height:118px;border:2px dashed #c9b88f;border-radius:20px;margin-top:16px;display:flex;align-items:center;justify-content:center;font-family:EM;font-weight:500;font-size:30px;color:#b39d72}
+.cover{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px}
+.cover .ic{margin:0;width:420px;height:420px;border:4px solid #c9ad74;box-shadow:0 0 0 16px #faf7f0,0 0 0 18px rgba(201,173,116,.6);background:radial-gradient(circle,#4a3218,#1c1209)}.cover .ic svg{width:220px;height:220px}
+</style></head><body><div id="r"></div><script>
+const q=new URLSearchParams(location.search),k=q.get('k'),guide=q.get('guide')==='1',cover=q.get('cover')==='1';
+const I={tg:'<svg viewBox="0 0 24 24" fill="none" stroke="#ecd59c" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M21.5 3.5 2.8 10.7c-.7.3-.7 1.2 0 1.4l4.7 1.5 1.8 5.6c.2.6.9.7 1.3.3l2.6-2.6 4.5 3.3c.5.4 1.2.1 1.3-.5L22.6 4.4c.1-.7-.5-1.1-1.1-.9Z"/><path d="m7.5 13.6 9.5-6-7 7.2"/></svg>',
+ web:'<svg viewBox="0 0 24 24" fill="none" stroke="#ecd59c" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c3 3 3 16 0 19M12 2.5c-3 3-3 16 0 19"/></svg>'};
+const D={tg:{kick:'قناتنا على تليغرام',title:'عالم العطور كله بقناة وحدة',han:'@rosebaghdad_iq',pts:['معلومة أو قصة عطرية كل يوم','جديد روز بغداد أول بأول','نصايح تخلي عطرك يثبت أكثر'],go:'انضم هسه من الرابط'},
+ web:{kick:'الموقع الرسمي',title:'كل عطور روز بغداد بمكان واحد',han:'www.rosebaghdad.iq',pts:['تصفح العطور والبخور كلها','اختار واطلب وإنت بمكانك','توصيل مجاني لكل المحافظات'],go:'ادخل الموقع من الرابط'}}[k];
+const fr='<img id="fr" src="../frame/frame_story.png">';
+document.getElementById('r').innerHTML=cover?fr+`<div class="cover"><div class="ic">${I[k]}</div></div>`:
+fr+`<img class="logo" src="../reel/horizontal_gold.png"><div class="arch"><div class="ic">${I[k]}</div><div class="kick">${D.kick}</div><div class="title">${D.title}</div><div class="han">${D.han}</div></div>
+<div class="pts">${D.pts.map(p=>`<div class="pt"><b>◆</b>${p}</div>`).join('')}</div><div class="go">${D.go} ↓</div>${guide?'<div class="slot">هنا تحط ملصق الرابط</div>':'<div style="height:134px"></div>'}`;
+</script></body></html>
