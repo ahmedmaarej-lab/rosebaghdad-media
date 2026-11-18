@@ -1,5 +1,5 @@
 """Finish Roza clips from Gemini into one ready-to-post 1080x1920 video: join the clips, add the
-Rose Baghdad logo, on-screen key-point captions and an end card.
+on-screen key-point captions and an end card with the Rose Baghdad logo.
     python3 tools/roza/finish.py spec.json out.mp4
 spec: {"clips": [{"path": "a.mp4", "end": 14.9}, ...],            # end = cut the clip here (seconds), optional
        "cards": [[from, to, "text with <b>gold</b> words"], ...,  # times on the joined video
@@ -29,10 +29,9 @@ for i,c in enumerate(clips):
     f.append(f"[{i}:v:0]{tr}setpts=PTS-STARTPTS,scale=1080:1920:flags=lanczos,fps=30,setsar=1[v{i}];[{i}:a:0]{atr}asetpts=PTS-STARTPTS,aresample=48000[a{i}]")
 n=len(clips); f.append(''.join(f'[v{i}][a{i}]' for i in range(n))+f'concat=n={n}:v=1:a=1[base][aud]')
 total=sum(c.get('end') or float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','csv=p=0',c['path']])) for c in clips)
-args+=['-loop','1','-t',str(total),'-i',f'{tmp}/logo.png']; li=n
-f.append(f'[{li}:v]format=rgba,fade=in:st=0.2:d=0.4:alpha=1[lg];[base][lg]overlay=0:0[x0]'); last='x0'
+last='base'   # the logo appears on the end card only: a corner logo ends up on Roza's hair as the camera pushes in
 for i,(a,z,t) in enumerate(spec['cards']):
-    j=n+1+i; args+=['-loop','1','-t',str(total),'-i',f'{tmp}/c{i}.png']
+    j=n+i; args+=['-loop','1','-t',str(total),'-i',f'{tmp}/c{i}.png']
     f.append(f"[{j}:v]format=rgba,fade=in:st={a}:d=0.25:alpha=1,fade=out:st={max(a,z-0.25)}:d=0.25:alpha=1[o{i}];[{last}][o{i}]overlay=0:0:enable='between(t,{a},{z})'[y{i}]"); last=f'y{i}'
 args+=['-filter_complex',';'.join(f),'-map',f'[{last}]','-map','[aud]','-t',str(total),'-c:v','libx264','-crf','19','-preset','medium','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-movflags','+faststart',out]
 subprocess.run(args,check=True); print('ok',out,round(total,2),'s')
