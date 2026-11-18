@@ -25,6 +25,11 @@ def cut(im):
     al=Image.fromarray(((~bg)*255).astype('uint8')).filter(ImageFilter.MinFilter(9)).filter(ImageFilter.GaussianBlur(2.5))
     # warm the cold studio whites slightly so the glass sits on the cream ground
     warm=ImageChops.multiply(im,Image.new('RGB',im.size,(255,250,240)))
+    # clarity: local contrast + crisp edges so the ribs, lid and label read sharply at post size
+    from PIL import ImageEnhance
+    warm=warm.filter(ImageFilter.UnsharpMask(radius=14,percent=45,threshold=0))
+    warm=ImageEnhance.Contrast(warm).enhance(1.14)
+    warm=warm.filter(ImageFilter.UnsharpMask(radius=2.2,percent=130,threshold=2))
     o=warm.convert('RGBA'); o.putalpha(al); return o.crop(o.getbbox())
 async def main():
   os.makedirs(H+'/cut',exist_ok=True)
@@ -41,6 +46,6 @@ async def main():
       os.makedirs(f'{R}/posts/incense-{k}',exist_ok=True)
       for f,sz in [('feed','1080x1350'),('story','1080x1920')]:
         await pg.goto('file://'+H+'/incense_card.html?'+urllib.parse.urlencode({'k':'incense-'+k,'name':n,'hook':hook,'f':f}));await pg.evaluate('document.fonts.ready');await pg.wait_for_timeout(400)
-        await pg.locator('#r').screenshot(path=f'{R}/posts/incense-{k}/{f}-{sz}.jpg',type='jpeg',quality=93)
+        await pg.locator('#r').screenshot(path=f'{R}/posts/incense-{k}/{f}-{sz}.jpg',type='jpeg',quality=97)
     await b.close()
 asyncio.run(main())

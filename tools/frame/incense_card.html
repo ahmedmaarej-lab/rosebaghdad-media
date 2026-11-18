@@ -10,18 +10,18 @@ html,body{margin:0;background:#faf7f0}
 #r>*:not(#fr){position:relative}
 .arch{overflow:hidden;background:radial-gradient(ellipse 75% 55% at 50% 70%,#6a4720 0%,#3a2611 38%,#1c1209 72%,#120b06 100%);box-shadow:0 0 0 2px #c9ad74,0 0 0 9px #faf7f0,0 0 0 10px rgba(201,173,116,.7),0 26px 40px -18px rgba(61,46,20,.45);display:flex;flex-direction:column;align-items:center}
 .arch:before{content:"";position:absolute;inset:16px;border:1px solid rgba(214,186,128,.45);border-radius:inherit;pointer-events:none}
-.kick{font-family:EM;font-weight:500;direction:rtl;color:#d9bf85;position:relative}
+.kick{font-family:EM;font-weight:700;direction:rtl;color:#ecd59c;position:relative}
 .kick:before,.kick:after{content:"";position:absolute;top:55%;width:54px;height:1px;background:linear-gradient(90deg,rgba(217,191,133,0),#d9bf85)}
 .kick:before{right:calc(100% + 16px);transform:scaleX(-1)}.kick:after{left:calc(100% + 16px)}
-.name{font-family:RQ;font-weight:700;direction:rtl;line-height:1.5;background:linear-gradient(180deg,#f7e7b8 18%,#d8b469 52%,#a57f3a 86%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 10px rgba(0,0,0,.45));position:relative}
+.name{font-family:RQ;font-weight:700;direction:rtl;line-height:1.5;background:linear-gradient(180deg,#fbeec6 15%,#e6c57c 55%,#c39a4c 90%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6));position:relative}
 .stage{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center}
-.spot{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,220,150,.42) 0%,rgba(255,206,128,.14) 42%,rgba(255,206,128,0) 68%)}
+.spot{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,220,150,.34) 0%,rgba(255,206,128,.10) 42%,rgba(255,206,128,0) 68%)}
 .floor{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(rgba(18,11,6,0),rgba(10,6,3,.85))}
-.jar{position:absolute;left:50%;transform:translateX(-50%);filter:drop-shadow(0 22px 26px rgba(0,0,0,.55)) saturate(.9) contrast(1.06)}
+.jar{position:absolute;left:50%;transform:translateX(-50%);filter:drop-shadow(0 22px 26px rgba(0,0,0,.55)) brightness(1.06)}
 .refl{position:absolute;left:50%;transform:translateX(-50%) scaleY(-1);opacity:.22;filter:blur(3px);-webkit-mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,0) 38%);mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,0) 38%)}
 .smoke{position:absolute;border-radius:50%;filter:blur(26px);background:rgba(255,236,200,.13)}
 .hook{font-family:EM;font-weight:700;direction:rtl;color:#3d3023;text-align:center}
-.spec{font-family:EM;font-weight:500;direction:rtl;color:#7a6846}
+.spec{font-family:EM;font-weight:700;direction:rtl;color:#5a4a2c}
 .spec b,.pill b{color:#b39d72;font-weight:500;margin:0 14px}
 .pill{font-family:EM;font-weight:700;direction:rtl;color:#faf3e3;background:linear-gradient(180deg,#b9a172,#9a7f4b);border-radius:60px;box-shadow:0 10px 18px -10px rgba(61,46,20,.6)}
 .pill b{color:#f3e2b5}
@@ -29,24 +29,22 @@ html,body{margin:0;background:#faf7f0}
 </style></head><body><div id="r"></div>
 <script>
 const q=new URLSearchParams(location.search),S=q.get('f')==='story',r=document.getElementById('r');
-const AW=S?800:740,AH=S?1010:770,J=S?520:400,k=q.get('k');
+const AW=S?820:760,AH=S?1040:790,J=S?600:455,k=q.get('k');
 r.style.height=(S?1920:1350)+'px';
 r.innerHTML=`<img id="fr" src="frame_${S?'story':'feed'}.png">
 <img src="../reel/horizontal_gold.png" style="width:${S?300:240}px;margin-top:${S?225:84}px">
 <div class="arch" style="width:${AW}px;height:${AH}px;border-radius:${AW/2}px ${AW/2}px 14px 14px;margin-top:${S?44:30}px">
- <div class="kick" style="font-size:${S?34:28}px;margin-top:${S?120:88}px">بخور إماراتي</div>
- <div class="name" style="font-size:${S?170:136}px;margin-top:${S?-18:-20}px">${q.get('name')}</div>
+ <div class="kick" style="font-size:${S?40:33}px;margin-top:${S?96:70}px">بخور إماراتي</div>
+ <div class="name" style="font-size:${S?176:140}px;margin-top:${S?-26:-26}px">${q.get('name')}</div>
  <div class="stage" style="height:${J*1.25}px">
   <div class="spot" style="width:${J*1.9}px;height:${J*1.9}px;bottom:${-J*.25}px"></div>
-  <div class="smoke" style="width:${J*.5}px;height:${J*.9}px;left:${AW*.2}px;bottom:${J*.55}px;transform:rotate(18deg)"></div>
-  <div class="smoke" style="width:${J*.4}px;height:${J*.8}px;right:${AW*.18}px;bottom:${J*.7}px;transform:rotate(-22deg)"></div>
   <img class="refl" src="cut/${k}.png" style="height:${J}px;bottom:${J*.11-J}px">
   <div class="floor" style="height:${J*.2}px"></div>
   <img class="jar" src="cut/${k}.png" style="height:${J}px;bottom:${J*.1}px">
  </div>
 </div>
-<div class="hook" style="font-size:${S?48:40}px;margin-top:${S?50:30}px">${q.get('hook')}</div>
-<div class="spec" style="font-size:${S?32:26}px;margin-top:${S?14:4}px">علبة ٦٠ مل<b>◆</b>١٠ أقراص</div>
-<div class="pill" style="font-size:${S?38:31}px;padding:${S?'12px 56px 14px':'8px 46px 10px'};margin-top:${S?28:14}px">١٥ ألف دينار<b>◆</b>توصيل مجاني</div>
-<div class="url" style="font-size:${S?28:23}px;margin-top:${S?30:14}px">www.rosebaghdad.iq</div>`;
+<div class="hook" style="font-size:${S?52:42}px;margin-top:${S?44:24}px">${q.get('hook')}</div>
+<div class="spec" style="font-size:${S?36:30}px;margin-top:${S?12:2}px">علبة ٦٠ مل<b>◆</b>١٠ أقراص</div>
+<div class="pill" style="font-size:${S?42:34}px;padding:${S?'12px 56px 14px':'8px 46px 10px'};margin-top:${S?24:10}px">١٥ ألف دينار<b>◆</b>توصيل مجاني</div>
+<div class="url" style="font-size:${S?28:23}px;margin-top:${S?26:10}px">www.rosebaghdad.iq</div>`;
 </script></body></html>
