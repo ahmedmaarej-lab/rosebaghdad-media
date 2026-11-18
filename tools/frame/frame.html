@@ -1,0 +1,40 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:CG;font-weight:500;src:url(../reel/fonts/cormorant-garamond-latin-500-normal.woff2)}
+@font-face{font-family:CA;font-weight:600;src:url(../reel/fonts/cairo-arabic-600-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:800;src:url(../reel/fonts/cairo-arabic-800-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:500;src:url(../reel/fonts/cairo-latin-500-normal.woff2);unicode-range:U+0000-00FF}
+html,body{margin:0;background:#faf7f0}
+#r{width:1080px;position:relative;overflow:hidden;background:#faf7f0;display:flex;flex-direction:column;align-items:center;box-sizing:border-box}
+#fr{position:absolute;left:0;top:0;width:100%;height:100%}
+.logo{width:300px;position:relative}
+.hook{font-family:CA;font-weight:800;color:#3d3627;direction:rtl;text-align:center;padding:0 110px;line-height:1.45;position:relative}
+.bt{mix-blend-mode:multiply;position:relative}
+.name{font-family:CG;font-weight:600;color:#2e281d;letter-spacing:14px;padding-left:14px;position:relative;white-space:nowrap}
+.dv{display:flex;align-items:center;gap:12px;color:#b39d72;font-size:16px;position:relative}
+.dv i{display:block;width:90px;height:1px;background:#c9b88f}
+.ml{font-family:CG;font-weight:500;letter-spacing:9px;color:#7a6a4a;position:relative}
+.ft{font-family:CA;font-weight:600;direction:rtl;color:#665a41;position:relative}
+.ft b,.pill b{color:#b39d72;font-weight:600;margin:0 14px}
+.pill{font-family:CA;font-weight:600;direction:rtl;background:#f4e2dc;color:#3d3627;border-radius:60px;position:relative}
+.cta{font-family:CA;font-weight:800;direction:rtl;color:#3d3627;background:#b39d72;border-radius:60px;position:relative}
+.url{font-family:CG;font-weight:600;letter-spacing:6px;color:#9a7a3c;position:relative;text-align:center}
+</style></head><body><div id="r"></div>
+<script>
+const q=new URLSearchParams(location.search),S=q.get('f')==='story',r=document.getElementById('r');
+const g=(k,d)=>q.get(k)??d, hook=g('hook',''), name=g('name','GOOD GIRL');
+const nameSize=Math.min(S?92:80, Math.floor((S?800:780)/(name.length*0.62+ (name.length*14/ (S?92:80)))));
+r.style.height=(S?1920:1350)+'px';
+// story: content kept between y=270 and y=1600 (clear of Instagram's top bar and reply box)
+r.innerHTML=`<img id="fr" src="frame_${S?'story':'feed'}.png">
+<img class="logo" src="../reel/horizontal_gold.png" style="margin-top:${S?235:92}px;width:${S?340:300}px">
+${hook?`<div class="hook" style="font-size:${S?56:44}px;margin-top:${S?44:22}px">${hook}</div>`:''}
+<img class="bt" src="../reel/bottles/${g('k','good-girl')}.jpg" style="height:${S?(hook?560:680):(hook?520:590)}px;margin-top:${S?30:(hook?10:26)}px">
+<div class="name" style="font-size:${nameSize}px;margin-top:${S?26:16}px">${name}</div>
+<div class="dv" style="margin-top:${S?14:8}px"><i></i>◆<i></i></div>
+<div class="ml" style="font-size:${S?32:28}px;margin-top:${S?16:10}px">${g('ml','PARFUM · 100 ML')}</div>
+<div class="ft" style="font-size:${S?32:27}px;margin-top:${S?34:26}px">${g('ft','تركيز ٣٠٪<b>◆</b>زيوت سويسرية<b>◆</b>صناعة إماراتية')}</div>
+<div class="pill" style="font-size:${S?38:32}px;padding:${S?'12px 50px 16px':'10px 44px 14px'};margin-top:${S?30:24}px">${g('pill','٢٥ ألف دينار<b>◆</b>توصيل مجاني')}</div>
+${S?`<div class="cta" style="font-size:36px;padding:8px 60px 14px;margin-top:28px">راسلنا لتثبيت طلبك</div>`:''}
+<div class="url" style="font-size:${S?28:26}px;margin-top:${S?26:0}px;${S?'':'position:absolute;left:0;right:0;bottom:84px'}">www.rosebaghdad.iq</div>`;
+</script></body></html>
