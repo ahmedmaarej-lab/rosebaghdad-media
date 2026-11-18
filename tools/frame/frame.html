@@ -10,10 +10,10 @@ html,body{margin:0;background:#faf7f0}
 .logo{width:300px;position:relative}
 .hook{font-family:CA;font-weight:800;color:#3d3627;direction:rtl;text-align:center;padding:0 110px;line-height:1.45;position:relative}
 .bt{mix-blend-mode:multiply;position:relative}
-.name{font-family:CG;font-weight:600;color:#2e281d;letter-spacing:14px;padding-left:14px;position:relative;white-space:nowrap}
+.name{font-family:CG,CA;font-weight:600;color:#2e281d;letter-spacing:14px;padding-left:14px;position:relative;white-space:nowrap}
 .dv{display:flex;align-items:center;gap:12px;color:#b39d72;font-size:16px;position:relative}
 .dv i{display:block;width:90px;height:1px;background:#c9b88f}
-.ml{font-family:CG;font-weight:500;letter-spacing:9px;color:#7a6a4a;position:relative}
+.ml{font-family:CG,CA;font-weight:500;letter-spacing:9px;color:#7a6a4a;position:relative}
 .ft{font-family:CA;font-weight:600;direction:rtl;color:#665a41;position:relative}
 .ft b,.pill b{color:#b39d72;font-weight:600;margin:0 14px}
 .pill{font-family:CA;font-weight:600;direction:rtl;background:#f4e2dc;color:#3d3627;border-radius:60px;position:relative}
@@ -29,8 +29,8 @@ r.style.height=(S?1920:1350)+'px';
 r.innerHTML=`<img id="fr" src="frame_${S?'story':'feed'}.png">
 <img class="logo" src="../reel/horizontal_gold.png" style="margin-top:${S?235:92}px;width:${S?340:300}px">
 ${hook?`<div class="hook" style="font-size:${S?56:44}px;margin-top:${S?44:22}px">${hook}</div>`:''}
-<img class="bt" src="../reel/bottles/${g('k','good-girl')}.jpg" style="height:${S?(hook?560:680):(hook?520:590)}px;margin-top:${S?30:(hook?10:26)}px">
-<div class="name" style="font-size:${nameSize}px;margin-top:${S?26:16}px">${name}</div>
+<img class="bt" src="../reel/bottles/${g('k','good-girl')}.jpg" style="height:${g('h',S?(hook?560:680):(hook?520:590))}px;margin-top:${S?30:(hook?10:26)}px">
+<div class="name" style="letter-spacing:${g('ls',14)}px;padding-left:${g('ls',14)}px;font-size:${nameSize}px;margin-top:${S?26:16}px">${name}</div>
 <div class="dv" style="margin-top:${S?14:8}px"><i></i>◆<i></i></div>
 <div class="ml" style="font-size:${S?32:28}px;margin-top:${S?16:10}px">${g('ml','PARFUM · 100 ML')}</div>
 <div class="ft" style="font-size:${S?32:27}px;margin-top:${S?34:26}px">${g('ft','تركيز ٣٠٪<b>◆</b>زيوت سويسرية<b>◆</b>صناعة إماراتية')}</div>
