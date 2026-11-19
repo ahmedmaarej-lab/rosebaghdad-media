@@ -4,14 +4,16 @@ on:
     branches: [main]
     paths: ['queue/telegram/**']
   schedule:
-    - cron: "2,32 6-19 * * *"   # backup: every 30 min, 9:02–22:32 Baghdad
+    - cron: "2,32 6-19 * * *"   # backup only: GitHub fires this just a couple of times a day here
   workflow_dispatch:
 permissions:
   contents: read
+  actions: write          # lets a run start the next one (self-chain)
 concurrency: telegram-queue
 jobs:
   send:
     runs-on: ubuntu-latest
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Restore sent-state
@@ -20,7 +22,8 @@ jobs:
           path: .state
           key: tg-state-${{ github.run_id }}
           restore-keys: tg-state-
-      - name: Send due posts
+      - name: Send due posts, then wait for the next one
+        id: send
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: python3 tools/telegram/send.py
@@ -30,3 +33,8 @@ jobs:
         with:
           path: .state
           key: tg-state-${{ github.run_id }}
+      - name: Start the next run while posts are still queued
+        if: steps.send.outputs.chain == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: sleep 20 && gh workflow run telegram.yml --repo "$GITHUB_REPOSITORY" --ref main
