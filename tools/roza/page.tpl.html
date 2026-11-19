@@ -95,7 +95,8 @@ const who=f=>f==='شباب'?'young men':f==='بنات'?'girls':'everyone';
 const KEEP='Keep Roza, the room and BOTTLE exactly as in the image: same face, long wavy brown hair, mustard "Rose Baghdad" sweatshirt, white pants, small black microphone.';
 const VOICE=line=>`She talks fast and cheerful to the camera, young female voice, Iraqi Baghdadi accent, lips in sync, saying exactly:\n"${line}"\nNo subtitles, no music, no text on screen.`;
 function prompt(x){return `Animate this image into a vertical 9:16 video. ${KEEP.replace('BOTTLE',`the gold crown perfume bottle with the label "${x.name}" (do not change, move or rename the bottle)`)}
-Lively motion: slow camera push-in toward her, she bounces with energy, tilts her head, hair swaying, big hand gestures, a wink and a smile, and she points at the bottle when she says its name. She is speaking to ${who(x.for)}.
+The bottle must be IN HER HAND: in the first second she picks the bottle up from the table with her free hand (the microphone stays in the other hand), lifts it next to her face with the label facing the camera, and keeps holding and presenting it for the whole video, tilting it toward the camera while she talks about it. She never opens the cap and never sprays it.
+Lively motion: slow camera push-in toward her, she smiles, tilts her head, hair swaying, a wink, lively expressions. She is speaking to ${who(x.for)}.
 ${VOICE(x.line)}`}
 function tipPrompt(line){return `Animate this image into a vertical 9:16 video. ${KEEP.replace('BOTTLE','the perfume bottle on the table')}
 Lively motion: slow camera push-in toward her, she waves hello, bounces with energy, tilts her head, hair swaying, explains with expressive hands, then winks and waves goodbye.
