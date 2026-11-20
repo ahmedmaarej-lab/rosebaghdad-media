@@ -38,9 +38,18 @@ const I={
  pepper:`<circle cx="34" cy="40" r="11"/><circle cx="62" cy="34" r="11"/><circle cx="46" cy="66" r="11"/><circle cx="72" cy="62" r="9"/><circle cx="31" cy="37" r="2"/><circle cx="59" cy="31" r="2"/><circle cx="43" cy="63" r="2"/>`,
  leaf:`<path d="M22 80C22 40 46 18 82 18c0 38-24 62-60 62z"/><path d="M22 80L66 34M40 62l-2-14M52 50l-2-12M40 62l14 0M52 50l12 0"/>`,
  birch:`<path d="M36 90V14M64 90V14"/><path d="M36 14h28M36 90h28"/><path d="M40 28h10M54 40h8M38 52h8M52 64h10M42 76h8"/>`,
+ bean:`<ellipse cx="50" cy="50" rx="22" ry="32" transform="rotate(30 50 50)"/><path d="M38 26c10 14 14 32 24 48"/>`,
+ wave:`<path d="M12 40c10-10 20-10 30 0s20 10 30 0 14-8 16-6"/><path d="M12 58c10-10 20-10 30 0s20 10 30 0 14-8 16-6"/><path d="M12 76c10-10 20-10 30 0s20 10 30 0 14-8 16-6"/>`,
+ lavender:`<path d="M50 92V40"/>${[18,28,38,48].map(y=>`<ellipse cx="43" cy="${y}" rx="5" ry="8" transform="rotate(-25 43 ${y})"/><ellipse cx="57" cy="${y}" rx="5" ry="8" transform="rotate(25 57 ${y})"/>`).join('')}<ellipse cx="50" cy="12" rx="4" ry="7"/>`,
+ smoke:`<path d="M50 88c-14-12 10-22-4-36s8-22-2-38"/><path d="M64 80c-10-10 8-18-2-30"/><path d="M36 80c-8-8 6-14-2-24"/><path d="M34 90h32"/>`,
+ crystal:`<path d="M50 14l24 20-8 44H34l-8-44z"/><path d="M26 34h48M50 14l-8 20 8 44 8-44z"/>`,
+ apple:`<path d="M50 34c-6-6-28-8-28 20 0 18 14 34 28 30 14 4 28-12 28-30 0-28-22-26-28-20z"/><path d="M50 34c0-10 4-16 10-20M54 24c8-6 16-4 18 0-6 6-14 6-18 0z"/>`,
+ grass:`<path d="M50 90C50 60 46 34 40 14M50 90c2-26 10-50 20-68M50 90C44 68 30 50 20 40M50 90c6-20 18-34 32-42"/><path d="M30 90h40"/>`,
+ thread:`${pet(3,6,22,18)}<path d="M50 50v38"/><path d="M50 50l-16-28M50 50l16-28M50 50V18"/>`,
+ leather:`<path d="M30 16c8 6 32 6 40 0 4 10 10 14 16 16-4 12-4 26 0 38-6 2-12 6-16 16-8-6-32-6-40 0-4-10-10-14-16-16 4-12 4-26 0-38 6-2 12-6 16-16z"/><path d="M34 30c10 4 22 4 32 0M34 70c10-4 22-4 32 0" stroke-dasharray="4 5"/>`,
  rose:`<circle cx="50" cy="50" r="8"/><path d="M50 42c10-6 20 2 18 12M58 54c6 10-2 20-12 18M46 60c-10 4-20-4-16-14M36 46c-2-12 10-18 18-12"/><circle cx="50" cy="50" r="30"/>`};
 const name=q.get('name')||'MY WAY', rows=JSON.parse(q.get('n'));
 document.getElementById('r').innerHTML=`<img id="fr" src="frame_feed.png"><img class="logo" src="../reel/horizontal_gold.png">
-<div class="t">نوتات<span>${name}</span></div>`+rows.map(([lab,ns])=>`<div class="row"><div class="lab"><i></i>${lab}<i></i></div><div class="ms">${ns.map(([n,ic])=>`<div class="m"><div class="c"><svg viewBox="0 0 100 100">${I[ic]}</svg></div><div class="nm">${n}</div></div>`).join('')}</div></div>`).join('')+
+<div class="t">نوتات<span>${name}</span></div>`+rows.map(([lab,ns])=>`<div class="row"${rows.length==1?' style="margin:200px 0 160px"':''}><div class="lab"><i></i>${lab}<i></i></div><div class="ms">${ns.map(([n,ic])=>`<div class="m"><div class="c"><svg viewBox="0 0 100 100">${I[ic]}</svg></div><div class="nm">${n}</div></div>`).join('')}</div></div>`).join('')+
 `<div class="pill">١٠٠ مل<b>◆</b>تركيز ٣٠٪<b>◆</b>٢٥ ألف دينار</div><div class="url">www.rosebaghdad.iq</div>`;
 </script></body></html>
