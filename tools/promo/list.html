@@ -1,0 +1,27 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+/* Promo story in the everyday cream + gold frame: logo, big title, lines split by diamond rules, link. No dark panel. */
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:CA;font-weight:600;src:url(../reel/fonts/cairo-arabic-600-normal.woff2)}
+@font-face{font-family:CA;font-weight:800;src:url(../reel/fonts/cairo-arabic-800-normal.woff2)}
+html,body{margin:0;background:#faf7f0}
+#r{width:1080px;height:1920px;position:relative;overflow:hidden;background:#faf7f0;display:flex;flex-direction:column;align-items:center;direction:rtl}
+#fr{position:absolute;left:0;top:0;width:100%;height:100%}#r>*:not(#fr){position:relative}
+.logo{width:340px;margin-top:235px}
+.t{font-family:CA;font-weight:800;font-size:122px;line-height:1.3;color:#2e281d;margin-top:70px;text-align:center}
+.dv{display:flex;align-items:center;gap:14px;color:#b39d72;font-size:20px;margin:40px 0}.dv i{display:block;width:230px;height:1px;background:#c9b88f}
+.s{font-family:CA;font-weight:800;font-size:80px;color:#3d3627;line-height:1.3}
+.l{font-family:CA;font-weight:600;font-size:60px;color:#3d3627;line-height:1.3}
+.j{font-family:CA;font-weight:800;font-size:68px;color:#2e281d;line-height:1.3}
+.u{font-family:CG;font-weight:600;font-size:72px;letter-spacing:2px;color:#9a7a3c;direction:ltr;margin-top:8px}
+</style></head><body><div id="r"></div><script>
+const k=new URLSearchParams(location.search).get('k');
+const D={tg:{t:'قناتنا بالتليغرام',s:'اختار عطرك بثقة',l:['دليل بسيط لاختيار العطر','نصائح وأفكار حصرية','أسئلة وتفاعل ويا روز'],j:'انضم لقناة روز بغداد',u:'t.me/rosebaghdad_iq'},
+ web:{t:'متجرنا الإلكتروني',s:'كل عطورنا بمكان واحد',l:['تصفح العطور والبخور كلها','اطلب بسهولة وإنت بمكانك','توصيل مجاني لكل المحافظات'],j:'ادخل متجر روز بغداد',u:'www.rosebaghdad.iq'},
+ c1:{t:'بخورك<br>يفوح صح؟',s:'٤ نصايح بسيطة',l:['ابدي بقرص واحد','بخّر الملابس والستاير','مكان مرتفع وآمن'],j:'شوف البوست الجديد بصفحتنا',u:'@rosebaghdad22'},
+ c2:{t:'تولة المسك',s:'٦ أنواع، أيهم يشبهك؟',l:['١٢ مل · قوام مركّز جداً','ثبات وفوحان عالي','نقطة وحدة تكفي'],j:'شوف البوست الجديد بصفحتنا',u:'@rosebaghdad22'},
+ c3:{t:'عطر الشعر والسبلاش',s:'عناية بلمسة عطر',l:['٥٠ مل · خالي من الكحول','من ماء الورد ومكونات طبيعية','لطيف على الشعر والبشرة'],j:'شوف البوست الجديد بصفحتنا',u:'@rosebaghdad22'},
+ c4:{t:'عطرك يروح<br>بسرعة؟',s:'٤ أخطاء تجنبها',l:['لا تفرك المعصم','رطّب بشرتك قبل الرش','رش على نقاط النبض'],j:'شوف البوست الجديد بصفحتنا',u:'@rosebaghdad22'}}[k];
+const dv='<div class="dv"><i></i>◆<i></i></div>';
+document.getElementById('r').innerHTML=`<img id="fr" src="../frame/frame_story.png"><img class="logo" src="../reel/horizontal_gold.png">
+<div class="t">${D.t}</div>${dv}<div class="s">${D.s}</div>${dv}${D.l.map(x=>`<div class="l">${x}</div>`).join(dv)}${dv}<div class="j">${D.j}</div><div class="u">${D.u}</div>`;
+</script></body></html>

@@ -1,0 +1,55 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+/* Notes slide (2nd carousel image) in the everyday cream + gold frame. ?name=MY WAY&n=<json rows> */
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:CA;font-weight:600;src:url(../reel/fonts/cairo-arabic-600-normal.woff2)}
+@font-face{font-family:CA;font-weight:800;src:url(../reel/fonts/cairo-arabic-800-normal.woff2)}
+html,body{margin:0;background:#faf7f0}
+#r{width:1080px;height:1350px;position:relative;overflow:hidden;background:#faf7f0;display:flex;flex-direction:column;align-items:center}
+#fr{position:absolute;left:0;top:0;width:100%;height:100%}#r>*:not(#fr){position:relative}
+.logo{width:260px;margin-top:92px}
+.t{font-family:CA;font-weight:800;font-size:54px;color:#2e281d;direction:rtl;margin-top:14px}
+.t span{font-family:CG;font-weight:600;letter-spacing:8px;font-size:60px;margin-right:14px}
+.row{display:flex;flex-direction:column;align-items:center;margin-top:10px}
+.lab{display:flex;align-items:center;gap:14px;font-family:CA;font-weight:600;font-size:28px;color:#9a7a3c;direction:rtl}
+.lab i{display:block;width:110px;height:1px;background:#c9b88f}
+.ms{display:flex;gap:44px;margin-top:12px;direction:rtl}
+.m{display:flex;flex-direction:column;align-items:center;width:200px}
+.c{width:120px;height:120px;border-radius:50%;background:#fff;border:2px solid #b39d72;box-shadow:0 0 0 7px #faf7f0,0 0 0 8px #d9cba8;display:flex;align-items:center;justify-content:center}
+.c svg{width:80px;height:80px;stroke:#9a7a3c;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.nm{font-family:CA;font-weight:800;font-size:29px;color:#3d3627;margin-top:10px;direction:rtl;white-space:nowrap}
+.pill{font-family:CA;font-weight:600;direction:rtl;background:#f4e2dc;color:#3d3627;border-radius:60px;font-size:30px;padding:6px 40px 10px;margin-top:16px}
+.pill b{color:#b39d72;font-weight:600;margin:0 14px}
+.url{font-family:CG;font-weight:600;letter-spacing:6px;color:#9a7a3c;font-size:26px;position:absolute!important;left:0;right:0;bottom:84px;text-align:center}
+</style></head><body><div id="r"></div><script>
+const q=new URLSearchParams(location.search);
+const pet=(n,rx,ry,d)=>Array.from({length:n},(_,i)=>`<ellipse cx="50" cy="${50-d}" rx="${rx}" ry="${ry}" transform="rotate(${i*360/n} 50 50)"/>`).join('');
+const I={
+ citrus:`<circle cx="50" cy="52" r="34"/><circle cx="50" cy="52" r="26"/>${Array.from({length:8},(_,i)=>`<line x1="50" y1="52" x2="50" y2="26" transform="rotate(${i*45} 50 52)"/>`).join('')}<path d="M50 18c4-10 14-12 22-8-4 8-12 12-22 8z"/>`,
+ blossom:`${pet(5,11,17,22)}<circle cx="50" cy="50" r="6"/>`,
+ tuberose:`${pet(6,8,19,22)}<circle cx="50" cy="50" r="4"/>`,
+ jasmine:`${pet(5,7,20,23)}<circle cx="50" cy="50" r="5"/><circle cx="50" cy="50" r="1.5"/>`,
+ vanilla:`${pet(5,9,13,15).replace(/cy="35"/g,'cy="20"').replace(/50 50\)/g,'36 34)').replace(/cx="50"/g,'cx="36"')}<circle cx="36" cy="34" r="4"/><path d="M58 40c14 10 24 28 26 48"/><path d="M50 46c12 10 20 26 22 42"/>`,
+ musk:`<path d="M50 12c14 20 24 32 24 46a24 24 0 0 1-48 0c0-14 10-26 24-46z"/><path d="M40 60a11 11 0 0 0 10 10"/>`,
+ cedar:`<path d="M50 10L30 38h12L24 62h14L20 84h60L62 62h14L58 38h12z"/><line x1="50" y1="84" x2="50" y2="94"/>`,
+ amber:`<path d="M50 12l26 18v36L50 88 24 66V30z"/><path d="M50 12v76M24 30l52 36M76 30L24 66"/>`,
+ oud:`<path d="M20 70c6-26 22-44 44-50 8 6 14 16 16 28-10 22-30 34-56 34z"/><path d="M34 66c8-14 20-24 34-30"/>`,
+ berry:`<circle cx="38" cy="60" r="13"/><circle cx="62" cy="60" r="13"/><circle cx="50" cy="40" r="13"/><path d="M50 27c0-8 4-14 12-17M50 27c-6-6-14-6-20-3"/>`,
+ pineapple:`<ellipse cx="50" cy="64" rx="20" ry="26"/><path d="M34 52l32 26M66 52L34 78M31 66l20 16M69 66L49 82M38 44l24 16M62 44L38 60"/><path d="M50 38c-2-12-10-20-18-24 10 2 14 8 18 14 2-8 6-14 14-18-4 8-6 16-6 24M50 38c4-8 12-12 20-12"/>`,
+ pepper:`<circle cx="34" cy="40" r="11"/><circle cx="62" cy="34" r="11"/><circle cx="46" cy="66" r="11"/><circle cx="72" cy="62" r="9"/><circle cx="31" cy="37" r="2"/><circle cx="59" cy="31" r="2"/><circle cx="43" cy="63" r="2"/>`,
+ leaf:`<path d="M22 80C22 40 46 18 82 18c0 38-24 62-60 62z"/><path d="M22 80L66 34M40 62l-2-14M52 50l-2-12M40 62l14 0M52 50l12 0"/>`,
+ birch:`<path d="M36 90V14M64 90V14"/><path d="M36 14h28M36 90h28"/><path d="M40 28h10M54 40h8M38 52h8M52 64h10M42 76h8"/>`,
+ bean:`<ellipse cx="50" cy="50" rx="22" ry="32" transform="rotate(30 50 50)"/><path d="M38 26c10 14 14 32 24 48"/>`,
+ wave:`<path d="M12 40c10-10 20-10 30 0s20 10 30 0 14-8 16-6"/><path d="M12 58c10-10 20-10 30 0s20 10 30 0 14-8 16-6"/><path d="M12 76c10-10 20-10 30 0s20 10 30 0 14-8 16-6"/>`,
+ lavender:`<path d="M50 92V40"/>${[18,28,38,48].map(y=>`<ellipse cx="43" cy="${y}" rx="5" ry="8" transform="rotate(-25 43 ${y})"/><ellipse cx="57" cy="${y}" rx="5" ry="8" transform="rotate(25 57 ${y})"/>`).join('')}<ellipse cx="50" cy="12" rx="4" ry="7"/>`,
+ smoke:`<path d="M50 88c-14-12 10-22-4-36s8-22-2-38"/><path d="M64 80c-10-10 8-18-2-30"/><path d="M36 80c-8-8 6-14-2-24"/><path d="M34 90h32"/>`,
+ crystal:`<path d="M50 14l24 20-8 44H34l-8-44z"/><path d="M26 34h48M50 14l-8 20 8 44 8-44z"/>`,
+ apple:`<path d="M50 34c-6-6-28-8-28 20 0 18 14 34 28 30 14 4 28-12 28-30 0-28-22-26-28-20z"/><path d="M50 34c0-10 4-16 10-20M54 24c8-6 16-4 18 0-6 6-14 6-18 0z"/>`,
+ grass:`<path d="M50 90C50 60 46 34 40 14M50 90c2-26 10-50 20-68M50 90C44 68 30 50 20 40M50 90c6-20 18-34 32-42"/><path d="M30 90h40"/>`,
+ thread:`${pet(3,6,22,18)}<path d="M50 50v38"/><path d="M50 50l-16-28M50 50l16-28M50 50V18"/>`,
+ leather:`<path d="M30 16c8 6 32 6 40 0 4 10 10 14 16 16-4 12-4 26 0 38-6 2-12 6-16 16-8-6-32-6-40 0-4-10-10-14-16-16 4-12 4-26 0-38 6-2 12-6 16-16z"/><path d="M34 30c10 4 22 4 32 0M34 70c10-4 22-4 32 0" stroke-dasharray="4 5"/>`,
+ rose:`<circle cx="50" cy="50" r="8"/><path d="M50 42c10-6 20 2 18 12M58 54c6 10-2 20-12 18M46 60c-10 4-20-4-16-14M36 46c-2-12 10-18 18-12"/><circle cx="50" cy="50" r="30"/>`};
+const name=q.get('name')||'MY WAY', rows=JSON.parse(q.get('n'));
+document.getElementById('r').innerHTML=`<img id="fr" src="frame_feed.png"><img class="logo" src="../reel/horizontal_gold.png">
+<div class="t">نوتات<span>${name}</span></div>`+rows.map(([lab,ns])=>`<div class="row"${rows.length==1?' style="margin:200px 0 160px"':''}><div class="lab"><i></i>${lab}<i></i></div><div class="ms">${ns.map(([n,ic])=>`<div class="m"><div class="c"><svg viewBox="0 0 100 100">${I[ic]}</svg></div><div class="nm">${n}</div></div>`).join('')}</div></div>`).join('')+
+`<div class="pill">١٠٠ مل<b>◆</b>تركيز ٣٠٪<b>◆</b>٢٥ ألف دينار</div><div class="url">www.rosebaghdad.iq</div>`;
+</script></body></html>
