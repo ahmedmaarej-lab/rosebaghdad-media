@@ -1,0 +1,135 @@
+<title>روزة · فيديوهات العطور</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=El+Messiri:wght@600;700&display=swap">
+<style>
+/* Layout: a day strip on top, then that day's three kits stacked (frame | script + prompt) */
+:root{--bg:#f7f1e6;--panel:#fffaf1;--ink:#2b2216;--muted:#7a6a52;--gold:#a8822e;--gold-soft:#ecdcb4;--line:#e3d5b8;--warn:#b5532a;--warn-bg:#fbe7da;--ok:#3f7a46;--ok-bg:#e2efdf;
+--display:"El Messiri","Cairo",Tahoma,sans-serif;--body:"Cairo",Tahoma,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17120b;--panel:#211a10;--ink:#f3e7cf;--muted:#b4a17f;--gold:#e0b65a;--gold-soft:#3a2d17;--line:#3a2f1e;--warn:#f0956a;--warn-bg:#3a2216;--ok:#8fcf93;--ok-bg:#1d3020;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17120b;--panel:#211a10;--ink:#f3e7cf;--muted:#b4a17f;--gold:#e0b65a;--gold-soft:#3a2d17;--line:#3a2f1e;--warn:#f0956a;--warn-bg:#3a2216;--ok:#8fcf93;--ok-bg:#1d3020;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;direction:rtl;
+padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+h1{font-family:var(--display);font-size:clamp(28px,6vw,40px);margin:0;line-height:1.2;text-wrap:balance}
+h1 b{color:var(--gold)}
+.lead{color:var(--muted);margin:4px 0 0;max-width:62ch}
+.how{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.how ol{margin:6px 0 0;padding-inline-start:22px}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.day{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;padding:8px 14px;font:600 14px var(--body);cursor:pointer;text-align:center;line-height:1.35}
+.day small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.day[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--bg)}
+.day[aria-pressed="true"] small{color:var(--bg)}
+.day.done{border-color:var(--ok)}
+.day:focus-visible,.btn:focus-visible,.chk:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.dayhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.dayhead h2{font-family:var(--display);font-size:24px;margin:0}
+.kits{display:flex;flex-direction:column;gap:18px}
+.kit{display:grid;grid-template-columns:200px 1fr;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+@media (max-width:640px){.kit{grid-template-columns:1fr}.kit img{max-width:220px;margin:0 auto}}
+.kit img{width:100%;border-radius:10px;display:block;aspect-ratio:9/16;object-fit:cover}
+.cap{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+.info{min-width:0;display:flex;flex-direction:column;gap:10px}
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.top h3{font-family:var(--display);font-size:24px;margin:0}
+.lat{font:600 13px var(--body);letter-spacing:.08em;color:var(--muted);direction:ltr}
+.pill{font-size:12px;font-weight:600;border-radius:99px;padding:2px 10px;background:var(--gold-soft);color:var(--ink)}
+.pill.warn{background:var(--warn-bg);color:var(--warn)}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}
+.line{font-size:19px;font-weight:600;background:var(--bg);border-radius:10px;padding:10px 14px;border-inline-start:4px solid var(--gold)}
+.notes{color:var(--muted);font-size:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:0;background:var(--ink);color:var(--bg);font:700 15px var(--body);border-radius:10px;padding:9px 16px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.chk{display:flex;gap:6px;align-items:center;font-size:14px;cursor:pointer}
+details{font-size:13px;color:var(--muted)} details pre{white-space:pre-wrap;direction:ltr;text-align:left;background:var(--bg);padding:10px;border-radius:8px;font-size:12px;line-height:1.5;overflow-x:auto}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 18px;border-radius:99px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+.plan{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.plan td,.plan th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right}
+.tablebox{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:6px 10px}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+.parts{display:flex;flex-direction:column;gap:12px}
+.part{display:flex;flex-direction:column;gap:8px;border-top:1px dashed var(--line);padding-top:10px}
+.part:first-child{border-top:0;padding-top:0}
+.pn{font:700 13px var(--body);color:var(--gold)}
+.tag{font-size:12px;font-weight:700;border-radius:6px;padding:1px 8px;background:var(--gold);color:var(--bg)}
+.sched{display:flex;flex-direction:column;gap:14px}
+.sday h3{font-family:var(--display);font-size:17px;margin:0 0 6px}
+.srow{display:grid;grid-template-columns:auto auto 1fr auto;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:14px}
+.srow+.srow{margin-top:6px}
+.srow.roza{border-color:var(--gold);box-shadow:inset 4px 0 0 var(--gold)}
+.st{font-variant-numeric:tabular-nums;font-weight:700;direction:ltr}
+.sk{color:var(--muted);font-size:12px}
+.stt{min-width:0;overflow-wrap:anywhere}.stt small{display:block;color:var(--muted);font-size:12px}
+.stt a{color:var(--ink)}
+@media (max-width:480px){.srow{grid-template-columns:auto 1fr auto}.sk{display:none}}
+</style>
+<div class="wrap">
+ <header>
+  <h1>فيديوهات <b>روزة</b> لروز بغداد</h1>
+  <p class="lead">كل دفعة 3 فيديوهات: عطرين ومعلومة. كل فيديو لحاله، ريل وستوري. كل شي جاهز: صورة البداية، كلام روزة، والأمر للنسخ.</p>
+ </header>
+ <section class="how"><b>شلون تسويه بـ Gemini</b>
+  <ol>
+   <li>اضغط مطوّلاً على الصورة واحفظها بالموبايل.</li>
+   <li>بـ Gemini اختار <b>فيديو</b>، وارفع الصورة.</li>
+   <li>اضغط <b>انسخ الأمر</b> والصقه، ودز.</li>
+   <li>دز الفيديوهات لـ Claude: يضيف الشعار والكتابة، وينزلها ريل وستوري.</li>
+  </ol>
+ </section>
+ <nav class="days" id="days" aria-label="الأيام"></nav>
+ <section>
+  <div class="dayhead"><h2 id="dt"></h2><span class="notes" id="dsub"></span></div>
+  <div class="kits" id="kits"></div>
+ </section>
+ <section>
+  <h2 style="font-family:var(--display);font-size:22px;margin:0 0 4px">لوحة النشر</h2>
+  <p class="notes" style="margin:0 0 10px" id="schk"></p>
+  <div id="sched" class="sched"></div>
+ </section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const D=/*DATA*/[];
+const T=/*TIPS*/[];
+const SCHED=/*SCHED*/{};
+const LOC='ar-IQ-u-nu-latn';
+const dayName=s=>new Date(s+'T12:00:00').toLocaleDateString(LOC,{weekday:'long',day:'numeric',month:'long'});
+const todo=D.filter(x=>!x.done),days=[];for(let i=0;i*2<todo.length||i<T.length;i++)days.push({items:todo.slice(i*2,i*2+2),tip:T[i]});
+let done={};try{done=JSON.parse(localStorage.getItem('roza-done')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('roza-done',JSON.stringify(done))}catch(e){}};
+const keys=d=>[...d.items.map(x=>x.key),...(d.tip?[d.tip.key]:[])];
+const who=f=>f==='شباب'?'young men':f==='بنات'?'girls':'everyone';
+const KEEP='Keep Roza, the room and BOTTLE exactly as in the image: same face, long wavy brown hair, mustard "Rose Baghdad" sweatshirt, white pants, small black microphone.';
+const VOICE=line=>`She talks fast and cheerful to the camera, young female voice, Iraqi Baghdadi accent, lips in sync, saying exactly:\n"${line}"\nNo subtitles, no music, no text on screen.`;
+function prompt(x){return `Animate this image into a vertical 9:16 video. ${KEEP.replace('BOTTLE',`the gold crown perfume bottle with the label "${x.name}" (do not change, move or rename the bottle)`)}
+The bottle must be IN HER HAND: in the first second she picks the bottle up from the table with her free hand (the microphone stays in the other hand), lifts it next to her face with the label facing the camera, and keeps holding and presenting it for the whole video, tilting it toward the camera while she talks about it. She never opens the cap and never sprays it.
+Lively motion: slow camera push-in toward her, she smiles, tilts her head, hair swaying, a wink, lively expressions. She is speaking to ${who(x.for)}.
+${VOICE(x.line)}`}
+function tipPrompt(line){return `Animate this image into a vertical 9:16 video. ${KEEP.replace('BOTTLE','the perfume bottle on the table')}
+Lively motion: slow camera push-in toward her, she waves hello, bounces with energy, tilts her head, hair swaying, explains with expressive hands, then winks and waves goodbye.
+${VOICE(line)}`}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),1600)}
+function copy(text,ta){navigator.clipboard.writeText(text).then(()=>toast('انتسخ ✓')).catch(()=>{ta.hidden=false;ta.value=text;ta.select();toast('اضغط مطوّلاً وانسخ')})}
+function copyRow(p){const w=document.createElement('div');w.innerHTML='<div class="row"><button class="btn" type="button">انسخ الأمر</button></div><textarea hidden readonly style="width:100%;height:120px;direction:ltr"></textarea><details><summary>شوف الأمر</summary><pre></pre></details>';w.querySelector('pre').textContent=p;w.querySelector('.btn').onclick=()=>copy(p,w.querySelector('textarea'));return w}
+function check(key){const l=document.createElement('label');l.className='chk';l.innerHTML=`<input type="checkbox" id="c-${key}" ${done[key]?'checked':''}> خلص`;l.querySelector('input').onchange=e=>{done[key]=e.target.checked;save();drawDays();sub()};return l}
+let cur=0;
+function sub(){const k=keys(days[cur]);document.getElementById('dsub').textContent=`مأشر عليها بهذا الجهاز: ${k.filter(x=>done[x]).length} من ${k.length}`}
+function drawDays(){const n=document.getElementById('days');n.innerHTML='';days.forEach((d,i)=>{const b=document.createElement('button');b.className='day'+(keys(d).every(x=>done[x])?' done':'');b.setAttribute('aria-pressed',i===cur);b.innerHTML=`الدفعة ${i+1}<small>${d.items.map(x=>x.ar).join(' · ')}</small>`;b.onclick=()=>{cur=i;try{localStorage.setItem('roza-day3',i)}catch(e){};draw()};n.appendChild(b)})}
+function img(src,alt){return `<div><img src="${src}" alt="${alt}" loading="lazy"><div class="cap">اضغط مطوّلاً واحفظ</div></div>`}
+function draw(){drawDays();const d=days[cur];document.getElementById('dt').textContent=`الدفعة ${cur+1} من ${days.length}`;sub();
+ const k=document.getElementById('kits');k.innerHTML='';
+ d.items.forEach(x=>{const el=document.createElement('article');el.className='kit';
+  el.innerHTML=img(`frames/${x.key}.jpg`,`روزة ويا قنينة ${x.ar}`)+`<div class="info"><div class="top"><span class="tag">عطر</span><h3>${x.ar}</h3><span class="lat">${x.name}</span><span class="pill">لـ${x.for}</span>${x.ok?'<span class="pill ok">النوتات مؤكدة</span>':'<span class="pill warn">نوتات تقديرية، أكّدها قبل التصوير</span>'}</div><div class="line">${x.line}</div><div class="notes">النوتات: ${x.notes}</div></div>`;
+  const info=el.querySelector('.info');info.appendChild(copyRow(prompt(x)));info.appendChild(check(x.key));k.appendChild(el)});
+ if(d.tip){const x=d.tip,el=document.createElement('article');el.className='kit';
+  el.innerHTML=img('frames/my-way.jpg','روزة')+`<div class="info"><div class="top"><span class="tag">معلومة</span><h3>${x.ar}</h3></div><div class="line">${x.line}</div></div>`;
+  const info=el.querySelector('.info');info.appendChild(copyRow(tipPrompt(x.line)));info.appendChild(check(x.key));k.appendChild(el)}}
+try{const s=localStorage.getItem('roza-day3');if(s===null)throw 0;cur=Math.max(0,Math.min(days.length-1,+s))}catch(e){cur=0}
+document.getElementById('schk').textContent=`من تقويم Metricool، آخر فحص ${SCHED.checked} بتوقيت بغداد. منشورات روزة معلّمة بالذهبي.`;
+(()=>{const g={};(SCHED.rows||[]).forEach(r=>(g[r.date]=g[r.date]||[]).push(r));
+ document.getElementById('sched').innerHTML=Object.keys(g).map(d=>`<div class="sday"><h3>${dayName(d)}</h3>${g[d].map(r=>`<div class="srow${r.roza?' roza':''}"><span class="st">${r.time}</span><span class="sk">${r.kind}</span><span class="stt">${r.url?`<a href="${r.url}" target="_blank" rel="noopener">${r.title}</a>`:r.title}<small>${r.nets.join(' · ')}</small></span><span class="pill ${r.done?'ok':''}">${r.done?'نزل':'مجدول'}</span></div>`).join('')}</div>`).join('')})();
+draw();
+</script>
