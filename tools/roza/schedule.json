@@ -1,117 +1,6 @@
 {
-"checked": "2026-11-21 09:18",
+"checked": "2026-11-21 15:18",
 "rows": [
-{
-"date": "2026-11-19",
-"time": "17:00",
-"kind": "بوست",
-"title": "AMBER NIGHT من روز بغداد",
-"nets": [
-"فيسبوك"
-],
-"done": true,
-"roza": false,
-"url": "https://facebook.com/122173366442726464/posts/122176058480726464"
-},
-{
-"date": "2026-11-19",
-"time": "18:00",
-"kind": "فيديو",
-"title": "COCO MADAM من روز بغداد",
-"nets": [
-"تيك توك"
-],
-"done": true,
-"roza": false,
-"url": "https://www.tiktok.com/@roesbaghdad22/video/7709900687315946773"
-},
-{
-"date": "2026-11-19",
-"time": "18:00",
-"kind": "ريل",
-"title": "MUSK BAGHDAD من روز بغداد",
-"nets": [
-"فيسبوك"
-],
-"done": true,
-"roza": false,
-"url": "https://facebook.com/reel/2214215519472643"
-},
-{
-"date": "2026-11-19",
-"time": "20:00",
-"kind": "ستوري",
-"title": "(ستوري بدون نص)",
-"nets": [
-"فيسبوك",
-"إنستغرام"
-],
-"done": true,
-"roza": false,
-"url": "https://www.instagram.com/stories/rosebaghdad22/4033980720599865459"
-},
-{
-"date": "2026-11-19",
-"time": "21:00",
-"kind": "بوست",
-"title": "AMBER NIGHT من روز بغداد",
-"nets": [
-"إنستغرام"
-],
-"done": true,
-"roza": false,
-"url": "https://www.instagram.com/p/Df7sCB2H8vZ/"
-},
-{
-"date": "2026-11-19",
-"time": "21:00",
-"kind": "ريل",
-"title": "رطبي بشرتچ قبل العطر، ورشيه على نقاط النبض 🤍",
-"nets": [
-"فيسبوك",
-"إنستغرام"
-],
-"done": true,
-"roza": true,
-"url": "https://www.instagram.com/reel/Df7rsCYgAoi/"
-},
-{
-"date": "2026-11-19",
-"time": "21:00",
-"kind": "فيديو",
-"title": "MUSK BAGHDAD من روز بغداد",
-"nets": [
-"تيك توك"
-],
-"done": true,
-"roza": false,
-"url": "https://www.tiktok.com/@roesbaghdad22/video/7709945248100748562"
-},
-{
-"date": "2026-11-19",
-"time": "21:05",
-"kind": "ستوري",
-"title": "(ستوري بدون نص)",
-"nets": [
-"فيسبوك",
-"إنستغرام"
-],
-"done": true,
-"roza": true,
-"url": "https://www.instagram.com/stories/rosebaghdad22/4034012551733486152"
-},
-{
-"date": "2026-11-19",
-"time": "21:45",
-"kind": "ريل",
-"title": "MUSK BAGHDAD من روز بغداد",
-"nets": [
-"إنستغرام"
-],
-"done": true,
-"roza": false,
-"url": null
-},
 {
 "date": "2026-11-20",
 "time": "13:00",
@@ -208,9 +97,9 @@
 "nets": [
 "ثريدز"
 ],
-"done": false,
+"done": true,
 "roza": false,
-"url": null
+"url": "https://www.threads.com/@rosebaghdad22/post/Df_-EWVCNw3"
 },
 {
 "date": "2026-11-21",
@@ -235,6 +124,18 @@
 ],
 "done": false,
 "roza": true,
+"url": null
+},
+{
+"date": "2026-11-21",
+"time": "18:00",
+"kind": "ريل",
+"title": "OUD MALAKI من روز بغداد",
+"nets": [
+"فيسبوك"
+],
+"done": false,
+"roza": false,
 "url": null
 },
 {
@@ -277,12 +178,73 @@
 "url": null
 },
 {
+"date": "2026-11-21",
+"time": "21:00",
+"kind": "فيديو",
+"title": "OUD MALAKI من روز بغداد",
+"nets": [
+"تيك توك"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-21",
+"time": "21:45",
+"kind": "ريل",
+"title": "OUD MALAKI من روز بغداد",
+"nets": [
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-22",
+"time": "10:00",
+"kind": "بوست",
+"title": "SOVAG من روز بغداد",
+"nets": [
+"فيسبوك"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-22",
+"time": "12:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك",
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
 "date": "2026-11-22",
 "time": "13:00",
 "kind": "بوست",
 "title": "بخورك يفوح صح؟",
 "nets": [
 "ثريدز"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-22",
+"time": "13:00",
+"kind": "بوست",
+"title": "SOVAG من روز بغداد",
+"nets": [
+"إنستغرام"
 ],
 "done": false,
 "roza": false,
@@ -327,11 +289,48 @@
 },
 {
 "date": "2026-11-23",
+"time": "10:00",
+"kind": "بوست",
+"title": "GOOD GIRL من روز بغداد",
+"nets": [
+"فيسبوك"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-23",
+"time": "12:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك",
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-23",
 "time": "13:00",
 "kind": "بوست",
 "title": "بخور عزيزتي",
 "nets": [
 "ثريدز"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-23",
+"time": "15:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك"
 ],
 "done": false,
 "roza": false,
@@ -376,11 +375,48 @@
 },
 {
 "date": "2026-11-24",
+"time": "10:00",
+"kind": "بوست",
+"title": "LYBRE من روز بغداد",
+"nets": [
+"فيسبوك"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-24",
+"time": "12:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك",
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-24",
 "time": "13:00",
 "kind": "بوست",
 "title": "تولة المسك: ٦ أنواع، أيهم يشبهك؟",
 "nets": [
 "ثريدز"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-24",
+"time": "13:00",
+"kind": "بوست",
+"title": "LYBRE من روز بغداد",
+"nets": [
+"إنستغرام"
 ],
 "done": false,
 "roza": false,
@@ -425,11 +461,48 @@
 },
 {
 "date": "2026-11-25",
+"time": "10:00",
+"kind": "بوست",
+"title": "AVANTOS من روز بغداد",
+"nets": [
+"فيسبوك"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-25",
+"time": "12:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك",
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-25",
 "time": "13:00",
 "kind": "بوست",
 "title": "بخور سيدتي",
 "nets": [
 "ثريدز"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-25",
+"time": "15:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك"
 ],
 "done": false,
 "roza": false,
@@ -474,11 +547,48 @@
 },
 {
 "date": "2026-11-26",
+"time": "10:00",
+"kind": "بوست",
+"title": "COCO MADAM من روز بغداد",
+"nets": [
+"فيسبوك"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-26",
+"time": "12:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك",
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-26",
 "time": "13:00",
 "kind": "بوست",
 "title": "عطر لشعرك وعطر لجسمك",
 "nets": [
 "ثريدز"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-26",
+"time": "13:00",
+"kind": "بوست",
+"title": "COCO MADAM من روز بغداد",
+"nets": [
+"إنستغرام"
 ],
 "done": false,
 "roza": false,
@@ -536,11 +646,48 @@
 },
 {
 "date": "2026-11-27",
+"time": "10:00",
+"kind": "بوست",
+"title": "Y MAN من روز بغداد",
+"nets": [
+"فيسبوك"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-27",
+"time": "12:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك",
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-27",
 "time": "13:00",
 "kind": "بوست",
 "title": "بخور فاخر",
 "nets": [
 "ثريدز"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-27",
+"time": "15:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك"
 ],
 "done": false,
 "roza": false,
@@ -577,6 +724,31 @@
 "kind": "بوست",
 "title": "بخور يليق بمجلسك",
 "nets": [
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-28",
+"time": "10:00",
+"kind": "بوست",
+"title": "OLYMPI من روز بغداد",
+"nets": [
+"فيسبوك"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-28",
+"time": "12:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك",
 "إنستغرام"
 ],
 "done": false,
@@ -625,44 +797,6 @@
 "time": "21:00",
 "kind": "بوست",
 "title": "٤ أخطاء تخلي عطرك يروح بسرعة",
-"nets": [
-"إنستغرام"
-],
-"done": false,
-"roza": false,
-"url": null
-},
-{
-"date": "2026-11-29",
-"time": "17:00",
-"kind": "بوست",
-"title": "عطر الشعر مسك فانيلا",
-"nets": [
-"فيسبوك",
-"ثريدز"
-],
-"done": false,
-"roza": false,
-"url": null
-},
-{
-"date": "2026-11-29",
-"time": "20:00",
-"kind": "ستوري",
-"title": "(ستوري بدون نص)",
-"nets": [
-"فيسبوك",
-"إنستغرام"
-],
-"done": false,
-"roza": false,
-"url": null
-},
-{
-"date": "2026-11-29",
-"time": "21:00",
-"kind": "بوست",
-"title": "عطر الشعر مسك فانيلا 🤍",
 "nets": [
 "إنستغرام"
 ],
