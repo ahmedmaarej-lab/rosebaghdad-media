@@ -1,94 +1,6 @@
 {
-"checked": "2026-11-21 21:18",
+"checked": "2026-11-22 03:18",
 "rows": [
-{
-"date": "2026-11-20",
-"time": "13:00",
-"kind": "بوست",
-"title": "OUD MALAKI ✨",
-"nets": [
-"ثريدز"
-],
-"done": true,
-"roza": false,
-"url": "https://www.threads.com/@rosebaghdad22/post/Df9ZN_TCOU6"
-},
-{
-"date": "2026-11-20",
-"time": "17:00",
-"kind": "بوست",
-"title": "تدور على عطر يرافق اختياراتك؟",
-"nets": [
-"فيسبوك"
-],
-"done": true,
-"roza": false,
-"url": "https://facebook.com/122173366442726464/posts/122176163066726464"
-},
-{
-"date": "2026-11-20",
-"time": "18:00",
-"kind": "ستوري",
-"title": "(ستوري بدون نص)",
-"nets": [
-"فيسبوك",
-"إنستغرام"
-],
-"done": true,
-"roza": true,
-"url": "https://www.instagram.com/stories/rosebaghdad22/4034643346836084598"
-},
-{
-"date": "2026-11-20",
-"time": "20:00",
-"kind": "ستوري",
-"title": "(ستوري بدون نص)",
-"nets": [
-"فيسبوك",
-"إنستغرام"
-],
-"done": true,
-"roza": false,
-"url": "https://www.instagram.com/stories/rosebaghdad22/4034706712830220716"
-},
-{
-"date": "2026-11-20",
-"time": "21:00",
-"kind": "بوست",
-"title": "تدور على عطر يرافق اختياراتك؟",
-"nets": [
-"إنستغرام"
-],
-"done": true,
-"roza": false,
-"url": "https://www.instagram.com/p/Df-Qf1YoLBI/"
-},
-{
-"date": "2026-11-20",
-"time": "21:00",
-"kind": "ريل",
-"title": "لا تفركين معصمچ بعد العطر! 🙅‍♀️",
-"nets": [
-"فيسبوك",
-"إنستغرام"
-],
-"done": true,
-"roza": true,
-"url": "https://www.instagram.com/reel/Df-QwU1jDVP/"
-},
-{
-"date": "2026-11-20",
-"time": "21:05",
-"kind": "ستوري",
-"title": "(ستوري بدون نص)",
-"nets": [
-"فيسبوك",
-"إنستغرام"
-],
-"done": true,
-"roza": true,
-"url": "https://www.instagram.com/stories/rosebaghdad22/4034737349099471377"
-},
 {
 "date": "2026-11-21",
 "time": "13:00",
@@ -197,7 +109,7 @@
 "nets": [
 "إنستغرام"
 ],
-"done": false,
+"done": true,
 "roza": false,
 "url": null
 },
@@ -797,6 +709,44 @@
 "time": "21:00",
 "kind": "بوست",
 "title": "٤ أخطاء تخلي عطرك يروح بسرعة",
+"nets": [
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-29",
+"time": "17:00",
+"kind": "بوست",
+"title": "عطر الشعر مسك فانيلا",
+"nets": [
+"فيسبوك",
+"ثريدز"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-29",
+"time": "20:00",
+"kind": "ستوري",
+"title": "(ستوري بدون نص)",
+"nets": [
+"فيسبوك",
+"إنستغرام"
+],
+"done": false,
+"roza": false,
+"url": null
+},
+{
+"date": "2026-11-29",
+"time": "21:00",
+"kind": "بوست",
+"title": "عطر الشعر مسك فانيلا 🤍",
 "nets": [
 "إنستغرام"
 ],
