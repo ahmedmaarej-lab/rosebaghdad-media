@@ -10,6 +10,9 @@ html,body{margin:0;background:#faf7f0}
 .logo{width:300px;position:relative}
 .hook{font-family:CA;font-weight:800;color:#3d3627;direction:rtl;text-align:center;padding:0 110px;line-height:1.45;position:relative}
 .bt{mix-blend-mode:multiply;position:relative}
+.stage{position:relative;display:flex;justify-content:center}
+.glow{position:absolute;left:50%;top:50%;width:130%;height:110%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(201,173,116,.30),rgba(201,173,116,0) 72%)}
+.shd{position:absolute;left:50%;bottom:6%;width:62%;height:7%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(61,54,39,.34),rgba(61,54,39,0))}
 .name{font-family:CG,CA;font-weight:600;color:#2e281d;letter-spacing:14px;padding-left:14px;position:relative;white-space:nowrap}
 .dv{display:flex;align-items:center;gap:12px;color:#b39d72;font-size:16px;position:relative}
 .dv i{display:block;width:90px;height:1px;background:#c9b88f}
@@ -26,15 +29,19 @@ const g=(k,d)=>q.get(k)??d, hook=g('hook',''), name=g('name','GOOD GIRL');
 const nameSize=Math.min(S?92:80, Math.floor((S?800:780)/(name.length*0.62+ (name.length*14/ (S?92:80)))));
 r.style.height=(S?1920:1350)+'px';
 // story: content kept between y=270 and y=1600 (clear of Instagram's top bar and reply box)
-r.innerHTML=`<img id="fr" src="frame_${S?'story':'feed'}.png">
-<img class="logo" src="../reel/horizontal_gold.png" style="margin-top:${S?235:92}px;width:${S?340:300}px">
-${hook?`<div class="hook" style="font-size:${S?56:44}px;margin-top:${S?44:22}px">${hook}</div>`:''}
-<img class="bt" src="../reel/bottles/${g('k','good-girl')}.jpg" style="height:${g('h',S?(hook?560:680):(hook?520:590))}px;margin-top:${S?30:(hook?10:26)}px">
-<div class="name" style="letter-spacing:${g('ls',14)}px;padding-left:${g('ls',14)}px;font-size:${nameSize}px;margin-top:${S?26:16}px">${name}</div>
+const T=g('lay','')==='top';
+const fr=`<img id="fr" src="frame_${S?'story':'feed'}.png">`;
+const logo=`<img class="logo" src="../reel/horizontal_gold.png" style="margin-top:${S?235:92}px;width:${S?340:300}px">`;
+const hk=hook?`<div class="hook" style="font-size:${T?(S?44:36):(S?56:44)}px;${T?'font-weight:600;color:#9a7a3c;':''}margin-top:${S?44:22}px">${hook}</div>`:'';
+const ih=g('h',S?(hook?560:680):(hook?520:590));
+const img=T?`<div class="stage" style="margin-top:${S?30:6}px;height:${ih}px"><div class="glow"></div><img class="bt" src="../reel/bottles/${g('k','good-girl')}.jpg" style="height:${ih}px"><div class="shd"></div></div>`
+ :`<img class="bt" src="../reel/bottles/${g('k','good-girl')}.jpg" style="height:${ih}px;margin-top:${S?30:(hook?10:26)}px">`;
+const nm=`<div class="name" style="letter-spacing:${g('ls',14)}px;padding-left:${g('ls',14)}px;font-size:${T?(S?120:104):nameSize}px;${T?'line-height:1.25;':''}margin-top:${T?(S?10:0):(S?26:16)}px">${name}</div>
 <div class="dv" style="margin-top:${S?14:8}px"><i></i>◆<i></i></div>
-<div class="ml" style="font-size:${S?32:28}px;margin-top:${S?16:10}px">${g('ml','PARFUM · 100 ML')}</div>
-<div class="ft" style="font-size:${S?32:27}px;margin-top:${S?34:26}px">${g('ft','تركيز ٣٠٪<b>◆</b>زيوت سويسرية<b>◆</b>صناعة إماراتية')}</div>
-<div class="pill" style="font-size:${S?38:32}px;padding:${S?'12px 50px 16px':'10px 44px 14px'};margin-top:${S?30:24}px">${g('pill','٢٥ ألف دينار<b>◆</b>توصيل مجاني')}</div>
+<div class="ml" style="font-size:${S?32:28}px;margin-top:${S?16:10}px">${g('ml','PARFUM · 100 ML')}</div>`;
+const tail=`<div class="ft" style="font-size:${S?32:27}px;margin-top:${T?(S?26:8):(S?34:26)}px">${g('ft','تركيز ٣٠٪<b>◆</b>زيوت سويسرية<b>◆</b>صناعة إماراتية')}</div>
+<div class="pill" style="font-size:${S?38:32}px;padding:${S?'12px 50px 16px':'10px 44px 14px'};margin-top:${S?30:(T?16:24)}px">${g('pill','٢٥ ألف دينار<b>◆</b>توصيل مجاني')}</div>
 ${S?`<div class="cta" style="font-size:36px;padding:8px 60px 14px;margin-top:28px">راسلنا لتثبيت طلبك</div>`:''}
 <div class="url" style="font-size:${S?28:26}px;margin-top:${S?26:0}px;${S?'':'position:absolute;left:0;right:0;bottom:84px'}">www.rosebaghdad.iq</div>`;
+r.innerHTML=fr+logo+hk+(T?nm+img:img+nm)+tail;
 </script></body></html>
