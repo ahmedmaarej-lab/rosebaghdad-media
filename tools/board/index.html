@@ -64,20 +64,21 @@ ul.f{margin:0;padding:0 18px 0 0;display:flex;flex-direction:column;gap:6px}
 .th{display:flex;flex-direction:column;gap:4px;margin-top:8px}.tm2{font-size:13px;border-radius:8px;padding:4px 10px;white-space:pre-line;word-break:break-word}.tm2.me{background:var(--pink)}.tm2.cl{background:var(--soft);border:1px solid var(--line)}.tm2 .chip{margin-right:8px}
 </style>
 <div class="wrap" id="app">
-<header class="row"><div class="sp"><h1>لوحة روز بغداد</h1><div class="sub" id="who">…</div></div><span class="pill" id="roleTag"></span><button id="refresh" class="pri">تحديث</button></header>
+<header><div class="row"><h1 class="sp">لوحة روز بغداد</h1><span class="pill" id="roleTag"></span></div><div class="row" style="margin-top:6px"><div class="sub sp" id="who" style="min-width:0">…</div><button id="themeB" class="sm" aria-label="تبديل اللون"></button><button id="refresh" class="sm pri">تحديث</button></div></header>
 <div id="bar"><nav id="nav" aria-label="أقسام اللوحة"></nav><div id="more"></div></div>
 <dialog id="dlg"><div class="dlg"><header><h2 class="sp" id="dlgT" style="margin:0"></h2><button class="sm pri" id="dlgX">إغلاق</button></header><div class="bd" id="dlgB"></div></div></dialog>
 
 <section class="sec on" id="s-home">
 <div class="grid" id="kpis"></div>
+<div class="card"><h2>تنظيم العمل</h2><div class="sub">كل قسم لحاله وما يتخربط ويا الثاني. اضغط "افتح" حتى تشوف تفاصيله.</div><div id="org"></div></div>
 <div class="card" id="dayRep"><div class="row"><div class="sp"><h2 id="dayRepT" style="margin:0">تقرير اليوم</h2><div class="sub" id="dayRepS"></div></div><button class="pri" id="dayRepB">اقرأ التقرير</button></div></div>
-<div class="card"><div class="row"><h2 class="sp">منشورات اليوم</h2><button class="sm" id="goWc">جدول النشر كامل</button></div><div id="homeWc"></div></div>
-<div class="card" id="homeRoad"><div class="row"><h2 class="sp" id="homeRoadT">خطة 60 يوم</h2><button class="sm" id="goRoad">الخطة كاملة</button></div><div id="homeRoadL"></div></div>
+<div class="card" id="homeWcBox"><div class="row"><h2 class="sp">منشورات اليوم</h2><button class="sm" id="goWc">جدول النشر كامل</button></div><div id="homeWc"></div></div>
+<div class="card" id="homeRoad" hidden><div class="row"><h2 class="sp" id="homeRoadT">خطة 60 يوم</h2><button class="sm" id="goRoad">الخطة كاملة</button></div><div id="homeRoadL"></div></div>
 <div class="card"><h2>خطة ميتا لهذا الأسبوع</h2><div class="sub">نفس أهداف وعدّ خطة ميتا: الأسبوع من الأحد للسبت، وريلات فيسبوك ما تنحسب ضمن منشورات فيسبوك. ينحسب تلقائي من جدول النشر.</div><div class="prog" id="homeProg" style="margin-top:10px"></div><div class="sub" id="homeWk" style="margin-top:8px"></div></div>
-<div class="card"><h2>خطة الإصلاح</h2><div id="homeFix"></div></div>
+<div class="card"><h2>خطة الإصلاح</h2><div class="sub">مشاكل الصفحة اللي نشتغل على حلها. اضغط "التفاصيل" حتى تشوف السبب والحل.</div><div id="homeFix"></div></div>
 <div class="card"><h2>آخر التحديثات</h2><ul class="f" id="upd"></ul></div>
 <div class="card"><div class="row"><h2 class="sp">غير منجز</h2><button class="sm" id="goTodo">الكل</button></div><div id="homeTodo"></div></div>
-<div class="card"><h2>مهامي</h2><div id="myTasks"></div></div>
+<div class="card" id="myTasksBox"><h2>مهامي</h2><div id="myTasks"></div></div>
 </section>
 
 <section class="sec" id="s-wc">
@@ -106,7 +107,7 @@ ul.f{margin:0;padding:0 18px 0 0;display:flex;flex-direction:column;gap:6px}
 <section class="sec" id="s-plan">
 <div class="card"><div class="row"><div class="sp"><h2 id="wkTitle"></h2><div class="sub">الأسبوع من الأحد للسبت ويتجدد تلقائياً مثل خطة ميتا. الأهداف من خطة ميتا، وكل خانة تحدد بيها العنوان والمسؤول والحالة.</div></div><button id="wkPrev">السابق</button><button id="wkNow">هذا الأسبوع</button><button id="wkNext">التالي</button></div></div>
 <div class="card"><div class="row"><h2 class="sp">التقدم</h2><button class="sm" id="tgtBtn">تعديل الأهداف</button></div><div class="prog" id="planProg"></div><div id="tgtBox"></div>
-<div class="note" style="margin-top:10px">تليغرام (٧ يومياً) وثريدز (٤ يومياً، نفس منشور تليغرام) تنشر تلقائياً ومسجّلة بتبويب تليغرام. أفضل الأوقات: فيسبوك ١٠ و١٧، ستوري ١٢ و٢٠، إنستغرام ٢١، تيك توك ١٨.</div></div>
+<div class="note" style="margin-top:10px">تليغرام وثريدز كل واحد إله تبويب لحاله وما ينحسبن ضمن هذي الخطة. أفضل الأوقات: فيسبوك ١٠ و١٧، ستوري ١٢ و٢٠، إنستغرام ٢١، تيك توك ١٨.</div></div>
 <div class="days" id="days"></div>
 <div class="card"><h2>الشهر الأول مقابل الثاني</h2><div class="tw"><table id="mc"></table></div></div>
 </section>
@@ -121,8 +122,13 @@ ul.f{margin:0;padding:0 18px 0 0;display:flex;flex-direction:column;gap:6px}
 <div class="card"><h2>شلون كل منصة تاخذ حصتها</h2><div class="pc" id="platPlan"></div></div>
 </section>
 
+<section class="sec" id="s-th">
+<div class="card"><h2>ثريدز</h2><div class="sub">@rosebaghdad22 · منشور واحد باليوم، مجدول بميتريكول وينزل وحده · هذا القسم للثريدز بس، وما إله علاقة بجدول فيسبوك وإنستغرام ولا بالتليغرام</div><div class="grid" style="margin-top:12px" id="thK"></div></div>
+<div class="card"><h2>منشورات ثريدز</h2><div class="tw"><table id="thT"></table></div><div class="sub" id="thE"></div></div>
+</section>
+
 <section class="sec" id="s-tg">
-<div class="card"><div class="row"><div class="sp"><h2>النشر التلقائي: تليغرام وثريدز</h2><div class="sub">@rosebaghdad_iq كل ساعتين من 10 الصبح لـ10 بالليل · مكتوبة أسبوع مقدماً وتنزل وحدها من الطابور المجاني · الجدول يبين اللي نزل ومنشورات الـ24 ساعة الجاية</div></div><button id="tgPause" hidden></button></div>
+<div class="card"><div class="row"><div class="sp"><h2>تليغرام</h2><div class="sub">@rosebaghdad_iq كل ساعتين من 10 الصبح لـ10 بالليل · مكتوبة أسبوع مقدماً وتنزل وحدها من الطابور المجاني · الجدول يبين اللي نزل ومنشورات الـ24 ساعة الجاية</div></div><button id="tgPause" hidden></button></div>
 <div class="grid" style="margin-top:12px" id="tgK"></div></div>
 <div class="card"><h2>سجل المنشورات</h2><div class="sub">زر "نسخ" ينسخ النص حتى تنشره بقناة واتساب أو سناب.</div><div class="tw"><table id="tgT"></table></div><div class="sub" id="tgE"></div></div>
 </section>
@@ -215,7 +221,13 @@ ul.f{margin:0;padding:0 18px 0 0;display:flex;flex-direction:column;gap:6px}
 </div>
 
 <script>
-document.documentElement.setAttribute('dir','rtl');document.documentElement.setAttribute('lang','ar');
+document.documentElement.setAttribute('dir','rtl');
+(function(){var R=document.documentElement,b=document.getElementById('themeB'),t=null;try{t=localStorage.getItem('rb_theme')}catch(e){}
+ function cur(){var a=R.getAttribute('data-theme');if(a)return a;try{return matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch(e){return'light'}}
+ function paint(){b.textContent=cur()==='dark'?'☀ أبيض':'☾ أسود'}
+ if(t==='dark'||t==='light')R.setAttribute('data-theme',t);paint();
+ b.onclick=function(){var n=cur()==='dark'?'light':'dark';R.setAttribute('data-theme',n);try{localStorage.setItem('rb_theme',n)}catch(e){}paint()}})();
+document.documentElement.setAttribute('lang','ar');
 var $=function(i){return document.getElementById(i)};
 function E(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function clear(e){e.textContent='';return e}
@@ -229,7 +241,7 @@ var SNAP={
  st:['الجمهور عراقي تقريباً كله.','إنستغرام 14.8 ألف وأغلبه نساء 25–44، وهن زبونات العطور.','إعلانات الرسائل تجيب محادثات بحوالي دولار.','تيك توك يعتمد على "لك"، فأي فيديو جيد ينتشر.'],
  wk:['الوصول العالي كان من الإعلان ونزل لما وقف الصرف.','التفاعل الطبيعي قليل جداً والمتابعين ثابتين.','ما كان أكو جدول نشر ثابت.','الموقع وكوكل بزنس بدون بيانات (يحتاجون ربط وتوثيق).']
 };
-var UPD=['كل عطور 100 مل بـ25 ألف دينار، وعرض البخور هدية مع الطلب انضاف للإعلان والمنشورات.','إنستغرام وفيسبوك صاروا يتجدولون تلقائياً (GitHub + ميتريكول).','إعلان رسائل Good Girl شغّال: نساء 25–44، بغداد والبصرة، 5$ باليوم لحد 20 تشرين الثاني.','تليغرام ينشر تلقائياً كل ساعتين، وثريدز انضاف 3 مرات يومياً.','الخطة الأسبوعية صارت يوم بيوم لكل منصة، ويا مسؤول وحالة لكل منشور.','تبويب المهام: توزّع شغل على الفريق.','نسخة احتياطية أسبوعية كل جمعة 8:17 بالليل.'];
+var UPD=['23 تشرين الثاني: اللوحة انقسمت 4 أقسام، كل واحد لحاله: جدول النشر (فيسبوك وإنستغرام)، ثريدز، تليغرام، والمهام.','22 تشرين الثاني: جدول النشر انفرّغ بأمرك. ماكو شي يتجدول على فيسبوك وإنستغرام وتيك توك إلا بعد موافقتك على خطة الأسبوع.','أهداف ميتا لأسبوع 22–28: فيسبوك 24 منشور و36 ستوري، إنستغرام 21 منشور و27 ستوري، وإعلان واحد جديد.','الثريدز والتليغرام مستمرات بالنشر التلقائي.','اللوحة تتحدث 3 مرات باليوم: 9 الصبح، 3 العصر، 9 بالليل، ويوصلك إشعار بعد كل تحديث.','الموقع: التعديلات جاهزة (النصوص، الخط، وصور القناني الحقيقية) وتنتظر كلمة "ارفع".','ماكو إعلان شغال هسه. إعلان Good Girl خلصت مدته يوم 20 تشرين الثاني.'];
 var TODO=['ردّوا على محادثات الإعلان خلال 5 دقايق.','انشر ريل وستوري Good Girl مع موسيقى هادئة من مكتبة إنستغرام.','اربط GitHub ومستودع rosebaghdad-media العام، حتى أنشر على إنستغرام وفيسبوك وتيك توك بنفسي.','قرار العرض أو الهدية مع الطلب.','وثّق ملف روز بغداد بكوكل بزنس.'];
 var PROD=['COCO MADAM','HOME DIOR','GOOD GIRL','INVICTO','MUSK BAGHDAD','ROSE VIP','CI ARMAN','DIVEN OUD','MY WAY','THMIN','OLYMPI','REBERTO GAFALLI','HORMUZ','OXYGEN','OUD BOUQIT','ROYAL NEGHT','SOVAG','LYBRE','WARD TAIF','MUSKEMIRATES','Y MAN','VOLVET OUD','OUD MALAKI','SO OUD','AMBER NIGHT','DILAN WOMEN','BLACK SAFFRAN','AVANTOS','BLUE SHANAL','LAMOR','خط ٢ – 31','خط ٢ – 32','خط ٢ – 33 (النص يحتاج تصحيح)','خط ٢ – 34 (النص يحتاج تصحيح)','خط ٢ – 35 (بدون اسم)','خط ٢ – 36 (بدون اسم)','خط ٢ – 37 (بدون اسم)','خط ٢ – 38','خط ٢ – 39','خط ٢ – 40','خط ٢ – 41 (النص يحتاج تصحيح)'];
 var PSTAT=['لم يبدأ','قيد التصميم','جاهز','مجدول','منشور'];
@@ -240,7 +252,7 @@ var CAPS=[['notes','يكتب ملاحظات وتعديلات على المنشو
 var PRESET={content:['notes','tasks','files','prod','plan','seeStrategy'],designer:['notes','files','prod'],sales:['orders','seeOrders'],analyst:[]};
 var TABCAP={ord:['seeOrders','orders'],road:['seeStrategy'],str:['seeStrategy'],comp:['seeStrategy'],an:['seeStrategy'],aud:['seeStrategy'],ig:['seeStrategy'],src:['seeStrategy'],health:['seeStrategy'],plat:['seeStrategy']};
 function tabOk(k){if(S.admin)return true;if(k==='team')return false;var c=TABCAP[k];if(!c)return true;return c.some(function(x){return can(x)})}
-var TABS=[['home','الرئيسية'],['wc','جدول النشر'],['chat','دردشة ويا Claude'],['road','خطة 60 يوم'],['todo','غير منجز'],['ord','الطلبات'],['plan','الخطة الأسبوعية'],['tasks','المهام'],['plat','المنصات'],['tg','تليغرام وثريدز'],['ig','أداء إنستغرام'],['comp','المنافسين والأفكار'],['str','الاستراتيجية'],['health','فحص الأدوات'],['src','المصادر'],['an','التحليل'],['aud','الوصول والجمهور'],['prod','المنتجات'],['files','الملفات'],['team','الفريق']];
+var TABS=[['home','الرئيسية'],['wc','جدول النشر'],['chat','دردشة ويا Claude'],['road','خطة 60 يوم'],['todo','غير منجز'],['ord','الطلبات'],['plan','الخطة الأسبوعية'],['tasks','المهام'],['plat','المنصات'],['th','ثريدز'],['tg','تليغرام'],['ig','أداء إنستغرام'],['comp','المنافسين والأفكار'],['str','الاستراتيجية'],['health','فحص الأدوات'],['src','المصادر'],['an','التحليل'],['aud','الوصول والجمهور'],['prod','المنتجات'],['files','الملفات'],['team','الفريق']];
 var DAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
 
 var S={health:{},orders:{},fixes:{},snap:null,todo:{},db:null,user:null,assets:null,uid:null,me:null,admin:false,perms:[],team:{},plans:{},slots:{},tasks:{},prods:{},files:[],tg:[],ctl:{},st:{},wk:0,tab:'home',synced:null};
@@ -252,7 +264,7 @@ function fmt(d){return d.getUTCDate()+'/'+(d.getUTCMonth()+1)}
 function wkKey(w){return 'w'+dayDate(w,0).toISOString().slice(0,10)}
 function can(p){return S.admin||S.perms.indexOf(p)>=0}
 var DEF={fb:14,igp:10,igs:9,fbs:18,tt:7,ad:1};
-function targets(w){var p=S.plans[wkKey(w)]||{};return Object.assign({},DEF,p.t||{})}
+function targets(w){var p=S.plans[wkKey(w)]||{},m=S.plans.meta||{};return Object.assign({},DEF,m.t||{},p.t||{})}
 
 /* خانات الأسبوع: توزيع أهداف ميتا على 7 أيام */
 function slotsFor(w){var t=targets(w),out=[];
@@ -274,7 +286,7 @@ function nameOf(id){if(!id)return'—';if(id===S.uid||id==='me')return(S.me&&S.m
 function note(t){$('who').textContent=t;setTimeout(stamp,3000)}
 function stamp(){$('who').textContent='بيانات التحليل: '+SNAP.asof+(S.synced?' · آخر مزامنة '+S.synced:'')}
 
-var MAIN=['home','wc','chat','todo'];S.hist=[];S.more=false;
+var MAIN=['home','wc','th','tg','todo','chat'];S.hist=[];S.more=false;
 function go(t,keep){if(t===S.tab){S.more=false;show();return}if(!keep)S.hist.push(S.tab);if(S.hist.length>20)S.hist.shift();S.tab=t;S.more=false;try{localStorage.setItem('rb_tab',t)}catch(e){}show();try{window.scrollTo(0,0)}catch(e){}}
 function tabName(k){var r='';TABS.forEach(function(t){if(t[0]===k)r=t[1]});return r}
 function buildNav(){var n=clear($('nav'));if(S.hist.length){var bk=E('button','sm','→ رجوع');bk.setAttribute('aria-label','رجوع للصفحة السابقة');bk.onclick=function(){var t=S.hist.pop();go(t,true)};n.appendChild(bk)}
@@ -298,15 +310,15 @@ function render(){
  var w=wkIdx(),pr=progress(w),done=0,all=0;Object.keys(pr).forEach(function(p){done+=pr[p].done;all+=pr[p].all});
  var open=Object.keys(S.tasks).filter(function(k){return !S.tasks[k].done}).length;
  var sn=S.snap||{};var N=function(v,d){return v==null||v===''?d:Number(v).toLocaleString('en')};
- var ads=can('seeAds');$('dayRep').style.display=ads&&sn.notes&&sn.notes.length?'':'none';$('dayRepT').textContent='تقرير اليوم'+(sn.asof?' · '+sn.asof:'');$('dayRepS').textContent=sn.notes&&sn.notes.length?(sn.notes.length+' نقاط · اضغط حتى تقراه'):'';
+ var ads=can('seeAds');$('dayRep').style.display='none';$('dayRepT').textContent='تقرير اليوم'+(sn.asof?' · '+sn.asof:'');$('dayRepS').textContent=sn.notes&&sn.notes.length?(sn.notes.length+' نقاط · اضغط حتى تقراه'):'';
  if(sn.asof)SNAP.asof=sn.asof;
  var tgd=tgToday();
- kpi($('kpis'),[['منشورات الأسبوع (نزل / المطلوب)',done+' / '+all],['تليغرام اليوم (نزل / المجدول)',tgd[0]+' / '+tgd[1]],].concat(ads?[['صرف الإعلان اليوم',sn.ad_today!=null?('$'+Number(sn.ad_today).toFixed(2)):'—'],['صرف الإعلان الكلي',sn.ad_spend!=null?('$'+Number(sn.ad_spend).toFixed(2)):'—'],['محادثات الإعلان',N(sn.ad_convs,'—')],['كلفة المحادثة',sn.ad_cpc!=null?('$'+Number(sn.ad_cpc).toFixed(2)):'—']]:[]).concat([['متابعو إنستغرام',N(sn.ig_followers,'14,790')],['متابعو فيسبوك',N(sn.fb_followers,'3,770')],['مهام مفتوحة',open]]));
- progBox($('homeProg'),w);$('homeWk').textContent='أسبوع '+fmt(dayDate(w,0))+' – '+fmt(dayDate(w,6));
+ kpi($('kpis'),[['منشورات هذا الأسبوع (نزل / هدف ميتا)',done+' / '+all],['تليغرام اليوم (نزل / مجدول اليوم)',tgd[0]+' / '+tgd[1]],].concat(ads?[['صرف الإعلان اليوم',sn.ad_today!=null?('$'+Number(sn.ad_today).toFixed(2)):'—'],['صرف الإعلان الكلي',sn.ad_spend!=null?('$'+Number(sn.ad_spend).toFixed(2)):'—'],['محادثات الإعلان',N(sn.ad_convs,'—')],['كلفة المحادثة',sn.ad_cpc!=null?('$'+Number(sn.ad_cpc).toFixed(2)):'—']]:[]).concat([['متابعو إنستغرام',N(sn.ig_followers,'14,790')],['متابعو فيسبوك',N(sn.fb_followers,'3,770')],['مهام مفتوحة',open]]));
+ progBox($('homeProg'),w);$('homeWk').textContent='أسبوع ميتا '+fmt(dayDate(w,0))+' – '+fmt(dayDate(w,6))+((S.plans.meta&&S.plans.meta.asof)?' · أرقام ميتا بتاريخ '+S.plans.meta.asof:'');
  list('upd',UPD);renderTodo();
  var mt=clear($('myTasks'));var mine=Object.keys(S.tasks).map(function(k){return Object.assign({k:k},S.tasks[k])}).filter(function(t){return !t.done&&(t.who===S.uid||(S.admin&&t.who==='me'))});
- if(!mine.length)mt.appendChild(E('div','sub','ما عندك مهام مفتوحة.'));mine.forEach(function(t){var r=E('div','row');r.appendChild(E('span','sp',t.title));if(t.due)r.appendChild(E('span','chip n',t.due));mt.appendChild(r)});
- renderIG();renderPlan();renderTasks();renderPlat();renderTg();renderStr();renderRoad();renderWc();renderChat();renderStatic();renderProd();renderFiles();renderTeam();
+ $('myTasksBox').style.display=mine.length?'':'none';mine.forEach(function(t){var r=E('div','row');r.appendChild(E('span','sp',t.title));if(t.due)r.appendChild(E('span','chip n',t.due));mt.appendChild(r)});
+ renderIG();renderPlan();setTimeout(function(){var bx=$('homeWcBox');if(bx)bx.style.display=$('homeWc').querySelector('.wc')?'':'none'},0);renderTasks();renderPlat();renderTg();renderTh();renderOrg();renderStr();renderRoad();renderWc();renderChat();renderStatic();renderProd();renderFiles();renderTeam();
 }
 
 var PRI={1:['مهم','bad'],2:['عادي',''],3:['لاحقاً','sub']};
@@ -315,6 +327,7 @@ function todoRow(t,ed){var r=E('div','row');r.style.padding='6px 0';r.style.bord
  var tx=E('span','sp'+(t.done?' sub':''),t.text);tx.style.minWidth='60%';if(t.done)tx.style.textDecoration='line-through';r.appendChild(tx);var p=PRI[t.p|0]||PRI[2];r.appendChild(E('span','chip '+p[1],p[0]));if(t.who)r.appendChild(E('span','chip',t.who));
  if(t.go){var gb=E('button','sm pri','افتح '+tabName(t.go));gb.onclick=function(){go(t.go)};r.appendChild(gb)}
  if(t.how){var hb=E('button','sm',S.howOpen===t.k?'إخفاء الخطوات':'شلون أسويها؟');hb.onclick=function(){S.howOpen=S.howOpen===t.k?null:t.k;render()};r.appendChild(hb)}
+ if(!t.done&&!t.go&&!t.how){var ab=E('button','sm','اسأل Claude');ab.onclick=function(){go('chat');$('chT').value='بخصوص: '+(t.text||'')+'\n';try{$('chT').focus()}catch(e){}};r.appendChild(ab)}
  if(ed){var x=E('button','sm','حذف');x.onclick=function(){delete S.todo[t.k];render();if(S.db)S.db.doc('todo/'+t.k).delete().catch(function(){})};r.appendChild(x)}
  if(t.how&&S.howOpen===t.k)r.appendChild(E('div','how',t.how));return r}
 function renderTodo(){var ed=S.admin||can('tasks');$('tdAdd').style.display=ed?'':'none';var all=todoArr();var show=$('tdShowDone').checked;
@@ -353,7 +366,7 @@ function renderPlat(){
   ['فيسبوك','مربوط ✓','نشر مجدول (ميتريكول) + تحليلات + إعلانات','—'],
   ['إنستغرام','مربوط ✓','نشر مجدول (بوست، ستوري، كاروسيل، ريل) + تحليلات','—'],
   ['تليغرام','مربوط ✓','7 منشورات يومياً من الطابور المجاني (GitHub)، مكتوبة أسبوع مقدماً','كتابة أسبوع جديد كل خميس'],
-  ['ثريدز','متوقف مؤقتاً','—','تلصق THREADS_TOKEN بإعدادات GitHub ويرجع ينشر'],
+  ['ثريدز','مربوط ✓','منشور واحد يومياً مجدول (ميتريكول)','—'],
   ['تيك توك','مربوط ✓','نشر الريلز مجدول (ميتريكول) + قراءة الأرقام','ريلات روزة حتى يمتلي الجدول'],
   ['سناب شات','إعلانات فقط','—','النشر العادي يدوي (ما كو ربط رسمي)'],
   ['واتساب','غير مربوط','—','قناة واتساب يدوي: انسخ من تبويب تليغرام'],
@@ -363,7 +376,7 @@ function renderPlat(){
   ['إنستغرام','الأساس للبيع (نساء 25–44)','10 منشورات + 10 ستوري بالأسبوع، ريلز 3–4 بالأسبوع، الستوري بيه ملصق "رسالة"'],
   ['فيسبوك','وصول واسع بالمحافظات','14 منشور بالأسبوع (نفس تصاميم إنستغرام)، إعلانات الرسائل'],
   ['تيك توك','انتشار مجاني من "لك"','نفس الريلز يومياً الساعة 6، أول ثانيتين هي كلشي'],
-  ['ثريدز','حضور يومي نصي','3 منشورات نصية تلقائياً (معلومة، قصة، سؤال)'],
+  ['ثريدز','حضور يومي نصي','منشور واحد يومياً مجدول'],
   ['تليغرام','مجتمع الزبائن الأوفياء','7 منشورات يومياً تلقائياً + عروض حصرية'],
   ['واتساب','الزبائن الحاليين','حالة يومية بالستوري + قناة بمنشور واحد يومياً منسوخ من تليغرام'],
   ['سناب شات','جمهور أصغر عمراً','ستوري يومي بنفس الريل، وإعلان صغير لاحقاً إذا نجح ميتا']
@@ -377,8 +390,20 @@ function renderTg(){var paused=!!S.ctl.paused;
  kpi($('tgK'),[['الطريق','GitHub المجاني'],['نزل',posted],['مجدول جاي',soon],['مشاكل قائمة',bad],['آخر تشغيل',S.st.lastRun?fmtT(S.st.lastRun,{hour:'2-digit',minute:'2-digit',day:'numeric',month:'numeric'}):'—']]);
  
  var rows=S.tg.slice().sort(function(a,b){return new Date(b.t||0)-new Date(a.t||0)}).filter(function(x){return tgSt(x)!=='مجدول'||new Date(x.t).getTime()<Date.now()+26*36e5}).slice(0,60).map(function(x){var b=E('button','sm','نسخ');b.onclick=function(){var txt=(x.text||'').replace(/<[^>]+>/g,'');try{navigator.clipboard.writeText(txt).then(function(){b.textContent='تم'},function(){b.textContent='ما انسخ'})}catch(e){b.textContent='ما انسخ'}};
-  return[fmtT(x.t,{day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit'}),x.kind||'',x.title||'',tgSt(x)+(x.th?' · ثريدز: '+x.th:''),x.note||'',b]});
+  return[fmtT(x.t,{day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit'}),x.kind||'',x.title||'',tgSt(x),x.note||'',b]});
  table('tgT',['الوقت','النوع','العنوان','الحالة','ملاحظة',''],rows);$('tgE').textContent=rows.length?'':'أول نشر يظهر هنا بعد ما ينزل.'}
+function thArr(){var d=S.plans.threads||{};return (d.items||[]).slice().sort(function(a,b){return new Date(a.t||0)-new Date(b.t||0)})}
+function thSt(x){var s=x.st|0;if(s===3)return'فشل';if(s===2)return'نزل';if(s===1)return new Date(x.t).getTime()<Date.now()-3*6e4?'نزل (حسب الموعد)':'مجدول';return'مسودة'}
+function renderTh(){var a=thArr(),d=S.plans.threads||{};var dn=a.filter(function(x){return /^نزل/.test(thSt(x))}).length,sc=a.filter(function(x){return thSt(x)==='مجدول'}).length,bad=a.filter(function(x){return thSt(x)==='فشل'}).length;
+ kpi($('thK'),[['نزل',dn],['مجدول جاي',sc],['فشل',bad],['آخر تحديث',d.asof||'—']]);
+ var rows=a.map(function(x){var l=E('span','','—');if(x.url){l=E('a','lk','افتح');l.href=x.url;l.target='_blank';l.rel='noopener'}return[fmtT(x.t,{weekday:'long',day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit'}),x.title||'',thSt(x),l]});
+ table('thT',['الوقت','المنشور','الحالة','الرابط'],rows);$('thE').textContent=rows.length?'':'ماكو منشورات ثريدز مسجلة بعد.'}
+function renderOrg(){var o=clear($('org'));var w=wkIdx(),wc=wcWeek(w).length,a=thArr(),thSc=a.filter(function(x){return thSt(x)==='مجدول'}).length,tgd=tgToday(),tgSoon=S.tg.filter(function(x){return tgSt(x)==='مجدول'}).length;
+ var td=Object.keys(S.todo).filter(function(k){return !S.todo[k].done}).length,tk=Object.keys(S.tasks).filter(function(k){return !S.tasks[k].done}).length;
+ [['wc','جدول النشر (فيسبوك وإنستغرام)',wc?(wc+' منشور موافق عليه هذا الأسبوع'):'فارغ: ينتظر محتوى الأسبوع منك',!wc],
+  ['th','ثريدز',a.length?('مستمر · '+thSc+' مجدول جاي'):'ماكو بيانات بعد',false],
+  ['tg','تليغرام','اليوم نزل '+tgd[0]+' من '+tgd[1]+' · '+tgSoon+' مجدول جاي',false],
+  ['todo','المهام',(td+tk)?((td+tk)+' غير منجز'):'كلشي منجز',false]].forEach(function(x){var r=E('div','row');r.style.padding='8px 0';r.style.borderTop='1px solid var(--line)';var d=E('div','sp');d.appendChild(E('b','',x[1]));d.appendChild(E('div','sub'+(x[3]?' warn':''),x[2]));r.appendChild(d);var b=E('button','sm pri','افتح');b.onclick=function(){go(x[0])};r.appendChild(b);o.appendChild(r)})}
 $('tgPause').onclick=function(){var p=!S.ctl.paused;S.ctl={paused:p};render();if(S.db)S.db.doc('tg_ctl/state').set({paused:p}).catch(function(){})};
 
 function A(url,text){var a=E('a','lk',text||url.replace(/^https?:\/\//,''));a.href=url;a.target='_blank';a.rel='noopener';return a}
@@ -393,10 +418,10 @@ var CW=[['Chanel','instagram.com/chanel','46.2M (fragrancex، بدون تاري�
 var CA=[['Swiss Arabian (الإمارات)','بحث','تأكد','https://www.google.com/search?q=Swiss+Arabian+perfumes+official+instagram'],['الشعيرة (العراق)','بحث','تأكد','https://www.google.com/search?q=%D8%A7%D9%84%D8%B4%D8%B9%D9%8A%D8%B1%D8%A9+%D8%B9%D8%B7%D9%88%D8%B1+%D8%A7%D9%86%D8%B3%D8%AA%D8%BA%D8%B1%D8%A7%D9%85'],['مسالا (العراق)','بحث','تأكد','https://www.google.com/search?q=%D9%85%D8%B3%D8%A7%D9%84%D8%A7+%D8%B9%D8%B7%D9%88%D8%B1+%D8%A7%D9%86%D8%B3%D8%AA%D8%BA%D8%B1%D8%A7%D9%85']];
 var IDEAS=[['السبت','ريل','"أول ثانيتين": رشة على المعصم بكلوز أب + نص كبير "عطر يبقى 8 ساعات؟" قبل ما يكمل الفيديو','عطور البشرة','https://www.spate.nyc/blog/fragrance-trends-2026-on-google-tiktok-and-instagram'],['الأحد','كاروسيل','"شلون تطبّق عطرك": عطر + مسك + بخور، 5 شرائح خطوة بخطوة','نهاية العطر الواحد','https://www.marieclaire.com/beauty/fragrance/fragrance-trends-2026/'],['الاثنين','ريل','Good Girl: القهوة والكاكاو والتونكا، "العطر الحلو اللي يلبسه الشتاء"','جورماند راقي','https://www.spate.nyc/blog/fragrance-trends-2026-on-google-tiktok-and-instagram'],['الثلاثاء','صورة + سؤال','"عود للدوام لو بس للمناسبات؟" مع OUD MALAKI، والسؤال بالتعليقات','العود الممزوج','https://www.spate.nyc/blog/fragrance-trends-2026-on-google-tiktok-and-instagram'],['الأربعاء','ريل','عطر الشعر والسبلاش (موجودة بمنتجاتكم حسب البايو): "طبقة أولى قبل العطر"','عطر الشعر والجسم','https://www.spate.nyc/blog/fragrance-trends-2026-on-google-tiktok-and-instagram'],['الخميس','كاروسيل','"العطور الشرقية صارت ترند عالمي، وإحنا من بغداد": هوية وفخر، مع المسك والبخور','العطور الشرقية عالمياً','https://www.scmp.com/magazines/style/beauty/trends/article/3360073/middle-eastern-perfumes-are-trending-led-lattafa-and-mona-kattans-kayali'],['الجمعة','ستوري تصويت','"فانيلا لو عود؟" تصويت بالستوري، والنتيجة منشور يوم السبت','الفانيلا على تيك توك','https://www.scento.com/blog/tiktok-vanilla-perfumes-trend-decoded']];
 var SRC=[['مصدر الأرقام','Instagram Graph API عبر ميتريكول (app.metricool.com) وWindsor.ai، حساب @rosebaghdad22','https://www.instagram.com/rosebaghdad22/'],['ترند','Spate: Fragrance Trends 2026','https://www.spate.nyc/blog/fragrance-trends-2026-on-google-tiktok-and-instagram'],['ترند','Marie Claire: Fragrance trends 2026','https://www.marieclaire.com/beauty/fragrance/fragrance-trends-2026/'],['ترند','Scento: TikTok vanilla perfumes','https://www.scento.com/blog/tiktok-vanilla-perfumes-trend-decoded'],['ترند','SCMP: Middle Eastern perfumes trending','https://www.scmp.com/magazines/style/beauty/trends/article/3360073/middle-eastern-perfumes-are-trending-led-lattafa-and-mona-kattans-kayali'],['ترند','The Zoe Report: Winter 2026 fragrance trends','https://www.thezoereport.com/beauty/winter-2026-fragrance-trends'],['منافس','FragranceX: متابعين علامات العطور','https://www.fragrancex.com/fragrance-information/which-popular-fragrance-brands-have-the-most-followers-on-social-media.html']].concat(CW.concat(CA).map(function(c){return['منافس',c[0],c[3]]}));
-var FST={0:['مفتوحة','bad'],1:['نشتغل عليها','warn'],2:['انحلّت','ok']};
+var FST={0:['ما بدينا بيها','bad'],1:['Claude يشتغل عليها','warn'],2:['انحلّت','ok']};
 function renderFix(){var a=Object.keys(S.fixes).map(function(k){return Object.assign({k:k},S.fixes[k])}).sort(function(x,y){return (x.st|0)-(y.st|0)||((x.o|0)-(y.o|0))});
  table('fixT',['المشكلة','السبب','الإصلاح','نقيس بـ','الحالة'],a.map(function(x){var f=FST[x.st|0];return[x.p||'',x.c||'',x.f||'',x.m||'',E('span','chip '+f[1],f[0]+(x.v?' · '+x.v:''))]}));
- var h=clear($('homeFix'));a.filter(function(x){return (x.st|0)<2}).slice(0,4).forEach(function(x){var r=E('div','row');r.style.padding='4px 0';r.appendChild(E('span','sp',x.p));var f=FST[x.st|0];r.appendChild(E('span','chip '+f[1],f[0]));h.appendChild(r)});if(!a.length)h.appendChild(E('div','sub','—'))}
+ var h=clear($('homeFix'));a.filter(function(x){return (x.st|0)<2}).slice(0,4).forEach(function(x){var r=E('div','row');r.style.padding='4px 0';r.appendChild(E('span','sp',x.p));var f=FST[x.st|0];r.appendChild(E('span','chip '+f[1],f[0]));var db=E('button','sm','التفاصيل');db.onclick=function(){var bx=E('div');[['السبب',x.c],['الحل',x.f],['نقيس النجاح بـ',x.m],['الحالة',f[0]+(x.v?' · '+x.v:'')]].forEach(function(p){if(!p[1])return;bx.appendChild(E('h3','',p[0]));var d=E('p','',p[1]);d.style.margin='0 0 10px';bx.appendChild(d)});var ab=E('button','pri','اكتب لـClaude عن هاي المشكلة');ab.onclick=function(){$('dlgX').onclick();go('chat');$('chT').value='بخصوص مشكلة: '+(x.p||'')+'\n';try{$('chT').focus()}catch(e){}};bx.appendChild(ab);openDlg(x.p||'مشكلة',bx)};r.appendChild(db);h.appendChild(r)});if(!a.length)h.appendChild(E('div','sub','—'))}
 var GOV=['بغداد','البصرة','نينوى','أربيل','النجف','كربلاء','بابل','ديالى','الأنبار','ذي قار','ميسان','واسط','القادسية','المثنى','صلاح الدين','كركوك','دهوك','السليمانية','حلبجة','خارج العراق'];
 var SRCS=['إعلان (رسائل)','إنستغرام','فيسبوك','تيك توك','تليغرام','واتساب','ثريدز','الموقع','زبون قديم','توصية من شخص','غيره'];
 var OST=['مؤكد','تم التوصيل','ملغي'];
@@ -549,7 +574,7 @@ function subscribe(){if(!S.db)return;var db=S.db;var on=function(){S.synced=fmtT
  col('fixes',function(sn){S.fixes={};sn.docs.forEach(function(d){S.fixes[d.id]=d.data()})});
  col('todo',function(sn){S.todo={};sn.docs.forEach(function(d){S.todo[d.id]=d.data()})});
  col('chat',function(sn){S.chat={};sn.docs.forEach(function(d){S.chat[d.id]=d.data()})});
- col('plan',function(sn){sn.docs.forEach(function(d){S.plans[d.id]=d.data()})});
+ col('plan',function(sn){sn.docs.forEach(function(d){S.plans[d.id]=d.data()});var mp=S.plans.meta;if(mp&&mp.start){var a0=Date.parse(mp.start+'T00:00:00Z');if(!isNaN(a0))ANCHOR=a0}});
  col('slots',function(sn){S.slots={};sn.docs.forEach(function(d){S.slots[d.id]=d.data()})});
  col('tasks',function(sn){S.tasks={};sn.docs.forEach(function(d){S.tasks[d.id]=d.data()})});
  col('products',function(sn){sn.docs.forEach(function(d){S.prods[d.id]=(d.data()||{}).s})});
