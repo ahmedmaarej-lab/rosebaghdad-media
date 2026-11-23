@@ -7,7 +7,7 @@ async def main(jobs):
   async with async_playwright() as p:
     b=await p.chromium.launch();pg=await b.new_page(viewport={'width':1080,'height':1920})
     for j in jobs:
-      f=j['f'];qs={k:v for k,v in j.items() if k in('k','name','hook','th','sub','pill')};qs['f']='feed' if f=='feed' else 'story'
+      f=j['f'];qs={k:v for k,v in j.items() if k in('k','name','hook','th','sub','pill','sc')};qs['f']='feed' if f=='feed' else 'story'
       await pg.goto('file://'+H+'/v2.html?'+urllib.parse.urlencode(qs));await pg.evaluate('document.fonts.ready');await pg.wait_for_timeout(300)
       if f!='reel': await pg.locator('#r').screenshot(path=j['out'],type='jpeg',quality=93);print('ok',j['out']);continue
       cmd=['ffmpeg','-y','-loglevel','error','-f','image2pipe','-framerate',str(FPS),'-c:v','mjpeg','-i','-']

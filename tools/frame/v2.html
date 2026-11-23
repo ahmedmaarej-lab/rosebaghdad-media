@@ -30,12 +30,13 @@ const TH={rose:['#e3d3e6','#b99bb0','#7f5f6c','#7a5a66'],lav:['#ddd6ee','#a99bc7
 r.style.height=(S?1920:1350)+'px';
 const L=S?{logo:[232,330],hook:[378,60],arch:[520,660,740],bt:[590,640],name:[1284,112],sub:[1430,30],pill:[1492,40,'12px 54px 18px'],cta:[1602,34],url:[1700,26]}
         :{logo:[84,280],hook:[204,48],arch:[290,560,600],bt:[345,515],name:[910,92],sub:[1030,27],pill:[1090,36,'10px 48px 15px'],url:[1236,26]};
+const sc=+g('sc',1);
 let h=`<img id="fr" src="frame_${S?'story':'feed'}.png">
 <img class="logo" id="a0" src="../reel/horizontal_gold.png" style="top:${L.logo[0]}px;width:${L.logo[1]}px">
 <div class="hook c" id="a1" style="top:${L.hook[0]}px;font-size:${L.hook[1]}px">${g('hook','')}</div>
 <div class="arch" id="a2" style="top:${L.arch[0]}px;width:${L.arch[1]}px;height:${L.arch[2]}px;background:linear-gradient(180deg,${TH[0]} 0%,${TH[1]} 52%,${TH[2]} 100%)"></div>
 <div class="floor" id="a3" style="top:${L.bt[0]+L.bt[1]-44}px;width:${L.arch[1]*.72}px;height:84px"></div>
-<img class="bt" id="a4" src="cut/${g('k','hair-musk-powder')}.png" style="top:${L.bt[0]}px;height:${L.bt[1]}px">
+<img class="bt" id="a4" src="cut/${g('k','hair-musk-powder')}.png" style="top:${L.bt[0]+L.bt[1]*(1-sc)}px;height:${L.bt[1]*sc}px">
 <div class="name c" id="a5" style="top:${L.name[0]}px;font-size:${L.name[1]}px">${g('name','')}</div>
 <div class="sub c" id="a6" style="top:${L.sub[0]}px;font-size:${L.sub[1]}px">${g('sub','عطر شعر<b>◆</b>٥٠ مل<b>◆</b>بدون كحول')}</div>
 <div class="pill" id="a7" style="top:${L.pill[0]}px;font-size:${L.pill[1]}px;padding:${L.pill[2]};background:${TH[3]}">${g('pill','٢٠ ألف دينار<b>◆</b>توصيل مجاني')}</div>`;
