@@ -1,0 +1,50 @@
+<!doctype html><html lang="ar"><head><meta charset="utf-8"><style>
+@font-face{font-family:CG;font-weight:600;src:url(../reel/fonts/cormorant-garamond-latin-600-normal.woff2)}
+@font-face{font-family:CG;font-weight:500;src:url(../reel/fonts/cormorant-garamond-latin-500-normal.woff2)}
+@font-face{font-family:CA;font-weight:600;src:url(../reel/fonts/cairo-arabic-600-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:CA;font-weight:800;src:url(../reel/fonts/cairo-arabic-800-normal.woff2);unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+066B-066C}
+@font-face{font-family:EM;font-weight:700;src:url(../reel/fonts/el-messiri-arabic-700-normal.woff2)}
+html,body{margin:0;background:#faf7f0}
+#r{width:1080px;position:relative;overflow:hidden;background:#faf7f0}
+#r>*{position:absolute}
+#fr{left:0;top:0;width:100%;height:100%}
+.c{left:0;right:0;text-align:center}
+.logo{left:50%;transform:translateX(-50%)}
+.hook{font-family:EM,CA;font-weight:700;color:#3d3627;direction:rtl;line-height:1.3;padding:0 120px}
+.arch{left:50%;transform:translateX(-50%);border-radius:999px 999px 26px 26px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(61,54,39,.55)}
+.arch:before{content:"";position:absolute;inset:14px;border:1.5px solid rgba(255,244,214,.55);border-radius:999px 999px 16px 16px}
+.arch:after{content:"";position:absolute;left:50%;top:38%;width:120%;height:90%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,250,240,.62),rgba(255,250,240,0) 70%)}
+.floor{left:50%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(40,28,30,.55),rgba(40,28,30,0))}
+.bt{left:50%;transform:translateX(-50%);filter:drop-shadow(0 26px 28px rgba(40,28,30,.38))}
+.name{font-family:EM,CA;font-weight:700;color:#2e281d;direction:rtl;line-height:1.15}
+.sub{font-family:CG,CA;font-weight:600;letter-spacing:7px;color:#8a7650;direction:rtl}
+.sub b{color:#b39d72;margin:0 12px;font-weight:600;letter-spacing:0}
+.pill{left:50%;transform:translateX(-50%);white-space:nowrap;font-family:CA;font-weight:800;direction:rtl;color:#fffaf0;border-radius:60px}
+.pill b{color:#f0dcae;font-weight:600;margin:0 16px}
+.cta{left:50%;transform:translateX(-50%);white-space:nowrap;font-family:CA;font-weight:800;direction:rtl;color:#3d3627;border:2px solid #b39d72;border-radius:60px;background:#fffaf0}
+.url{font-family:CG;font-weight:600;letter-spacing:6px;color:#9a7a3c}
+</style></head><body><div id="r"></div>
+<script>
+const q=new URLSearchParams(location.search),S=q.get('f')==='story',r=document.getElementById('r'),g=(k,d)=>q.get(k)??d;
+const TH={rose:['#e3d3e6','#b99bb0','#7f5f6c','#7a5a66'],lav:['#ddd6ee','#a99bc7','#6d5f8d','#655784'],sand:['#eadfc9','#c4a986','#8a6f52','#7d6247'],sage:['#e3e6d2','#aab08a','#6f7552','#646a48']}[g('th','rose')];
+r.style.height=(S?1920:1350)+'px';
+const L=S?{logo:[232,330],hook:[378,60],arch:[520,660,740],bt:[560,740],name:[1284,112],sub:[1430,30],pill:[1492,40,'12px 54px 18px'],cta:[1602,34],url:[1700,26]}
+        :{logo:[84,280],hook:[204,48],arch:[290,560,600],bt:[322,600],name:[910,92],sub:[1030,27],pill:[1090,36,'10px 48px 15px'],url:[1236,26]};
+let h=`<img id="fr" src="frame_${S?'story':'feed'}.png">
+<img class="logo" id="a0" src="../reel/horizontal_gold.png" style="top:${L.logo[0]}px;width:${L.logo[1]}px">
+<div class="hook c" id="a1" style="top:${L.hook[0]}px;font-size:${L.hook[1]}px">${g('hook','')}</div>
+<div class="arch" id="a2" style="top:${L.arch[0]}px;width:${L.arch[1]}px;height:${L.arch[2]}px;background:linear-gradient(180deg,${TH[0]} 0%,${TH[1]} 52%,${TH[2]} 100%)"></div>
+<div class="floor" id="a3" style="top:${L.bt[0]+L.bt[1]-40}px;width:${L.arch[1]*.62}px;height:70px"></div>
+<img class="bt" id="a4" src="cut/${g('k','hair-musk-powder')}.png" style="top:${L.bt[0]}px;height:${L.bt[1]}px">
+<div class="name c" id="a5" style="top:${L.name[0]}px;font-size:${L.name[1]}px">${g('name','')}</div>
+<div class="sub c" id="a6" style="top:${L.sub[0]}px;font-size:${L.sub[1]}px">${g('sub','عطر شعر<b>◆</b>٥٠ مل<b>◆</b>بدون كحول')}</div>
+<div class="pill" id="a7" style="top:${L.pill[0]}px;font-size:${L.pill[1]}px;padding:${L.pill[2]};background:${TH[3]}">${g('pill','٢٠ ألف دينار<b>◆</b>توصيل مجاني')}</div>`;
+if(S)h+=`<div class="cta" id="a8" style="top:${L.cta[0]}px;font-size:${L.cta[1]}px;padding:8px 56px 14px">راسلينا لتثبيت طلبچ</div>`;
+h+=`<div class="url c" id="a9" style="top:${L.url[0]}px;font-size:${L.url[1]}px">www.rosebaghdad.iq</div>`;
+r.innerHTML=h;
+// animation for the reel: setT(seconds)
+const e=x=>x<0?0:x>1?1:1-Math.pow(1-x,3),el=i=>document.getElementById('a'+i);
+window.setT=t=>{const fade=(i,t0,d,dy)=>{const n=el(i);if(!n)return;const p=e((t-t0)/d);n.style.opacity=p;n.style.translate='0 '+((1-p)*(dy||0))+'px'};
+ fade(0,0,.6,-20);fade(2,.2,.9,40);fade(3,.9,.8);const b=el(4),p=e((t-.5)/1.2);b.style.opacity=p;b.style.translate='0 '+((1-p)*90)+'px';b.style.scale=(1.0+0.05*Math.min(1,t/9));
+ fade(1,1.6,.7,24);fade(5,2.4,.7,24);fade(6,3.0,.6,16);fade(7,3.8,.6,16);fade(8,4.6,.6,16);fade(9,5.0,.6)};
+</script></body></html>
