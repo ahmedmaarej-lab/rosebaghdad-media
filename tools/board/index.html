@@ -1,6 +1,6 @@
 <title>لوحة روز بغداد</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=El+Messiri:wght@500;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#faf7f0;--card:#fff;--fg:#3d3627;--mut:#7a6d52;--line:#e6dcc6;--gold:#b39d72;--goldink:#3d3627;--pink:#f4e2dc;--ok:#4f7a4a;--bad:#b0453a;--warn:#a8741a;--soft:#f5efe2}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f1b13;--card:#2a251a;--fg:#f5f2ed;--mut:#cbbf9f;--line:#4a4130;--pink:#4a3a33;--ok:#8fc088;--bad:#e08a7e;--warn:#e0b25a;--soft:#332c1f;color-scheme:dark}}
@@ -62,15 +62,79 @@ ul.f{margin:0;padding:0 18px 0 0;display:flex;flex-direction:column;gap:6px}
 .msg{border-radius:12px;padding:8px 12px;max-width:85%;white-space:pre-line;word-break:break-word}.msg.me{background:var(--pink);align-self:flex-start}.msg.cl{background:var(--soft);border:1px solid var(--line);align-self:flex-end}.msg .m{font-size:11px;color:var(--mut);margin-top:2px}.nt{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;align-items:flex-end}.nt textarea{flex:1;min-width:160px;min-height:56px}.nt .sub{flex-basis:100%}
 .dayh{margin:14px 0 0;padding:4px 12px;background:var(--soft);border-radius:8px;border-right:4px solid var(--gold)}
 .th{display:flex;flex-direction:column;gap:4px;margin-top:8px}.tm2{font-size:13px;border-radius:8px;padding:4px 10px;white-space:pre-line;word-break:break-word}.tm2.me{background:var(--pink)}.tm2.cl{background:var(--soft);border:1px solid var(--line)}.tm2 .chip{margin-right:8px}
+
+/* ── luxury layer (23 Nov): ivory + espresso + gold, sidebar like the site dashboard ── */
+:root{--bg:#f6f1e7;--card:#fffdf8;--fg:#2b2419;--mut:#7d7059;--line:#e8ddc8;--gold:#c2a15f;--goldink:#2b2419;--golddeep:#9a7a3c;--pink:#f4e7dc;--ok:#4f7a4a;--bad:#b0453a;--warn:#a8741a;--soft:#f4ecdc;--side:#1c1710;--sidefg:#eadfc6;--sidemut:#a39478;--sideline:#3a3122;--shadow:0 1px 2px rgba(43,36,25,.04),0 10px 30px -18px rgba(43,36,25,.35)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12100b;--card:#1c1811;--fg:#f3ecdc;--mut:#b5a888;--line:#3a3223;--gold:#d1b06a;--goldink:#1c1710;--golddeep:#e3c98a;--pink:#3a2e26;--ok:#8fc088;--bad:#e08a7e;--warn:#e0b25a;--soft:#241f15;--side:#0c0a07;--sidefg:#eadfc6;--sidemut:#a39478;--sideline:#2c2519;--shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -18px rgba(0,0,0,.8);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12100b;--card:#1c1811;--fg:#f3ecdc;--mut:#b5a888;--line:#3a3223;--gold:#d1b06a;--goldink:#1c1710;--golddeep:#e3c98a;--pink:#3a2e26;--ok:#8fc088;--bad:#e08a7e;--warn:#e0b25a;--soft:#241f15;--side:#0c0a07;--sidefg:#eadfc6;--sidemut:#a39478;--sideline:#2c2519;--shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -18px rgba(0,0,0,.8);color-scheme:dark}
+body{font-size:15px;line-height:1.8;background:var(--bg)}
+.wrap{max-width:1080px;gap:18px}
+h1,h2,h3{font-family:'El Messiri','Cairo',serif;letter-spacing:0}
+h1{font-size:30px;font-weight:700;line-height:1.3}h2{font-size:20px;font-weight:700}h3{font-size:16px;font-weight:700}
+.card{border-radius:18px;padding:20px;box-shadow:var(--shadow);border-color:var(--line)}
+.card.callout,.callout{border-right:3px solid var(--gold);background:var(--soft)}
+button{border-radius:999px;padding:7px 18px;transition:background .2s,border-color .2s,transform .15s}
+button:hover{border-color:var(--gold)}button:active{transform:scale(.98)}
+button.on,button.pri{background:linear-gradient(180deg,var(--gold),color-mix(in srgb,var(--gold) 82%,#7a5a20));border-color:var(--gold);color:var(--goldink)}
+.kpi{position:relative;overflow:hidden}.kpi:before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.kpi .v{font-family:'Cormorant Garamond','Cairo',serif;font-size:36px;font-weight:600;line-height:1.15;color:var(--fg)}.kpi .l{font-size:12.5px}
+.bar{height:6px}.bar i{background:linear-gradient(90deg,var(--golddeep),var(--gold))}
+th{font-size:12px;letter-spacing:.3px}.chip{background:var(--soft)}.pill{background:var(--soft);border:1px solid var(--line);color:var(--golddeep)}
+.dayh{background:transparent;border-right:0;border-bottom:1px solid var(--line);border-radius:0;padding:14px 0 6px;color:var(--golddeep);font-size:17px}
+.wc{grid-template-columns:96px 1fr;gap:14px;padding-top:14px}.wc img{width:96px;border-radius:12px;box-shadow:var(--shadow)}
+.note{border-style:solid;background:var(--soft);border-color:var(--line)}
+/* top area */
+.top{display:flex;flex-direction:column;gap:10px;padding-bottom:4px}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.bw{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;letter-spacing:5px;color:var(--golddeep)}
+.bs{font-size:12px;color:var(--mut);letter-spacing:1px}
+#secD{max-width:62ch}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7}
+/* mobile tab bar */
+#bar{padding:10px 0 8px}nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}nav::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto}
+#more{flex-direction:column;gap:14px;padding:16px;border-radius:18px;box-shadow:var(--shadow);max-height:70vh;overflow-y:auto}
+.grp{font-family:'El Messiri',serif;font-weight:700;color:var(--golddeep);font-size:14px;margin:2px 2px 0}
+.mgrid{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.mi{display:flex;gap:10px;align-items:flex-start;text-align:right;border-radius:14px;padding:10px 12px;min-height:0;width:100%;white-space:normal}
+.mi b{display:block;font-weight:800;font-size:14px}.mi small{display:block;color:var(--mut);font-size:12px;line-height:1.5}
+.mi.on{background:var(--soft);border-color:var(--gold);color:var(--fg)}
+.ic{flex:0 0 auto;width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;color:var(--golddeep);margin-top:2px}
+/* sidebar (desktop) */
+#side{display:none}
+@media (min-width:980px){
+ body{padding-right:calc(280px + 28px)}
+ #side{display:flex;flex-direction:column;position:fixed;top:0;bottom:0;right:0;width:280px;background:var(--side);color:var(--sidefg);border-left:1px solid var(--sideline);z-index:30;padding-top:env(safe-area-inset-top,0px)}
+ #bar{display:none}.top .brand{display:none}
+}
+.sb{padding:26px 22px 18px;border-bottom:1px solid var(--sideline)}
+.sb .bw{color:var(--gold);font-size:21px;display:block}.sb .bs{color:var(--sidemut);display:block;margin-top:2px}
+#sideNav{flex:1;overflow-y:auto;padding:12px 12px 18px;display:flex;flex-direction:column;gap:2px;scrollbar-width:thin;scrollbar-color:var(--sideline) transparent}
+#sideNav .grp{color:var(--sidemut);font-family:'Cairo',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;margin:14px 12px 4px}
+.si{display:flex;align-items:center;gap:12px;width:100%;text-align:right;background:transparent;border:0;border-radius:12px;color:var(--sidefg);padding:9px 12px;min-height:40px;font-weight:600;font-size:14px;position:relative}
+.si .ic{color:var(--sidemut);margin:0}.si:hover{background:rgba(201,168,76,.10)}
+.si.on{background:rgba(201,168,76,.16);color:var(--gold)}.si.on .ic{color:var(--gold)}
+.si.on:before{content:"";position:absolute;right:0;top:9px;bottom:9px;width:3px;border-radius:3px;background:var(--gold)}
+.sf{padding:14px 18px;border-top:1px solid var(--sideline);font-size:12px;color:var(--sidemut)}
+/* home tiles */
+.tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:12px}
+.tile{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:right;border-radius:16px;padding:16px;background:var(--soft);border:1px solid var(--line);min-height:0;white-space:normal;width:100%}
+.tile:hover{border-color:var(--gold)}.tile b{font-family:'El Messiri',serif;font-size:17px}.tile small{color:var(--mut);font-size:12.5px;line-height:1.6}.tile small.warn{color:var(--warn)}
+.tile .go{margin-top:auto;font-size:12px;color:var(--golddeep);font-weight:800}
+.gl{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.gi{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--card)}
+.gi b{display:block}.gi small{display:block;color:var(--mut);font-size:12.5px;line-height:1.6}.gi button{margin-inline-start:auto;flex:0 0 auto}
+.empty{border:1px dashed var(--gold);border-radius:16px;padding:18px;background:var(--soft)}
 </style>
+<aside id="side" aria-label="أقسام اللوحة"><div class="sb"><span class="bw">ROSE BAGHDAD</span><span class="bs">لوحة النشر</span></div><div id="sideNav"></div><div class="sf" id="sideF"></div></aside>
 <div class="wrap" id="app">
-<header><div class="row"><h1 class="sp">لوحة روز بغداد</h1><span class="pill" id="roleTag"></span></div><div class="row" style="margin-top:6px"><div class="sub sp" id="who" style="min-width:0">…</div><button id="themeB" class="sm" aria-label="تبديل اللون"></button><button id="refresh" class="sm pri">تحديث</button></div></header>
+<header class="top"><div class="brand"><span class="bw">ROSE BAGHDAD</span><span class="bs">لوحة النشر</span></div><div class="row"><div class="sp"><h1 id="secT">الرئيسية</h1><div class="sub" id="secD"></div></div><span class="pill" id="roleTag"></span></div><div class="row"><div class="sub sp" id="who" style="min-width:0">…</div><button id="themeB" class="sm" aria-label="تبديل اللون"></button><button id="refresh" class="sm pri">تحديث</button></div><div class="rule"></div></header>
 <div id="bar"><nav id="nav" aria-label="أقسام اللوحة"></nav><div id="more"></div></div>
 <dialog id="dlg"><div class="dlg"><header><h2 class="sp" id="dlgT" style="margin:0"></h2><button class="sm pri" id="dlgX">إغلاق</button></header><div class="bd" id="dlgB"></div></div></dialog>
 
 <section class="sec on" id="s-home">
 <div class="grid" id="kpis"></div>
-<div class="card"><h2>تنظيم العمل</h2><div class="sub">كل قسم لحاله وما يتخربط ويا الثاني. اضغط "افتح" حتى تشوف تفاصيله.</div><div id="org"></div></div>
+<div class="card"><h2>أقسام الشغل</h2><div class="sub">كل قسم لحاله وما يتخربط ويا الثاني. اضغط على القسم حتى تفتحه.</div><div id="org"></div></div>
 <div class="card" id="dayRep"><div class="row"><div class="sp"><h2 id="dayRepT" style="margin:0">تقرير اليوم</h2><div class="sub" id="dayRepS"></div></div><button class="pri" id="dayRepB">اقرأ التقرير</button></div></div>
 <div class="card" id="homeWcBox"><div class="row"><h2 class="sp">منشورات اليوم</h2><button class="sm" id="goWc">جدول النشر كامل</button></div><div id="homeWc"></div></div>
 <div class="card" id="homeRoad" hidden><div class="row"><h2 class="sp" id="homeRoadT">خطة 60 يوم</h2><button class="sm" id="goRoad">الخطة كاملة</button></div><div id="homeRoadL"></div></div>
@@ -120,6 +184,20 @@ ul.f{margin:0;padding:0 18px 0 0;display:flex;flex-direction:column;gap:6px}
 <section class="sec" id="s-plat">
 <div class="card"><h2>المنظومة: كل المنصات</h2><div class="tw"><table id="platT"></table></div></div>
 <div class="card"><h2>شلون كل منصة تاخذ حصتها</h2><div class="pc" id="platPlan"></div></div>
+</section>
+
+<section class="sec" id="s-site">
+<div class="card"><div class="row"><div class="sp"><h2>موقع روز بغداد</h2><div class="sub">www.rosebaghdad.iq · منو يدخل للموقع، شگد، ومنين يجون، وأكثر الصفحات اللي تنفتح</div></div><a class="lk" href="https://www.rosebaghdad.iq" target="_blank" rel="noopener">افتح الموقع</a><a class="lk" href="https://www.rosebaghdad.iq/admin/" target="_blank" rel="noopener">داشبورد الموقع</a></div>
+<div class="grid" style="margin-top:14px" id="siteK"></div></div>
+<div class="card" id="siteEmpty"><div class="empty"><h3>عدّاد الزوار بعده ما مركّب بالموقع</h3><p style="margin:6px 0 0">الموقع ما بيه أي عدّاد يسجل الدخول والخروج، وميتريكول يرجع صفر زيارة. من ينحط العدّاد بالموقع، هذا القسم يمتلي وحده: الزوار كل يوم، الصفحات، والمصادر.</p></div></div>
+<div class="card" id="siteDays"><h2>الزوار يوم بيوم</h2><div class="tw"><table id="siteT"></table></div></div>
+<div class="pc" id="siteMore"><div class="card"><h2>أكثر الصفحات</h2><div class="tw"><table id="siteP"></table></div></div><div class="card"><h2>منين يجون</h2><div class="tw"><table id="siteS"></table></div></div></div>
+</section>
+
+<section class="sec" id="s-guide">
+<div class="card callout"><h2>شلون تستخدم اللوحة</h2><p style="margin:0">كل قسم إله شغلة وحدة. اضغط "افتح" حتى تروح للقسم. الأقسام الأربعة الأساسية: جدول النشر، ثريدز، تليغرام، والمهام.</p></div>
+<div id="guideL" style="display:flex;flex-direction:column;gap:14px"></div>
+<div class="card"><h2>الأزرار</h2><div class="tw"><table id="guideB"></table></div></div>
 </section>
 
 <section class="sec" id="s-th">
@@ -241,7 +319,7 @@ var SNAP={
  st:['الجمهور عراقي تقريباً كله.','إنستغرام 14.8 ألف وأغلبه نساء 25–44، وهن زبونات العطور.','إعلانات الرسائل تجيب محادثات بحوالي دولار.','تيك توك يعتمد على "لك"، فأي فيديو جيد ينتشر.'],
  wk:['الوصول العالي كان من الإعلان ونزل لما وقف الصرف.','التفاعل الطبيعي قليل جداً والمتابعين ثابتين.','ما كان أكو جدول نشر ثابت.','الموقع وكوكل بزنس بدون بيانات (يحتاجون ربط وتوثيق).']
 };
-var UPD=['23 تشرين الثاني: اللوحة انقسمت 4 أقسام، كل واحد لحاله: جدول النشر (فيسبوك وإنستغرام)، ثريدز، تليغرام، والمهام.','22 تشرين الثاني: جدول النشر انفرّغ بأمرك. ماكو شي يتجدول على فيسبوك وإنستغرام وتيك توك إلا بعد موافقتك على خطة الأسبوع.','أهداف ميتا لأسبوع 22–28: فيسبوك 24 منشور و36 ستوري، إنستغرام 21 منشور و27 ستوري، وإعلان واحد جديد.','الثريدز والتليغرام مستمرات بالنشر التلقائي.','اللوحة تتحدث 3 مرات باليوم: 9 الصبح، 3 العصر، 9 بالليل، ويوصلك إشعار بعد كل تحديث.','الموقع: التعديلات جاهزة (النصوص، الخط، وصور القناني الحقيقية) وتنتظر كلمة "ارفع".','ماكو إعلان شغال هسه. إعلان Good Girl خلصت مدته يوم 20 تشرين الثاني.'];
+var UPD=['23 تشرين الثاني: اللوحة انصممت من جديد: قائمة جانبية مثل داشبورد الموقع، قسم "الموقع" لزوار rosebaghdad.iq، و"دليل اللوحة" يشرح كل قسم وكل زر.','23 تشرين الثاني: اللوحة انقسمت 4 أقسام، كل واحد لحاله: جدول النشر (فيسبوك وإنستغرام)، ثريدز، تليغرام، والمهام.','22 تشرين الثاني: جدول النشر انفرّغ بأمرك. ماكو شي يتجدول على فيسبوك وإنستغرام وتيك توك إلا بعد موافقتك على خطة الأسبوع.','أهداف ميتا لأسبوع 22–28: فيسبوك 24 منشور و36 ستوري، إنستغرام 21 منشور و27 ستوري، وإعلان واحد جديد.','الثريدز والتليغرام مستمرات بالنشر التلقائي.','اللوحة تتحدث 3 مرات باليوم: 9 الصبح، 3 العصر، 9 بالليل، ويوصلك إشعار بعد كل تحديث.','الموقع: التعديلات جاهزة (النصوص، الخط، وصور القناني الحقيقية) وتنتظر كلمة "ارفع".','ماكو إعلان شغال هسه. إعلان Good Girl خلصت مدته يوم 20 تشرين الثاني.'];
 var TODO=['ردّوا على محادثات الإعلان خلال 5 دقايق.','انشر ريل وستوري Good Girl مع موسيقى هادئة من مكتبة إنستغرام.','اربط GitHub ومستودع rosebaghdad-media العام، حتى أنشر على إنستغرام وفيسبوك وتيك توك بنفسي.','قرار العرض أو الهدية مع الطلب.','وثّق ملف روز بغداد بكوكل بزنس.'];
 var PROD=['COCO MADAM','HOME DIOR','GOOD GIRL','INVICTO','MUSK BAGHDAD','ROSE VIP','CI ARMAN','DIVEN OUD','MY WAY','THMIN','OLYMPI','REBERTO GAFALLI','HORMUZ','OXYGEN','OUD BOUQIT','ROYAL NEGHT','SOVAG','LYBRE','WARD TAIF','MUSKEMIRATES','Y MAN','VOLVET OUD','OUD MALAKI','SO OUD','AMBER NIGHT','DILAN WOMEN','BLACK SAFFRAN','AVANTOS','BLUE SHANAL','LAMOR','خط ٢ – 31','خط ٢ – 32','خط ٢ – 33 (النص يحتاج تصحيح)','خط ٢ – 34 (النص يحتاج تصحيح)','خط ٢ – 35 (بدون اسم)','خط ٢ – 36 (بدون اسم)','خط ٢ – 37 (بدون اسم)','خط ٢ – 38','خط ٢ – 39','خط ٢ – 40','خط ٢ – 41 (النص يحتاج تصحيح)'];
 var PSTAT=['لم يبدأ','قيد التصميم','جاهز','مجدول','منشور'];
@@ -250,9 +328,14 @@ var PL={fb:'منشورات فيسبوك',igp:'منشورات إنستغرام',i
 var ROLES={admin:{n:'أدمن',p:['plan','tasks','files','prod','team','orders'],d:'كل شي، والوحيد اللي يضيف ويشيل ناس'},content:{n:'مدير محتوى',p:['plan','tasks','files','prod'],d:'يعدل الخطة والمهام والمنتجات ويرفع ملفات'},designer:{n:'مصمم',p:['files','prod'],d:'يرفع التصاميم ويحدّث حالة المنتجات ومهامه'},sales:{n:'مبيعات / رد على الرسائل',p:[],d:'يشوف اللوحة ويحدّث حالة مهامه فقط'},analyst:{n:'مشاهدة فقط',p:[],d:'يشوف بس'}};
 var CAPS=[['notes','يكتب ملاحظات وتعديلات على المنشورات والدردشة'],['tasks','يضيف ويعدل المهام وغير المنجز'],['orders','يسجل الطلبات'],['files','يرفع ملفات وتصاميم'],['prod','يغير حالة المنتجات'],['plan','يعدل الخطة الأسبوعية'],['seeAds','يشوف أرقام الإعلان والصرف وتقرير اليوم'],['seeOrders','يشوف الطلبات وتحليلها'],['seeStrategy','يشوف الخطة والتحليلات والمنافسين وفحص الأدوات']];
 var PRESET={content:['notes','tasks','files','prod','plan','seeStrategy'],designer:['notes','files','prod'],sales:['orders','seeOrders'],analyst:[]};
-var TABCAP={ord:['seeOrders','orders'],road:['seeStrategy'],str:['seeStrategy'],comp:['seeStrategy'],an:['seeStrategy'],aud:['seeStrategy'],ig:['seeStrategy'],src:['seeStrategy'],health:['seeStrategy'],plat:['seeStrategy']};
+var TABCAP={site:['seeStrategy'],ord:['seeOrders','orders'],road:['seeStrategy'],str:['seeStrategy'],comp:['seeStrategy'],an:['seeStrategy'],aud:['seeStrategy'],ig:['seeStrategy'],src:['seeStrategy'],health:['seeStrategy'],plat:['seeStrategy']};
 function tabOk(k){if(S.admin)return true;if(k==='team')return false;var c=TABCAP[k];if(!c)return true;return c.some(function(x){return can(x)})}
-var TABS=[['home','الرئيسية'],['wc','جدول النشر'],['chat','دردشة ويا Claude'],['road','خطة 60 يوم'],['todo','غير منجز'],['ord','الطلبات'],['plan','الخطة الأسبوعية'],['tasks','المهام'],['plat','المنصات'],['th','ثريدز'],['tg','تليغرام'],['ig','أداء إنستغرام'],['comp','المنافسين والأفكار'],['str','الاستراتيجية'],['health','فحص الأدوات'],['src','المصادر'],['an','التحليل'],['aud','الوصول والجمهور'],['prod','المنتجات'],['files','الملفات'],['team','الفريق']];
+var TABS=[['home','الرئيسية'],['wc','جدول النشر'],['th','ثريدز'],['tg','تليغرام'],['todo','غير منجز'],['chat','دردشة ويا Claude'],['site','الموقع'],['ord','الطلبات'],['ig','أداء إنستغرام'],['an','التحليل'],['aud','الوصول والجمهور'],['plan','الخطة الأسبوعية'],['tasks','المهام'],['plat','المنصات'],['prod','المنتجات'],['files','الملفات'],['team','الفريق'],['road','خطة 60 يوم'],['str','الاستراتيجية'],['comp','المنافسين والأفكار'],['health','فحص الأدوات'],['src','المصادر'],['guide','دليل اللوحة']];
+var META={home:['home','نظرة سريعة على كلشي: أرقام اليوم، حالة كل قسم، وخطة ميتا.'],wc:['calendar','منشورات فيسبوك وإنستغرام وتيك توك لهذا الأسبوع، بصورها وأوقاتها وحالتها.'],th:['at','منشورات ثريدز لحالها: شنو نزل وشنو جاي.'],tg:['send','قناة التليغرام لحالها: سجل المنشورات وزر النسخ.'],todo:['check','الأشياء اللي تنتظرك أو تنتظرني، مرتبة حسب الأهمية.'],chat:['chat','اكتبلي ملاحظة أو طلب تعديل وأرد عليك هنا.'],site:['globe','زوار الموقع: منو يدخل، شگد، ومنين يجون.'],ord:['bag','تسجيل الطلبات وتحليلها: أكثر عطر، المحافظات، ومنين جه الزبون.'],ig:['chart','أرقام حساب إنستغرام وخطة إصلاح المشاكل.'],an:['chart','ملخص أرقام كل المنصات والإعلانات.'],aud:['users','وين توصل الصفحات بالعراق ومنو يتابع.'],plan:['grid','خانات الأسبوع حسب أهداف ميتا: العنوان والمسؤول والحالة.'],tasks:['list','مهام الفريق: منو مسؤول وشوكت الموعد.'],plat:['grid','حالة ربط كل منصة وشنو ينتظر.'],prod:['bottle','حالة كل منتج: انصمم، انجدول، لو انشر.'],files:['folder','سحابة الصور والفيديوهات وملفات التصميم.'],team:['users','إضافة الموظفين وتحديد شنو ينفتح لكل واحد.'],road:['compass','خطة 60 يوم أسبوع بأسبوع.'],str:['target','شلون نزيد المبيعات والانتشار، وشنو نقيس.'],comp:['target','المنافسين والترند وأفكار المحتوى.'],health:['pulse','فحص يومي لكل الأدوات المربوطة.'],src:['book','المصادر والمراجع.'],guide:['book','شرح كل قسم وكل زر باللوحة.']};
+var GROUPS=[['الأساسية',['home','wc','th','tg','todo','chat']],['الأرقام',['site','ord','ig','an','aud']],['التنظيم',['plan','tasks','plat','prod','files','team']],['الخطة والمراجع',['road','str','comp','health','src','guide']]];
+var ICON={home:'M3 11l9-8 9 8v10h-6v-7H9v7H3z',calendar:'M4 6h16v15H4zM4 10h16M8 3v5M16 3v5',send:'M21 3L3 10.5l7 2.5 2.5 7zM10 13l11-10',at:'M16 12a4 4 0 1 0-4 4c2 0 3-1 4-2v1a2.5 2.5 0 0 0 5 0v-3a9 9 0 1 0-4 7.5',check:'M4 12l5 5L20 6',chat:'M4 5h16v11H9l-5 4z',globe:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18',bag:'M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2',chart:'M4 20V10M10 20V4M16 20v-7M22 20H2',users:'M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2 20c0-3 3-5 6-5s6 2 6 5M17 11a3 3 0 1 0 0-6M22 20c0-2-1.5-4-4-4.7',folder:'M3 6h6l2 3h10v10H3z',bottle:'M10 2h4v4h-4zM8 9c0-2 8-2 8 0v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2z',compass:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM15.5 8.5l-2 5-5 2 2-5z',book:'M5 4h13v16H5zM8 8h7M8 12h7',pulse:'M3 12h4l2-6 4 12 2-6h6',grid:'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',target:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z',list:'M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01'};
+function ic(k){var NS='http://www.w3.org/2000/svg',v=document.createElementNS(NS,'svg');v.setAttribute('viewBox','0 0 24 24');v.setAttribute('class','ic');v.setAttribute('aria-hidden','true');var p=document.createElementNS(NS,'path');p.setAttribute('d',ICON[(META[k]||[])[0]]||ICON.grid);v.appendChild(p);return v}
+function tabDesc(k){return (META[k]||['',''])[1]}
 var DAYS=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
 
 var S={health:{},orders:{},fixes:{},snap:null,todo:{},db:null,user:null,assets:null,uid:null,me:null,admin:false,perms:[],team:{},plans:{},slots:{},tasks:{},prods:{},files:[],tg:[],ctl:{},st:{},wk:0,tab:'home',synced:null};
@@ -286,15 +369,19 @@ function nameOf(id){if(!id)return'—';if(id===S.uid||id==='me')return(S.me&&S.m
 function note(t){$('who').textContent=t;setTimeout(stamp,3000)}
 function stamp(){$('who').textContent='بيانات التحليل: '+SNAP.asof+(S.synced?' · آخر مزامنة '+S.synced:'')}
 
-var MAIN=['home','wc','th','tg','todo','chat'];S.hist=[];S.more=false;
+var MAIN=['home','wc','th','tg','todo','site'];S.hist=[];S.more=false;
 function go(t,keep){if(t===S.tab){S.more=false;show();return}if(!keep)S.hist.push(S.tab);if(S.hist.length>20)S.hist.shift();S.tab=t;S.more=false;try{localStorage.setItem('rb_tab',t)}catch(e){}show();try{window.scrollTo(0,0)}catch(e){}}
 function tabName(k){var r='';TABS.forEach(function(t){if(t[0]===k)r=t[1]});return r}
 function buildNav(){var n=clear($('nav'));if(S.hist.length){var bk=E('button','sm','→ رجوع');bk.setAttribute('aria-label','رجوع للصفحة السابقة');bk.onclick=function(){var t=S.hist.pop();go(t,true)};n.appendChild(bk)}
  if(!tabOk(S.tab))S.tab='home';
- MAIN.forEach(function(k){var b=E('button',S.tab===k?'on':'',tabName(k));b.onclick=function(){go(k)};n.appendChild(b)});
+ MAIN.forEach(function(k){if(!tabOk(k))return;var b=E('button',S.tab===k?'on':'',tabName(k));b.onclick=function(){go(k)};n.appendChild(b)});
  if(MAIN.indexOf(S.tab)<0){var c=E('button','on',tabName(S.tab));n.appendChild(c)}
- var mb=E('button',S.more?'pri':'','المزيد '+(S.more?'▴':'▾'));mb.setAttribute('aria-expanded',S.more?'true':'false');mb.onclick=function(){S.more=!S.more;buildNav()};n.appendChild(mb);
- var m=clear($('more'));m.className=S.more?'on':'';TABS.forEach(function(t){if(MAIN.indexOf(t[0])>=0)return;if(!tabOk(t[0]))return;var b=E('button','sm'+(S.tab===t[0]?' on':''),t[1]);b.onclick=function(){go(t[0])};m.appendChild(b)})}
+ var mb=E('button',S.more?'pri':'','كل الأقسام '+(S.more?'▴':'▾'));mb.setAttribute('aria-expanded',S.more?'true':'false');mb.onclick=function(){S.more=!S.more;buildNav()};n.appendChild(mb);
+ var m=clear($('more'));m.className=S.more?'on':'';var sn=clear($('sideNav'));
+ GROUPS.forEach(function(g){var ks=g[1].filter(tabOk);if(!ks.length)return;
+  m.appendChild(E('div','grp',g[0]));var gr=E('div','mgrid');ks.forEach(function(k){var b=E('button','mi'+(S.tab===k?' on':''));b.appendChild(ic(k));var d=E('span');d.appendChild(E('b','',tabName(k)));d.appendChild(E('small','',tabDesc(k)));b.appendChild(d);b.onclick=function(){go(k)};gr.appendChild(b)});m.appendChild(gr);
+  sn.appendChild(E('div','grp',g[0]));ks.forEach(function(k){var b=E('button','si'+(S.tab===k?' on':''));b.appendChild(ic(k));b.appendChild(E('span','',tabName(k)));b.title=tabDesc(k);if(S.tab===k)b.setAttribute('aria-current','page');b.onclick=function(){go(k)};sn.appendChild(b)})});
+ $('secT').textContent=S.tab==='home'?'لوحة روز بغداد':tabName(S.tab);$('secD').textContent=tabDesc(S.tab);$('sideF').textContent=S.synced?('آخر مزامنة '+S.synced):''}
 function openDlg(title,node){$('dlgT').textContent=title;var b=clear($('dlgB'));b.appendChild(node);var d=$('dlg');try{if(!d.open)d.showModal()}catch(e){d.setAttribute('open','')}}
 $('dlgX').onclick=function(){try{$('dlg').close()}catch(e){$('dlg').removeAttribute('open')}};$('dlg').addEventListener('click',function(e){if(e.target===$('dlg'))$('dlgX').onclick()});
 function show(){[].forEach.call(document.querySelectorAll('.sec'),function(s){s.className='sec'+(s.id==='s-'+S.tab?' on':'')});[].forEach.call($('nav').children,function(b,i){})
@@ -318,7 +405,7 @@ function render(){
  list('upd',UPD);renderTodo();
  var mt=clear($('myTasks'));var mine=Object.keys(S.tasks).map(function(k){return Object.assign({k:k},S.tasks[k])}).filter(function(t){return !t.done&&(t.who===S.uid||(S.admin&&t.who==='me'))});
  $('myTasksBox').style.display=mine.length?'':'none';mine.forEach(function(t){var r=E('div','row');r.appendChild(E('span','sp',t.title));if(t.due)r.appendChild(E('span','chip n',t.due));mt.appendChild(r)});
- renderIG();renderPlan();setTimeout(function(){var bx=$('homeWcBox');if(bx)bx.style.display=$('homeWc').querySelector('.wc')?'':'none'},0);renderTasks();renderPlat();renderTg();renderTh();renderOrg();renderStr();renderRoad();renderWc();renderChat();renderStatic();renderProd();renderFiles();renderTeam();
+ renderIG();renderPlan();setTimeout(function(){var bx=$('homeWcBox');if(bx)bx.style.display=$('homeWc').querySelector('.wc')?'':'none'},0);renderTasks();renderPlat();renderTg();renderTh();renderOrg();renderSite();renderGuide();renderStr();renderRoad();renderWc();renderChat();renderStatic();renderProd();renderFiles();renderTeam();
 }
 
 var PRI={1:['مهم','bad'],2:['عادي',''],3:['لاحقاً','sub']};
@@ -398,12 +485,22 @@ function renderTh(){var a=thArr(),d=S.plans.threads||{};var dn=a.filter(function
  kpi($('thK'),[['نزل',dn],['مجدول جاي',sc],['فشل',bad],['آخر تحديث',d.asof||'—']]);
  var rows=a.map(function(x){var l=E('span','','—');if(x.url){l=E('a','lk','افتح');l.href=x.url;l.target='_blank';l.rel='noopener'}return[fmtT(x.t,{weekday:'long',day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit'}),x.title||'',thSt(x),l]});
  table('thT',['الوقت','المنشور','الحالة','الرابط'],rows);$('thE').textContent=rows.length?'':'ماكو منشورات ثريدز مسجلة بعد.'}
-function renderOrg(){var o=clear($('org'));var w=wkIdx(),wc=wcWeek(w).length,a=thArr(),thSc=a.filter(function(x){return thSt(x)==='مجدول'}).length,tgd=tgToday(),tgSoon=S.tg.filter(function(x){return tgSt(x)==='مجدول'}).length;
- var td=Object.keys(S.todo).filter(function(k){return !S.todo[k].done}).length,tk=Object.keys(S.tasks).filter(function(k){return !S.tasks[k].done}).length;
- [['wc','جدول النشر (فيسبوك وإنستغرام)',wc?(wc+' منشور موافق عليه هذا الأسبوع'):'فارغ: ينتظر محتوى الأسبوع منك',!wc],
-  ['th','ثريدز',a.length?('مستمر · '+thSc+' مجدول جاي'):'ماكو بيانات بعد',false],
-  ['tg','تليغرام','اليوم نزل '+tgd[0]+' من '+tgd[1]+' · '+tgSoon+' مجدول جاي',false],
-  ['todo','المهام',(td+tk)?((td+tk)+' غير منجز'):'كلشي منجز',false]].forEach(function(x){var r=E('div','row');r.style.padding='8px 0';r.style.borderTop='1px solid var(--line)';var d=E('div','sp');d.appendChild(E('b','',x[1]));d.appendChild(E('div','sub'+(x[3]?' warn':''),x[2]));r.appendChild(d);var b=E('button','sm pri','افتح');b.onclick=function(){go(x[0])};r.appendChild(b);o.appendChild(r)})}
+function siteDoc(){return S.plans.site||{}}
+function renderOrg(){var o=clear($('org'));o.className='tiles';var w=wkIdx(),wc=wcWeek(w).length,a=thArr(),thSc=a.filter(function(x){return thSt(x)==='مجدول'}).length,tgd=tgToday(),tgSoon=S.tg.filter(function(x){return tgSt(x)==='مجدول'}).length;
+ var td=Object.keys(S.todo).filter(function(k){return !S.todo[k].done}).length,tk=Object.keys(S.tasks).filter(function(k){return !S.tasks[k].done}).length,sd=(siteDoc().days||[]),last=sd[sd.length-1];
+ [['wc','جدول النشر','فيسبوك وإنستغرام وتيك توك',wc?(wc+' منشور بهذا الأسبوع'):'فارغ: ينتظر محتوى الأسبوع منك',!wc],
+  ['th','ثريدز','منشور واحد باليوم',a.length?(thSc+' مجدول جاي'):'ماكو بيانات بعد',false],
+  ['tg','تليغرام','قناة الزبائن','اليوم نزل '+tgd[0]+' من '+tgd[1]+' · '+tgSoon+' جاي',false],
+  ['todo','المهام','اللي ينتظرك وينتظرني',(td+tk)?((td+tk)+' غير منجز'):'كلشي منجز',false],
+  ['site','الموقع','زوار rosebaghdad.iq',last?('آخر يوم: '+(last.visitors|0)+' زائر'):'العدّاد ما مركّب بعد',!last]].forEach(function(x){if(!tabOk(x[0]))return;var b=E('button','tile');b.appendChild(ic(x[0]));b.appendChild(E('b','',x[1]));b.appendChild(E('small','',x[2]));b.appendChild(E('small',x[4]?'warn':'',x[3]));b.appendChild(E('span','go','افتح ←'));b.onclick=function(){go(x[0])};o.appendChild(b)})}
+function renderSite(){var d=siteDoc(),days=(d.days||[]).slice().sort(function(a,b){return a.d<b.d?1:-1}),has=days.length>0;
+ $('siteEmpty').style.display=has?'none':'';$('siteDays').style.display=has?'':'none';$('siteMore').style.display=((d.pages||[]).length||(d.sources||[]).length)?'':'none';
+ var sum=function(k,n){return days.slice(0,n).reduce(function(t,x){return t+(+x[k]||0)},0)};
+ kpi($('siteK'),has?[['زوار اليوم',days[0].visitors|0],['زوار آخر 7 أيام',sum('visitors',7)],['زيارات آخر 7 أيام',sum('visits',7)],['صفحات انفتحت آخر 7 أيام',sum('views',7)],['آخر تحديث',d.asof||'—']]:[['زوار اليوم','—'],['زوار آخر 7 أيام','—'],['صفحات انفتحت','—']]);
+ table('siteT',['اليوم','الزوار','الزيارات','الصفحات اللي انفتحت'],days.slice(0,30).map(function(x){return[x.d,x.visitors|0,x.visits|0,x.views|0]}),[1,2,3]);
+ table('siteP',['الصفحة','مرات الفتح'],(d.pages||[]).slice(0,10).map(function(x){return[x.p,x.v|0]}),[1]);table('siteS',['المصدر','الزيارات'],(d.sources||[]).slice(0,10).map(function(x){return[x.s,x.v|0]}),[1])}
+function renderGuide(){var L=clear($('guideL'));GROUPS.forEach(function(g){var ks=g[1].filter(tabOk);if(!ks.length)return;var c=E('div','card');c.appendChild(E('h2','',g[0]));var gl=E('div','gl');ks.forEach(function(k){var it=E('div','gi');it.appendChild(ic(k));var d=E('div');d.appendChild(E('b','',tabName(k)));d.appendChild(E('small','',tabDesc(k)));it.appendChild(d);if(k!=='guide'){var b=E('button','sm','افتح');b.onclick=function(){go(k)};it.appendChild(b)}gl.appendChild(it)});c.appendChild(gl);L.appendChild(c)});
+ table('guideB',['الزر','شنو يسوي'],[['تحديث','يعيد تحميل اللوحة ويجيب آخر الأرقام.'],['☾ أسود / ☀ أبيض','يبدل لون اللوحة بين الغامق والفاتح.'],['→ رجوع','يرجعك للقسم اللي جنت بيه.'],['كل الأقسام','يفتح قائمة بكل أقسام اللوحة ويا شرح كل واحد (بالموبايل).'],['افتح','يوديك للقسم المكتوب يمه.'],['الصورة بجدول النشر','اضغط عليها حتى تكبر وتشوف الكابشن كامل.'],['أرسل لـClaude','يدز ملاحظتك على المنشور، وأرد عليك بنفس المكان.'],['شلون أسويها؟','يفتح خطوات تنفيذ المهمة.'],['اسأل Claude','يفتح الدردشة ويا نص المهمة جاهز.'],['نسخ','ينسخ نص منشور التليغرام حتى تلصقه بمكان ثاني.'],['مربع "منجز"','تأشر بيه على المهمة من تخلص.']])}
 $('tgPause').onclick=function(){var p=!S.ctl.paused;S.ctl={paused:p};render();if(S.db)S.db.doc('tg_ctl/state').set({paused:p}).catch(function(){})};
 
 function A(url,text){var a=E('a','lk',text||url.replace(/^https?:\/\//,''));a.href=url;a.target='_blank';a.rel='noopener';return a}
