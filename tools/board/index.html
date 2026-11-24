@@ -346,7 +346,7 @@ function dayDate(w,d){return new Date(ANCHOR+(w*7+d)*864e5)}
 function fmt(d){return d.getUTCDate()+'/'+(d.getUTCMonth()+1)}
 function wkKey(w){return 'w'+dayDate(w,0).toISOString().slice(0,10)}
 function can(p){return S.admin||S.perms.indexOf(p)>=0}
-var DEF={fb:14,igp:10,igs:9,fbs:18,tt:7,ad:1};
+var DEF={fb:24,igp:21,igs:27,fbs:36,tt:0,ad:1};
 function targets(w){var p=S.plans[wkKey(w)]||{},m=S.plans.meta||{};return Object.assign({},DEF,m.t||{},p.t||{})}
 
 /* خانات الأسبوع: توزيع أهداف ميتا على 7 أيام */
